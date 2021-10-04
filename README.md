@@ -8,7 +8,11 @@ Team Members:
 Name (Github ID)
 
 Martin Cabello (m-cabello)
+
 Mikey Curtis (mikeycurtis)
+
 Himanshu Kumar (hima-97)
+
 John Judge (JohnnJudge)
+
 Kevin Weng (kweng149)
