@@ -1,6 +1,6 @@
 ## About Me
 
-##### My name is Kevin Weng. I'm currently a 3rd year computer science major.
+My name is Kevin Weng. I'm currently a 3rd year computer science major.
 
 ## Ideas for the Project
 
