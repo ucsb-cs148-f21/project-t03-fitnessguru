@@ -1,7 +1,7 @@
 # project-t03-fitnessguru
 Project Name: Fitness Guru
 
-Fitness Guru will help people who go to the gym keep track of their progress (both strength wise and physical changes to their body), and create new workout plans with the opportunity to copy workouts from other people in the fitnesss community.
+Fitness Guru will help people who go to the gym keep track of their progress (both strength wise and physical changes to their body), and it will allow users to create custom workout plans and share their workouts with other people in the fitness community.
 
 Team Members:
 
