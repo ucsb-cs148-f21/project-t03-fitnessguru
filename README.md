@@ -1,3 +1,5 @@
+Necessary Software: Node >= 14.0.0 and npm >= 5.6
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
