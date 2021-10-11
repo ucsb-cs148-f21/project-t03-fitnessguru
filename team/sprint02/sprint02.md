@@ -20,6 +20,7 @@ Current User Story:
 
 As someone who frequents the gym, I can create a new custom workout, so that I have several workouts to choose from.
 
+* Create a basic layout for the app
 * User can create and name a new custom workout
 * User can type in exercises they want to add to their workouts
 * User can log their weights for different exercises
