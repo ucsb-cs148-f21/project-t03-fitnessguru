@@ -1,8 +1,8 @@
 # Date of Retrospective: 10/13/2021
 
 * Led by: Mikey Curtis
-* Present: name1, name2, ... , nameN
-* Absent: name1, name2, ...
+* Present: Kevin, Hima, John, Martin
+* Absent: N/A
 
 ## Action item
 
