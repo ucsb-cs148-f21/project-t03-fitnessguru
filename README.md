@@ -27,7 +27,11 @@ Node
 Fitness Guru will help people who go to the gym keep track of their progress (both strength wise and physical changes to their body), and it will allow users to create custom workout plans and share their workouts with other people in the fitness community. Users will be able to add exercises to their custom splits and workouts.
 
 # User Roles
-People who go to the gym (new or experienced).
+* People who go to the gym (new or experienced)
+
+* Admins / Fitness Trainers
 
 # User Permissions
-People who go to the gym (new or experienced) can create their own custom workouts, track their own progress, and share their workouts with other users.
+* People who go to the gym (new or experienced) can create their own custom workouts, track their own progress, and share their workouts with other users.
+
+* Admins / Fitness Trainers can post challenges to keep users engaged.
