@@ -1,15 +1,17 @@
 import React from 'react';
 import {useState} from 'react';
+import './Exercise.css';
 
 // Component takes in an exercise object e and displays it.
 const Exercise = ({e}) => {
+    console.log(e);
     return (
-      <div>
-        <h2>{e.name}</h2>
-        <p>Reps: {e.reps}</p>
-        <p>Sets: {e.sets}</p>
-        <p>Weight: {e.weight}</p>
-        <p>Notes: {e.notes}</p>
+      <div className="exerciseBody">
+        <h3 className="exerciseName">{e.name}</h3>
+        <p className="exerciseStats">Sets: {e.sets}</p>
+        <p className="exerciseStats">Reps: {e.reps}</p>
+        <p className="exerciseStats">Weight: {e.weight}</p>
+        <p className="exerciseNotes">Notes: {e.notes}</p>
       </div>
     )
   }

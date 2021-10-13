@@ -8,11 +8,12 @@ const CreateWorkout = ({handleAddWorkout}) => {
 
     const [exercises, setExercises] = useState([]);
     const [showAddExercise, setShowAddExercise] = useState(false);
+    const [showAddExercise1, setShowAddExercise1] = useState(true);
   
     const handleAddExercise = (exercise) => {
       const newExercises = exercises.concat(exercise);
-      console.log(newExercises);
       setExercises(newExercises);
+      setShowAddExercise1(true);
       return(
         setShowAddExercise(false)
       )
@@ -20,6 +21,7 @@ const CreateWorkout = ({handleAddWorkout}) => {
 
     const handleSetShowAddExercise = (e) => {
         e.preventDefault();
+        setShowAddExercise1(false);
         return(setShowAddExercise(true));
     }
 
@@ -37,7 +39,7 @@ const CreateWorkout = ({handleAddWorkout}) => {
           <label htmlFor="workoutName">Workout name:</label><br></br>
           <input type="text" id="workoutName" name="workoutName" /><br></br>
           <ListExercises exercises={exercises}/>
-          <button className="addExercise" onClick={handleSetShowAddExercise}>Add Exercise</button>
+          {showAddExercise1 && <button className="addExercise" onClick={handleSetShowAddExercise}>Add Exercise</button>}
           {showAddExercise && <CreateExercise handleAddExercise={handleAddExercise} />}<br /><br />
           <button id="addWorkout" type="button" onClick={handleCreateWorkoutObject}>Add Workout</button>
         </form>
