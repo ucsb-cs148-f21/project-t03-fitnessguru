@@ -4,8 +4,7 @@
 * Present: Kevin, Hima, John, Martin
 * Absent: N/A
 
-## Action item
-
+## Retro Notes:
 1. Set the Stage: What have you done really well in the last iteration?
   - Kevin: "Keeping track of what we need to get done and what requirements need to be made. Good at keeping track of progression."  
   - Martin: "Making sure that I look through the labs, and confirming that we are completing all the necessary items in order to recieve full points."
@@ -36,6 +35,9 @@
   - Martin: :)                                                                     
   - Hima: :)                                                                       
   - John: :)
+
+
+## Action item
 
 * a goal: Communicate better outside of class
 * a change: Meet outside of class
