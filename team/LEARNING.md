@@ -16,3 +16,8 @@ Node
 * Online Tutorials
 * Youtube Tutorials
 * Documentation
+
+## Slack Posts:
+
+* Kevin Weng - https://www.youtube.com/watch?v=SBvmnHTQIPY
+* Martin Cabello - https://www.youtube.com/watch?v=Ly-9VTXJlnA
