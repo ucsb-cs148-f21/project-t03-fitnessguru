@@ -43,10 +43,6 @@
 * a change: Meet outside of class
 * a measurement: The amount of issues closed by their specific deadlines.
 
-## Optional
-
-* Record anything else you think the team might want to remember from this retro
-
 ## Retro Assessment
 
 * A brief description of what retro outline or process you used.
