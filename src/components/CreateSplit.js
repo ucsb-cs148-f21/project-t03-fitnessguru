@@ -3,6 +3,8 @@ import {useState} from 'react'
 import CreateWorkout from './CreateWorkout'
 import ListWorkouts from './ListWorkouts';
 import './CreateSplit.css'
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const CreateSplit = ({handleAddSplit}) => {
     let split = {};
@@ -31,30 +33,35 @@ const CreateSplit = ({handleAddSplit}) => {
         split.workouts = workouts;
         return(handleAddSplit(split));
     }
-    return(
-        <div className="makeNewSplit">
-            <form className="createSplitForm">
-                <div className="addName">
-                    <label htmlFor="splitName">Split name:</label><br></br>
-                    <input type="text" id="splitName" name="splitName" /><br></br>
-                </div>
-                <div className="addNotes">
-                    <label htmlFor="lname">Notes:</label><br></br>
-                    <textarea id="notes" name="notes"></textarea><br></br>
-                </div>
-            </form>
+
+    return (
+        <Form className="splitForm">
+            <Form.Group className="mb-3" controlId="formBasicExercise">
+                <Form.Label className="label">Split Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter split name" id="splitName"/>
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicNotes">
+                <Form.Label className="label">Notes</Form.Label>
+                <Form.Control as="textarea" rows={3} id="notes"/>
+            </Form.Group>
+
             <div className="showWorkouts">
-                <h3 id="workouts">Workouts: </h3>
-                <div id="workoutList">
-                    <ListWorkouts workouts={workouts} />
+                <div className="addingWorkout">
+                    <div id="workoutList">
+                        <ListWorkouts workouts={workouts} />
+                    </div>
+                
+                    {showAddWorkout1 && <Button className="addWorkout" onClick={handleSetShowAddWorkout}>Add Workout</Button>}<br /> 
                 </div>
-               
-                {showAddWorkout1 && <button className="addWorkout" onClick={handleSetShowAddWorkout}>Add Workout</button>}<br /> 
+                
                 {showAddWorkout && <CreateWorkout handleAddWorkout={handleAddWorkout}/>}
             </div>
-            <button id="addSplit" type="button" onClick={handleCreateSplitObject}>Add Split</button>
-        </div>
-        
+
+            <Button variant="primary" id="addSplit" type="button" onClick={handleCreateSplitObject} >
+                Add Split
+            </Button>
+        </Form>
     )
 }
 

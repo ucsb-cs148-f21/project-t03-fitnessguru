@@ -73,7 +73,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 # project-t03-fitnessguru
 Project Name: Fitness Guru
 
+<<<<<<< HEAD
 Fitness Guru will help people who go to the gym keep track of their progress (both strength wise and physical changes to their body), and it will allow users to create custom workout plans and share their workouts with other people in the fitness community. Users will be able to add exercises to their custom splits and workouts.
+=======
+Fitness Guru allows users to create custom workouts and track their progress at the gym.
+>>>>>>> 896c38fafbe08bf095e2adb94aa073edffac17eb
 
 Team Members:
 
@@ -95,4 +99,19 @@ Express
 ReactJS
 Node
 
+<<<<<<< HEAD
 >>>>>>> 6494a682014b3987e93851ff607f0a5b04bef81e
+=======
+# App Description
+Fitness Guru will help people who go to the gym keep track of their progress (both strength wise and physical changes to their body), and it will allow users to create custom workout plans and share their workouts with other people in the fitness community. Users will be able to add exercises to their custom splits and workouts.
+
+# User Roles
+* People who go to the gym (new or experienced)
+
+* Admins / Fitness Trainers
+
+# User Permissions
+* People who go to the gym (new or experienced) can create their own custom workouts, track their own progress, and share their workouts with other users.
+
+* Admins / Fitness Trainers can post challenges to keep users engaged.
+>>>>>>> 896c38fafbe08bf095e2adb94aa073edffac17eb

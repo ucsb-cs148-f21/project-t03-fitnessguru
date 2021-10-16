@@ -1,3 +1,30 @@
+.splitForm {
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 20px;
+    width: auto;
+    height: auto;
+}
+
+.splitForm .label {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.splitForm .showWorkouts {
+    margin: 0 auto;
+}
+
+.splitForm .showWorkouts .addingWorkout {
+    display: flex;
+}
+
+.splitForm .showWorkouts .addWorkout {
+    height: 50px;
+    margin-top: 25px;
+}
+
+
 .makeNewSplit button {
     background-color: transparent;
     border: 1px solid white;

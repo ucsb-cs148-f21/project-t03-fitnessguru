@@ -27,3 +27,7 @@
     margin: 10px;
     width: 500px;
 }
+
+.workoutCards .overlay .showWorkout{
+    color: red;
+}

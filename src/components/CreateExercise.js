@@ -1,5 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 // component takes in handler function that handles where to add the exercise to
 const CreateExercise = ({handleAddExercise}) => {
@@ -16,24 +18,37 @@ const CreateExercise = ({handleAddExercise}) => {
       return(handleAddExercise(exercise))
       
     }
+   return (
+    <Form>
+        <Form.Group className="mb-3" controlId="formBasicExercise">
+            <Form.Label>Exercise Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter exercise" id="exerciseName"/>
+        </Form.Group>
+    
 
-    return (
-      <div>
-        <form className="createExerciseForm">
-          <label htmlFor="splitName">Exercise name:</label><br />
-          <input type="text" id="exerciseName" name="exerciseName" /><br />
-          <label htmlFor="sets">Sets:</label><br />
-          <input type="number" id="set" name="set" /><br /> 
-          <label htmlFor="reps">Reps:</label><br />
-          <input type="number" id="rep" name="rep" /><br />
-          <label htmlFor="weight">Weight:</label><br />
-          <input nowrap type="number" id="weight" name="weight" /><br />
-          <label htmlFor="reps">Notes:</label><br />
-          <textarea htmlFor="exerciseNotes" id="exerciseNotes" name="exerciseNotes"></textarea><br />
-          <button id="addExercise" type="button" onClick={handleCreateExerciseObject}>Add Exercise</button>
-        </form>
-      </div>
-    )
+        <Form.Group className="mb-3" controlId="formBasicSets">
+            <Form.Label>Sets</Form.Label>
+            <Form.Control type="text" placeholder="Sets" id="set"/>
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicReps">
+            <Form.Label>Repetitions</Form.Label>
+            <Form.Control type="text" placeholder="Repetitions" id="rep"/>
+        </Form.Group>
+        
+        <Form.Group className="mb-3" controlId="formBasicWeight">
+            <Form.Label>Weight</Form.Label>
+            <Form.Control type="text" placeholder="Weight" id="weight"/>
+        </Form.Group>
+
+        <Form.Group className="mb-3" controlId="formBasicNotes">
+            <Form.Label>Notes</Form.Label>
+            <Form.Control as="textarea" rows={3} id="exerciseNotes"/>
+        </Form.Group>
+        <Button variant="primary" id="addExercise" type="button" onClick={handleCreateExerciseObject}>
+            Submit
+        </Button>
+    </Form>
+   )
   }
 
   export default CreateExercise;

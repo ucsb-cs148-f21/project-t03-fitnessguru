@@ -2,6 +2,9 @@ import React from 'react';
 import {useState} from 'react';
 import CreateExercise from './CreateExercise';
 import ListExercises from './ListExercises';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
+import './CreateWorkout.css';
 
 const CreateWorkout = ({handleAddWorkout}) => {
     let workout = {};
@@ -32,19 +35,24 @@ const CreateWorkout = ({handleAddWorkout}) => {
             handleAddWorkout(workout)
         )
     }
-
-    return(
-      <div>
-        <form className="createWorkoutForm">
-          <label htmlFor="workoutName">Workout name:</label><br></br>
-          <input type="text" id="workoutName" name="workoutName" /><br></br>
-          <ListExercises exercises={exercises}/>
-          {showAddExercise1 && <button className="addExercise" onClick={handleSetShowAddExercise}>Add Exercise</button>}
+    
+   return (
+    <Form className="formBody">
+        <Form.Group className="mb-3" controlId="formBasicExercise">
+            <Form.Label className="label">Workout Name</Form.Label>
+            <Form.Control type="text" placeholder="Enter exercise" id="workoutName"/>
+        </Form.Group>
+        <div className="addExercise">
+            <ListExercises className="exercises" exercises={exercises}/>
+          {showAddExercise1 && <Button className="addWorkout" onClick={handleSetShowAddExercise}>Add Exercise</Button>}
+        </div>
+        
           {showAddExercise && <CreateExercise handleAddExercise={handleAddExercise} />}<br /><br />
-          <button id="addWorkout" type="button" onClick={handleCreateWorkoutObject}>Add Workout</button>
-        </form>
-      </div>
-    )
+        <Button variant="primary" id="addWorkout" type="button" onClick={handleCreateWorkoutObject} >
+            Submit
+        </Button>
+    </Form>
+   )
   }
 
   export default CreateWorkout;

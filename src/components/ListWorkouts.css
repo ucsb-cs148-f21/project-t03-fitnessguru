@@ -1,0 +1,10 @@
+.workoutList {
+    border: 1px solid black;
+    border-radius: 25px;
+    padding: 20px;
+    color: black;
+}
+
+.workoutList .workouts {
+    padding: 15px;
+}
