@@ -1,11 +1,18 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import CreateExercise from './components/CreateExercise'
+import CreateWorkout from './components/CreateWorkout'
+import CreateSplit from './components/CreateSplit'
+import ListSplits from './components/ListSplits'
 
 import CheckingSignedIn from "./pages/CheckingSignedIn";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Private from "./pages/Private";
 import PageNotFound from "./pages/PageNotFound";
+import WorkoutPage from "./pages/WorkoutPage";
+
+
 
 export default function App() {
   const [isSignedIn, setIsSignedIn] = useState(null);
@@ -44,13 +51,19 @@ export default function App() {
 
   if (isSignedIn !== null) {
     return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <PrivateRoute exact path="/profile" component={Profile} />
-          <Route path="/" component={PageNotFound} />
-        </Switch>
-      </BrowserRouter>
+      <>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <PrivateRoute exact path="/profile" component={Profile} />
+            <PrivateRoute exact path="/workout" component={WorkoutPage} />
+            <Route path="/" component={PageNotFound} />
+          </Switch>
+        </BrowserRouter>
+        <div className="App">
+        <h1>Welcome to Fitness Guru!</h1>
+        </div>
+      </>
     );
   }
 

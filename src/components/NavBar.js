@@ -16,6 +16,7 @@ export default function NavBar(props) {
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
             {user && <Nav.Link href="/profile">Profile</Nav.Link>}
+            {user && <Nav.Link href="/workout">Workout</Nav.Link>}
           </Nav>
           <Nav>
             {!user ? (
