@@ -1,9 +1,9 @@
 import React from "react";
+import Container from "react-bootstrap/Container";
 import styled from "styled-components";
 
 import getUser from "../utils/get-user";
 import Layout from "../components/Layout";
-import Container from "react-bootstrap/Container";
 
 const TextWrapper = styled.div`
   width: 700px;
@@ -24,6 +24,13 @@ export default function Home() {
           }
           Welcome to Fitness Guru!
         </h1>
+        <TextWrapper>
+          {
+            (user != null)
+            ? "You can now create custom workouts and track your progress!"
+            : "Please log in to start using the app!"
+          }
+        </TextWrapper>
       </Container>
     </Layout>
   );

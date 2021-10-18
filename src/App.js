@@ -5,6 +5,8 @@ import CheckingSignedIn from "./pages/CheckingSignedIn";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Private from "./pages/Private";
+import MyWorkouts from "./pages/MyWorkouts"
+import CreateWorkout from "./pages/CreateWorkout"
 import PageNotFound from "./pages/PageNotFound";
 
 export default function App() {
@@ -48,6 +50,8 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <PrivateRoute exact path="/profile" component={Profile} />
+          <PrivateRoute exact path="/myworkouts" component={MyWorkouts} />
+          <PrivateRoute exact path="/createworkout" component={CreateWorkout} />
           <Route path="/" component={PageNotFound} />
         </Switch>
       </BrowserRouter>

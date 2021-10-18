@@ -1,7 +1,8 @@
 import React from "react";
-import Layout from "../components/Layout";
 import Container from "react-bootstrap/Container";
+
 import getUser from "../utils/get-user";
+import Layout from "../components/Layout";
 
 export default function Login() {
   const user = getUser();
