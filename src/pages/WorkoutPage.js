@@ -2,10 +2,8 @@ import React, {useState} from 'react';
 import Layout from '../components/Layout';
 import getUser from "../utils/get-user";
 import Container from "react-bootstrap/Container";
-import CreateExercise from '../components/CreateExercise'
-import CreateWorkout from '../components/CreateWorkout'
-import CreateSplit from '../components/CreateSplit'
-import ListSplits from '../components/ListSplits'
+import CreateSplit from '../components/Workout/CreateSplit'
+import ListSplits from '../components/Workout/ListSplits'
 
 
 const WorkoutPage = () => {

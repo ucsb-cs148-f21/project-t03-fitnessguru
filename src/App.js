@@ -1,9 +1,5 @@
 import React, { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import CreateExercise from './components/CreateExercise'
-import CreateWorkout from './components/CreateWorkout'
-import CreateSplit from './components/CreateSplit'
-import ListSplits from './components/ListSplits'
 
 import CheckingSignedIn from "./pages/CheckingSignedIn";
 import Home from "./pages/Home";

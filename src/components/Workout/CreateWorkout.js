@@ -42,7 +42,9 @@ const CreateWorkout = ({handleAddWorkout}) => {
             <Form.Label className="label">Workout Name</Form.Label>
             <Form.Control type="text" placeholder="Enter exercise" id="workoutName"/>
         </Form.Group>
+        
         {showAddExercise && <CreateExercise handleAddExercise={handleAddExercise} />}<br /><br />
+
         <div className="addExercise">
             <div className="addButton">
             {showAddExercise1 && <Button className="addWorkout" onClick={handleSetShowAddExercise}>Add Exercise</Button>}
@@ -54,6 +56,7 @@ const CreateWorkout = ({handleAddWorkout}) => {
            
           
         </div>
+
         <Button variant="primary" id="addWorkout" type="button" onClick={handleCreateWorkoutObject} >
             Create Workout
         </Button>

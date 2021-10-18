@@ -1,5 +1,4 @@
 import React from 'react';
-import {useState} from 'react';
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 
@@ -25,11 +24,11 @@ const CreateExercise = ({handleAddExercise}) => {
             <Form.Control type="text" placeholder="Enter exercise" id="exerciseName"/>
         </Form.Group>
     
-
         <Form.Group className="mb-3" controlId="formBasicSets">
             <Form.Label>Sets</Form.Label>
             <Form.Control type="text" placeholder="Sets" id="set"/>
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="formBasicReps">
             <Form.Label>Repetitions</Form.Label>
             <Form.Control type="text" placeholder="Repetitions" id="rep"/>
@@ -44,6 +43,7 @@ const CreateExercise = ({handleAddExercise}) => {
             <Form.Label>Notes</Form.Label>
             <Form.Control as="textarea" rows={3} id="exerciseNotes"/>
         </Form.Group>
+
         <Button style={{marginLeft:"35%"}} variant="primary" id="addExercise" type="button" onClick={handleCreateExerciseObject}>
             Add Exercise
         </Button>
