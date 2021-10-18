@@ -27,6 +27,10 @@ const CreateSplit = ({handleAddSplit}) => {
         )
     }
 
+    const handleNoWorkoutAdded = () => {
+        return(setShowAddWorkout1)
+    }
+
     const handleCreateSplitObject = () => {
         split.name = document.getElementById("splitName").value;
         split.notes = document.getElementById("notes").value;
@@ -48,18 +52,17 @@ const CreateSplit = ({handleAddSplit}) => {
 
             <div className="showWorkouts">
                 <div className="addingWorkout">
-                    <div id="workoutList">
+                    {showAddWorkout1 && <Button className="addWorkout" onClick={handleSetShowAddWorkout}>Add Workout</Button>}<br />
+                    <div className="workoutList">
                         <ListWorkouts workouts={workouts} />
                     </div>
-                
-                    {showAddWorkout1 && <Button className="addWorkout" onClick={handleSetShowAddWorkout}>Add Workout</Button>}<br /> 
                 </div>
                 
                 {showAddWorkout && <CreateWorkout handleAddWorkout={handleAddWorkout}/>}
             </div>
 
             <Button variant="primary" id="addSplit" type="button" onClick={handleCreateSplitObject} >
-                Add Split
+                Create Split
             </Button>
         </Form>
     )

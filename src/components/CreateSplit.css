@@ -64,6 +64,7 @@
 .addName label{
     margin-right: 5px;
 }
+
 .addNotes {
     display: flex;
     margin: 10px;
@@ -74,3 +75,26 @@
     margin-right: 5px;
 }
 
+.addingWorkout{
+    display: block;
+    position: relative;
+}
+
+.addingWorkout .addWorkout{
+    position: absolute;
+    top: -20px;
+    left: 450px;
+}
+
+.addingWorkout .workoutList {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    max-width: 80em;
+    padding: 1em 0;
+}
+
+#addSplit {
+    margin-left: 450px;
+}

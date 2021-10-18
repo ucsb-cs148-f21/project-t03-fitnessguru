@@ -3,10 +3,9 @@ import {useState} from 'react';
 import Workout from './Workout';
 import "./ListWorkouts.css";
 
-const ListWorkouts = ({workouts}) => {
-    return(
+const WorkoutList = ({workouts}) => {
+    return (
         <div className="workoutList">
-            <h3 id="label">Workouts: </h3>
             <div className="workouts">
                 {workouts.map((w)=>{
                     return <Workout className="w" w={w} />
@@ -14,6 +13,15 @@ const ListWorkouts = ({workouts}) => {
             </div>
             
         </div>
+    )
+}
+
+const ListWorkouts = ({workouts}) => {
+    const isEmpty = (workouts.length < 1);
+    return(
+        <>
+            {!isEmpty && <WorkoutList workouts={workouts}/>}
+        </>
     )
 }
 

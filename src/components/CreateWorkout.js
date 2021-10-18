@@ -35,21 +35,27 @@ const CreateWorkout = ({handleAddWorkout}) => {
             handleAddWorkout(workout)
         )
     }
-    
+
    return (
-    <Form className="formBody">
+    <Form className="formBodyWorkout">
         <Form.Group className="mb-3" controlId="formBasicExercise">
             <Form.Label className="label">Workout Name</Form.Label>
             <Form.Control type="text" placeholder="Enter exercise" id="workoutName"/>
         </Form.Group>
+        {showAddExercise && <CreateExercise handleAddExercise={handleAddExercise} />}<br /><br />
         <div className="addExercise">
-            <ListExercises className="exercises" exercises={exercises}/>
-          {showAddExercise1 && <Button className="addWorkout" onClick={handleSetShowAddExercise}>Add Exercise</Button>}
-        </div>
+            <div className="addButton">
+            {showAddExercise1 && <Button className="addWorkout" onClick={handleSetShowAddExercise}>Add Exercise</Button>}
+            </div>
         
-          {showAddExercise && <CreateExercise handleAddExercise={handleAddExercise} />}<br /><br />
+            <div className="exerciseList">
+                <ListExercises className="exercises" exercises={exercises}/>
+            </div>
+           
+          
+        </div>
         <Button variant="primary" id="addWorkout" type="button" onClick={handleCreateWorkoutObject} >
-            Submit
+            Create Workout
         </Button>
     </Form>
    )

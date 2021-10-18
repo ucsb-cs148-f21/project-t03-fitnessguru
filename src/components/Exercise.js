@@ -10,7 +10,7 @@ const Exercise = ({e}) => {
         
         <Card.Body className="exerciseBody">
             <Card.Title className="exerciseName">{e.name}</Card.Title>
-            <Card.Subtitle className="mb-2 text-muted">{e.sets} sets x {e.reps} reps of {e.weight}lbs</Card.Subtitle>
+            <Card.Subtitle style={{color: '#80D6F0'}} className="setsReps">{e.sets} sets x {e.reps} reps of {e.weight}lbs</Card.Subtitle>
             <Card.Text>
                 {e.notes}
             </Card.Text>

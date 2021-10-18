@@ -44,8 +44,8 @@ const CreateExercise = ({handleAddExercise}) => {
             <Form.Label>Notes</Form.Label>
             <Form.Control as="textarea" rows={3} id="exerciseNotes"/>
         </Form.Group>
-        <Button variant="primary" id="addExercise" type="button" onClick={handleCreateExerciseObject}>
-            Submit
+        <Button style={{marginLeft:"35%"}} variant="primary" id="addExercise" type="button" onClick={handleCreateExerciseObject}>
+            Add Exercise
         </Button>
     </Form>
    )
