@@ -1,5 +1,4 @@
 import React from 'react';
-import {useState} from 'react';
 import Exercise from './Exercise';
 import './Workout.css'
 import Card from "react-bootstrap/Container";
@@ -13,8 +12,8 @@ const Workout = ({w}) => {
         <Card className="workoutBody" style={{ width: '18rem' }}>
             <h2 className="workoutName">{w.workoutName}</h2>
             {w.exercises.map((item)=>{
-            return <Exercise e={item} />
-        })}
+                return <Exercise e={item} />
+            })}
         </Card>
     )
 }

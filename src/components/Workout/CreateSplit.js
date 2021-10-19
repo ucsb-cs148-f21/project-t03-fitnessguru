@@ -27,10 +27,6 @@ const CreateSplit = ({handleAddSplit}) => {
         )
     }
 
-    const handleNoWorkoutAdded = () => {
-        return(setShowAddWorkout1)
-    }
-
     const handleCreateSplitObject = () => {
         split.name = document.getElementById("splitName").value;
         split.notes = document.getElementById("notes").value;
@@ -40,6 +36,7 @@ const CreateSplit = ({handleAddSplit}) => {
 
     return (
         <Form className="splitForm">
+            
             <Form.Group className="mb-3" controlId="formBasicExercise">
                 <Form.Label className="label">Split Name</Form.Label>
                 <Form.Control type="text" placeholder="Enter split name" id="splitName"/>

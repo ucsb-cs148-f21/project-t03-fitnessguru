@@ -1,5 +1,4 @@
 import React from 'react';
-import {useState} from 'react';
 import './Exercise.css';
 import Card from "react-bootstrap/Card";
 
@@ -7,7 +6,6 @@ import Card from "react-bootstrap/Card";
 const Exercise = ({e}) => {
     console.log(e);
     return (
-        
         <Card.Body className="exerciseBody">
             <Card.Title className="exerciseName">{e.name}</Card.Title>
             <Card.Subtitle style={{color: '#80D6F0'}} className="setsReps">{e.sets} sets x {e.reps} reps of {e.weight}lbs</Card.Subtitle>

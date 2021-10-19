@@ -1,6 +1,5 @@
 import React from 'react';
 import {useState} from 'react';
-import Workout from './Workout'
 import './Split.css'
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -50,6 +49,7 @@ const Split = ({s}) => {
         <>
             <Card className="splitCard"style={{ width: '18rem' }}>
                 <Card.Header className="splitName">{s.name}</Card.Header>
+                
                 <ListGroup className="workoutCards" variant="flush">
                         {s.workouts.map((w)=>{
                         return (
@@ -60,6 +60,7 @@ const Split = ({s}) => {
                     })}
                 </ListGroup>
             </Card>
+
             <MyVerticallyCenteredModal
                 w={workout}
                 show={modalShow}
@@ -70,9 +71,3 @@ const Split = ({s}) => {
 }
 
 export default Split;
-
-/*
-<OverlayTrigger className="overlay" trigger="click" placement="right" overlay={popover(w)}>
-                        <Button className="showWorkout" variant="success">{w.workoutName}</Button>
-                    </OverlayTrigger>
-                    */
