@@ -10,15 +10,15 @@ const ExerciseSchema = new mongoose.Schema({
         required: true
     },
     sets: {
-        type: Integer,
+        type: Number,
         required: false
     },
     repetitions: {
-        type: Integer,
+        type: Number,
         required: false
     },
     weight: {
-        type: Integer,
+        type: Number,
         required: false
     },
     notes:{
