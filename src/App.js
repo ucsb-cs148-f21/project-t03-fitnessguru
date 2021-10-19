@@ -8,6 +8,9 @@ import Private from "./pages/Private";
 import MyWorkouts from "./pages/MyWorkouts"
 import CreateWorkout from "./pages/CreateWorkout"
 import PageNotFound from "./pages/PageNotFound";
+import WorkoutPage from "./pages/WorkoutPage";
+
+
 
 export default function App() {
   const [isSignedIn, setIsSignedIn] = useState(null);
@@ -50,6 +53,7 @@ export default function App() {
         <Switch>
           <Route exact path="/" component={Home} />
           <PrivateRoute exact path="/profile" component={Profile} />
+          <PrivateRoute exact path="/workout" component={WorkoutPage} />
           <PrivateRoute exact path="/myworkouts" component={MyWorkouts} />
           <PrivateRoute exact path="/createworkout" component={CreateWorkout} />
           <Route path="/" component={PageNotFound} />
