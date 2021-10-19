@@ -16,7 +16,7 @@ export default function NavBar(props) {
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
             {user && <Nav.Link href="/profile">Profile</Nav.Link>}
-            {user && <Nav.Link href="/workout">Workout</Nav.Link>}
+            {user && <Nav.Link href="/myexercises">My Exercises</Nav.Link>}
             {user && <Nav.Link href="/myworkouts">My Workouts</Nav.Link>}
             {user && <Nav.Link href="/createworkout">Create Workout</Nav.Link>}
           </Nav>
