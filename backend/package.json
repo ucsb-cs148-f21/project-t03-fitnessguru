@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "server": "nodemon server.js"
+    "server": "nodemon server.js",
+    "client": "cd .. && npm run start",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+
   },
   "author": "",
   "license": "MIT",
