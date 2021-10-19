@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const SplitSchema = new mongoose.Schema({
     googleId: {
         type: String,
-        required: true
+        required: false
     },
     name: {
         type: String,

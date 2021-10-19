@@ -3,7 +3,7 @@ const mongoose = require('mongoose')
 const WorkoutSchema = new mongoose.Schema({
     googleId: {
         type: String,
-        required: true
+        required: false
     },
     split: {
         type: mongoose.Schema.Types.ObjectId,

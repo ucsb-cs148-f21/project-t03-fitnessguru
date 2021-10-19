@@ -1,9 +1,14 @@
 const mongoose = require('mongoose')
 
 const ExerciseSchema = new mongoose.Schema({
+    googleId:{
+        type: String,
+        required: false
+    },
     workout: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Workout'
+        ref: 'Workout',
+        required: false
     },
     name: {
         type: String,
