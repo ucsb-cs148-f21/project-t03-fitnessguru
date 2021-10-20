@@ -1,0 +1,41 @@
+.splitBody {
+    border: 1px solid black;
+    border-radius: 25px;
+    background-color: white;
+    color: black;
+    display:flex;
+    margin: 20px;
+}
+
+.description {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 250px;
+    margin-left: 30px;
+}
+
+.splitName {
+}
+
+.splitNotes {
+    margin-top: -260px
+}
+
+.workoutList {
+    display:flex;
+    margin: 10px;
+    width: 500px;
+}
+
+.workoutCards .overlay .showWorkout{
+    color: red;
+}
+
+.workoutGrid {
+    padding: 15px;
+    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}

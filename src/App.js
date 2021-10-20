@@ -9,6 +9,7 @@ import MyWorkouts from "./pages/MyWorkouts"
 import CreateWorkout from "./pages/CreateWorkout"
 import PageNotFound from "./pages/PageNotFound";
 import MyExercises from "./pages/MyExercises";
+import WorkoutPage from "./pages/WorkoutPage";
 
 
 
@@ -56,6 +57,7 @@ export default function App() {
           <PrivateRoute exact path="/myexercises" component={MyExercises} />
           <PrivateRoute exact path="/myworkouts" component={MyWorkouts} />
           <PrivateRoute exact path="/createworkout" component={CreateWorkout} />
+          <PrivateRoute exact path="/workout" component={WorkoutPage} />
           <Route path="/" component={PageNotFound} />
         </Switch>
       </BrowserRouter>
