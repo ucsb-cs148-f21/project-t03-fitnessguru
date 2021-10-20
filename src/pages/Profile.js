@@ -1,35 +1,66 @@
-import React from "react";
+import React, {Component} from "react";
 import styled from "styled-components";
 import Container from "react-bootstrap/Container";
-
+import 'antd/dist/antd.css'
+import {Avatar} from 'antd';
 import Layout from "../components/Layout";
 import getUser from "../utils/get-user";
-import DoggoImg from "../images/doggo.jpg";
+import ProfilePicChanger from "../components/pchanger"
+import Pic1 from "../images/doggo.jpg"
+import {Calendar, momentLocalizer} from "react-big-calendar";
+import moment from "moment";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+moment.locale("en-GB");
+const localizer = momentLocalizer(moment);
+const myEventsList = {}
+class Profile extends Component{
+  constructor(props)
+  {
+    super(props);
+    this.state = {
+      profileImage: ''
+    }
+  }
+  handleImageChange = (profileImage) =>
+  {
+    this.setState({
+      profileImage
+    })
+  }
+  componentDidMount()
+  {
 
-const Doggo = styled.img`
-  width: 500px;
-  max-width: 100%;
-  height: auto;
-`;
+  }
 
-export default function Profile() {
+  render()
+  {
   const user = getUser();
-
   return (
     <Layout user={user}>
-      <Container>
-        <h1>This is your Profile page!</h1>
-        <div>
-          Here's what this app knows about you based on your Google login:
+      <div >
+        <h1 style={{
+        position: 'absolute', left: '50%', top: '10%',
+        transform: 'translate(-50%, -0%)'
+    }}> Hello {user.fullName}!
+    </h1>
+
+        <Avatar size = {128} icon="user" src={this.state.profileImage}/>
+        <ProfilePicChanger handleImageChange={this.handleImageChange} pic1={Pic1}/>
+    <Calendar
+        localizer={localizer}
+        events={myEventsList}
+        startAccessor="start"
+        endAccessor="end"
+      />    <h2 style={{
+        position: 'absolute', left: '50%', top: '90%',
+        transform: 'translate(-50%, -0%)'
+    }}> Max days in a row: 120 <br></br>
+        Current days in a row: 80
+    </h2>
+  );
         </div>
-        <pre>{JSON.stringify(user, null, "\t")}</pre>
-        <div>
-          Your name is "{user.fullName}" and your email is "{user.email}."
-        </div>
-        <div>Google also thinks you'll like this picture :)</div>
-        <br />
-        <Doggo src={DoggoImg} />
-      </Container>
     </Layout>
   );
+  };
 }
+export default Profile;
