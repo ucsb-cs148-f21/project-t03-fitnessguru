@@ -1,9 +1,9 @@
 import React from "react";
-import styled from "styled-components";
 import Container from "react-bootstrap/Container";
+import styled from "styled-components";
 
-import Layout from "../components/Layout";
 import getUser from "../utils/get-user";
+import Layout from "../components/Layout";
 import DoggoImg from "../images/doggo.jpg";
 
 const Doggo = styled.img`

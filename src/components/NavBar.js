@@ -8,7 +8,7 @@ export default function NavBar(props) {
   const user = props.user;
 
   return (
-    <Navbar bg="light" expand="lg">
+    <Navbar className="color-nav" expand="lg">
       <Container>
         <Navbar.Brand href="/">Fitness Guru</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -16,6 +16,9 @@ export default function NavBar(props) {
           <Nav className="mr-auto">
             <Nav.Link href="/">Home</Nav.Link>
             {user && <Nav.Link href="/profile">Profile</Nav.Link>}
+            {user && <Nav.Link href="/myexercises">My Exercises</Nav.Link>}
+            {user && <Nav.Link href="/myworkouts">My Workouts</Nav.Link>}
+            {user && <Nav.Link href="/createworkout">Create Workout</Nav.Link>}
             {user && <Nav.Link href="/workout">Workout</Nav.Link>}
           </Nav>
           <Nav>
