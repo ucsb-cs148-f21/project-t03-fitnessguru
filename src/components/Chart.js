@@ -19,13 +19,68 @@ class Chart extends Component{
   render(){
     return (
       <div className="chart">
-        <Bar
+        <Line
           data={this.state.chartData}
+          width={40}
+	        height={20}
+          options={{
+            pointRadius: 5,
+            pointBackgroundColor: 'Red',
+            borderColor: 'Gray',
+            plugins:{
+              title:{
+                display:this.props.displayTitle,
+                text:'Weight Changes for '+ this.props.exercise,
+                color: 'rgba(54, 162, 235, 0.6)', 
+                font: { size: 25, weight:'900'}
+              },
+              legend:{
+                display:this.props.displayLegend,
+                position:this.props.legendPosition
+              }
+            },
+            scales: {
+              y: {
+                title:{
+                  display: true,
+                  text: 'Weight Utilized in lb',
+                  color: 'rgba(54, 162, 235, 0.6)', 
+                  font: { size: 20, weight:'900'}
+                },
+                ticks: {
+                  callback: function(value, index, values) {
+                    return value + ' lb';
+                  }
+                }
+              },
+              x: {
+                title:{
+                  display: true,
+                  text: 'Time',
+                  color: 'rgba(54, 162, 235, 0.6)',               
+                  font: { size: 20, weight:'900'}
+                }
+              }
+            }
+        }}
+    />
+      </div>
+    )
+  }
+}
+
+export default Chart;
+
+// Bar Code
+        {/* <Bar
+          data={this.state.chartData}
+          width={40}
+	        height={20}
           options={{
             title:{
               display:this.props.displayTitle,
               text:'Weight Changes for '+ this.props.exercise,
-              fontSize:25
+              fontSize:15
             },
             legend:{
               display:this.props.displayLegend,
@@ -35,25 +90,4 @@ class Chart extends Component{
               }
             }
           }}
-        />
-
-        <Line
-          data={this.state.chartData}
-          options={{
-            title:{
-              display:this.props.displayTitle,
-              text:'Weight Changes for '+ this.props.exercise,
-              fontSize:25
-            },
-            legend:{
-              display:this.props.displayLegend,
-              position:this.props.legendPosition
-            }
-          }}
-        />
-      </div>
-    )
-  }
-}
-
-export default Chart;
+        /> */}
