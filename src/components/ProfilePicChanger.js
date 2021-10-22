@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Modal, Button} from 'antd';
 import 'antd/dist/antd.css'
-import Layout from "../components/Layout";
+import Layout from "./Layout";
 import getUser from "../utils/get-user";
 
 
