@@ -1,7 +1,8 @@
 
-import React, {Component} from "react";
+import {React,Component,useState, useEffect} from "react";
 import styled from "styled-components";
 import Container from "react-bootstrap/Container";
+import axios from 'axios';
 import 'antd/dist/antd.css'
 import {Avatar} from 'antd';
 import Layout from "../components/Layout";
@@ -14,39 +15,35 @@ import "react-big-calendar/lib/css/react-big-calendar.css";
 moment.locale("en-GB");
 const localizer = momentLocalizer(moment);
 const myEventsList = {}
-class Profile extends Component{
-  constructor(props)
-  {
-    super(props);
-    this.state = {
-      profileImage: ''
-    }
-  }
-  handleImageChange = (profileImage) =>
-  {
-    this.setState({
-      profileImage
-    })
-  }
-  componentDidMount()
-  {
 
-  }
-
-  render()
-  {
+const Profile = (props) =>{
+  const [profileImage,setprofileImage] = useState("");
+  const [userinf,setuserinf] = useState([]);
   const user = getUser();
+  const fetchInfo = async()=>{
+    const {data} = await axios.get("/testapi/user")
+    setuserinf(data);
+  }
+  console.log(userinf.at(0).fullName);
+  useEffect(()=>{
+    fetchInfo();
+  },[])
   return (
     <Layout user={user}>
       <div >
         <h1 style={{
         position: 'absolute', left: '50%', top: '10%',
         transform: 'translate(-50%, -0%)'
-    }}> Hello {user.fullName}!
+    }}> Hello {userinf.at(0).fullName}!
     </h1>
+    <h2 style={{
+        position: 'absolute', left: '50%', top: '20%',
+        transform: 'translate(-50%, -0%)'
+    }}> Current Weight: {userinf.at(0).weight}
+    </h2>
 
-        <Avatar size = {128} icon="user" src={this.state.profileImage}/>
-        <ProfilePicChanger handleImageChange={this.handleImageChange} pic1={Pic1}/>
+        <Avatar size = {128} icon="user" src={profileImage}/>
+        <ProfilePicChanger handleImageChange={setprofileImage} pic1={Pic1}/>
     <Calendar
         localizer={localizer}
         events={myEventsList}
@@ -62,6 +59,5 @@ class Profile extends Component{
         </div>
     </Layout>
   );
-  };
 }
 export default Profile;
