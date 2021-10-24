@@ -5,20 +5,16 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    fullName: {
-        type: String,
+    dateOfBirth: {
+        type: new Date,
         required: true
     },
-    firstName: {
-        type: String,
+    height: {
+        type: Number,
         required: true
     },
-    lastName: {
-        type: String,
-        required: true
-    },
-    email: {
-        type: String,
+    weight: {
+        type: Number,
         required: true
     },
     createdAt: {
