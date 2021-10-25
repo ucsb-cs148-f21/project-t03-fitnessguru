@@ -14,60 +14,133 @@ export default function Exercise(){
 
         return (
             <div>
+                <div>
+                    <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#updateProfile">
+                        Update Profile
+                    </button>
+                </div>
+                {console.log(profile)}
                 {
-                    <div>
-                        <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#updateProfile">
-                            Update Profile
-                        </button>
-                    </div>
-                    (profile != null)
-                    ?
-                    <div class="modal fade" id="updateProfile" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Update Profile</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <form action="/user" method="POST" class="mb-4">
-                                    <div class="modal-body"> 
-                                        <br/>
-                                        <div class="form-group">
-                                            <label for="sets">Sets</label>
-                                            <input type="number" name="sets" defaultValue={exercise.sets} class="form-control"/>
-                                        </div>
-                                        <br/>
-                                        <div class="form-group">
-                                            <label for="repetitions">Repetitions</label>
-                                            <input type="number" name="repetitions" defaultValue={exercise.repetitions} class="form-control"/>
-                                        </div>
-                                        <br/>
-                                        <div class="form-group">
-                                            <label for="weight">Weight</label>
-                                            <input type="number" name="weight" defaultValue={exercise.weight} class="form-control"/>
-                                        </div>
-                                        <br/>
-                                        <div class="form-group">
-                                            <label for="notes">Notes</label>
-                                            <input type="text" name="notes" defaultValue={exercise.notes} class="form-control"/>
-                                        </div>
-                                        <br/>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <input type="submit" value="Update Exercise" class="btn btn-primary btn-block"/>
-                                    </div>
-                                </form>
+                (true) // profile == null, profile == [], profile ???, true, false
+                ?
+                <div>
+                <div class="modal fade" id="updateProfile" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Update Profile</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
                             </div>
+                            <form action="/user" method="POST" class="mb-4">
+                                <div class="modal-body">
+                                    <div class="form-group">
+                                        <input type="hidden" name="googleId" value={user.id} class="form-control"/>
+                                    </div> 
+                                    <br/>
+                                    <div class="form-group">
+                                        <label for="dateOfBirth">Date of Birth</label>
+                                        <input type="date" name="dateOfBirth" class="form-control"/>
+                                    </div>
+                                    <br/>
+                                    <div class="form-group">
+                                        <label for="heightFeet">Height (Feet)</label>
+                                        <input type="number" name="heightFeet" class="form-control"/>
+                                    </div>
+                                    <br/>
+                                    <div class="form-group">
+                                        <label for="heightInches">Height (Inches)</label>
+                                        <input type="number" name="heightInches" class="form-control"/>
+                                    </div>
+                                    <br/>
+                                    <div class="form-group">
+                                        <label for="weight">Weight (Pounds)</label>
+                                        <input type="number" name="weight" class="form-control"/>
+                                    </div>
+                                    <br/>
+                                    <div class="form-group">
+                                        <label for="notes">Notes</label>
+                                        <input type="text" name="notes" class="form-control"/>
+                                    </div>
+                                    <br/>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <input type="submit" value="Update Profile" class="btn btn-primary btn-block"/>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    :
+                </div>
+                </div>
+                :
+                <div>
+                    {profile.map(profile =>
+                        <div>
+                            <div class="modal fade" id="updateProfile" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Update Profile</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <form action={"/user/put/" + user.id} method="POST" class="mb-4">
+                                            <div class="modal-body">
+                                                <br/>
+                                                <div class="form-group">
+                                                    <label for="dateOfBirth">Date of Birth</label>
+                                                    <input type="date" name="dateOfBirth" defaultValue={profile.dateOfBirth} class="form-control"/>
+                                                </div>
+                                                <br/>
+                                                <div class="form-group">
+                                                    <label for="heightFeet">Height (Feet)</label>
+                                                    <input type="number" name="heightFeet" defaultValue={profile.heightFeet} class="form-control"/>
+                                                </div>
+                                                <br/>
+                                                <div class="form-group">
+                                                    <label for="heightInches">Height (Inches)</label>
+                                                    <input type="number" name="heightInches" defaultValue={profile.heightInches} class="form-control"/>
+                                                </div>
+                                                <br/>
+                                                <div class="form-group">
+                                                    <label for="weight">Weight (Pounds)</label>
+                                                    <input type="number" name="weight" defaultValue={profile.weight} class="form-control"/>
+                                                </div>
+                                                <br/>
+                                                <div class="form-group">
+                                                    <label for="notes">Notes</label>
+                                                    <input type="text" name="notes" defaultValue={profile.notes} class="form-control"/>
+                                                </div>
+                                                <br/>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                                <input type="submit" value="Update Profile" class="btn btn-primary btn-block"/>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            <br/>
+                            <p>
+                                Date of Birth: {profile.dateOfBirth}
+                                <br/>
+                                Height: {profile.heightFeet} Feet {profile.heightInches} Inches
+                                <br/>
+                                Weight: {profile.weight}
+                                <br/>
+                                Notes: {profile.notes}
+                                <br/>
+                                Last Updated: {profile.createdAt}
+                            </p>
+                        </div>
+                    )}
+                </div>
                 }
-                                
-                                
-                                
             </div>
         )
 }
+
