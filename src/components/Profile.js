@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import getUser from "../utils/get-user";
 
 export default function Exercise(){
-    const [profile, setProfile] = useState()
+    const [profile, setProfile] = useState({})
 
     const user = getUser()
 
@@ -21,7 +21,7 @@ export default function Exercise(){
                 </div>
                 {console.log(profile)}
                 {
-                (true) // profile == null, profile == [], profile ???, true, false
+                (Object.keys(profile).length === 0)
                 ?
                 <div>
                 <div class="modal fade" id="updateProfile" tabIndex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
