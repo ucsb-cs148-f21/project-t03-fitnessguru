@@ -5,7 +5,7 @@ const Exercise = require('../../models/Exercise')
 
 // Get
 router.get('/:googleId', async (req, res) => {
-    const exercises = await Exercise.find({googleId : req.params.googleId})
+    const exercises = await Exercise.find({googleId: req.params.googleId})
     res.send(exercises)
 })
 
