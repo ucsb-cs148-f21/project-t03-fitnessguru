@@ -6,11 +6,19 @@ import './CreateSplit.css'
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 
-const CreateSplit = ({handleAddSplit}) => {
+
+function objectID() {
+    const ObjectId = (m = Math, d = Date, h = 16, s = s => m.floor(s).toString(h)) =>
+    s(d.now() / 1000) + ' '.repeat(h).replace(/./g, () => s(m.random() * h));
+    return(ObjectId);
+}
+
+const CreateSplit = ({handleAddSplit, user}) => {
     let split = {};
     const [workouts, setWorkouts] = useState([]);
     const [showAddWorkout, setShowAddWorkout] = useState(false);
     const [showAddWorkout1, setShowAddWorkout1] = useState(true);
+    const [splitID, setSplitID] = useState(ObjectID());
 
     const handleSetShowAddWorkout = (e) => {
         e.preventDefault();
@@ -55,7 +63,7 @@ const CreateSplit = ({handleAddSplit}) => {
                     </div>
                 </div>
                 
-                {showAddWorkout && <CreateWorkout handleAddWorkout={handleAddWorkout}/>}
+                {showAddWorkout && <CreateWorkout splitID={splitID} handleAddWorkout={handleAddWorkout}/>}
             </div>
 
             <Button variant="primary" id="addSplit" type="button" onClick={handleCreateSplitObject} >

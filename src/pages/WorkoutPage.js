@@ -26,6 +26,18 @@ const WorkoutPage = () => {
       return(setSplits(newSplits))
     }
 
+    const handleDeleteSplit = (split) => {
+      console.log(splits);
+      let newSplits = splits;
+      const index = newSplits.indexOf(split);
+      if(index > -1){
+        newSplits.splice(index,1);
+      }
+      setShowAddSplit(false);
+      setShowAdd(true);
+      return(setSplits(newSplits))
+    }
+
     return (
         <Layout user={user}>
             <Container>
@@ -33,7 +45,7 @@ const WorkoutPage = () => {
                 {showAdd && <button id="addSplit" type="button" onClick={handleCreateSplit}>Add Split</button>}
                 {showAddSplit && <CreateSplit handleAddSplit={handleAddSplit}/>}
                 <h2>My Splits:</h2>
-                <ListSplits splits={splits} />
+                <ListSplits handleDeleteSplit={handleDeleteSplit} splits={splits} />
             </Container>
         </Layout>
     )

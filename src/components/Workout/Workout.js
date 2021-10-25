@@ -5,12 +5,9 @@ import Card from "react-bootstrap/Container";
 
 
 const Workout = ({w}) => {
-    console.log("hi")
-    console.log(w);
-
     return (
         <Card className="workoutBody" style={{ width: '18rem' }}>
-            <h2 className="workoutName">{w.workoutName}</h2>
+            <h2 className="workoutName">{w.name}</h2>
             {w.exercises.map((item)=>{
                 return <Exercise e={item} />
             })}
