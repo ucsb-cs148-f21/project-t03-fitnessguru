@@ -24,10 +24,8 @@ class ProgressPage extends Component {
     this.setState({
       chartData:{
         labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
-        datasets:[
-          {
+        datasets:[ {
             label:'Weight in lb',
-            fill: false ,
             data:[
               65,
               65,
@@ -35,7 +33,7 @@ class ProgressPage extends Component {
               70,
               90,
               120
-            ],
+            ]
           }
         ]
       }
@@ -50,7 +48,6 @@ class ProgressPage extends Component {
             <Chart chartData={this.state.chartData} exercise = "Bench Press"/>
             <Chart chartData={this.state.chartData} exercise = "Overhead Shoulder Press"/>
             <Chart chartData={this.state.chartData} exercise = "Front Squat"/>
-
           </Container>
       </Layout>  
         );
