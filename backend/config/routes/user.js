@@ -5,7 +5,7 @@ const User = require('../../models/User')
 
 // Get
 router.get('/:googleId', async (req, res) => {
-    const user = await User.find({googleId : req.params.googleId})
+    const user = await User.find({googleId: req.params.googleId})
     res.send(user)
 })
 
@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
 
 // Put
 router.post('/put/:id', async (req, res) => {
-    await User.findOneAndUpdate({_id: req.params.id}, req.body)
+    await User.findOneAndUpdate({googleId: req.params.id}, req.body)
     res.redirect('back')
 })
 
