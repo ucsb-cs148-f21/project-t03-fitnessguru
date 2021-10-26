@@ -1,17 +1,14 @@
 import React, { useState, useEffect } from "react";
 import getUser from "../utils/get-user";
 import "./contai.css"
-export default function Exercise() {
+export default function ProfilePicChanger() {
   const [profile, setProfile] = useState({});
-
   const user = getUser();
-
   useEffect(() => {
     fetch(`/user/${user.id}`)
       .then((res) => res.json())
       .then((user) => setProfile(user));
   }, [user.id]);
-
   return (
     <div>
       <div>
@@ -19,10 +16,10 @@ export default function Exercise() {
           type="button"
           class="btn btn-primary btn-block"
           data-toggle="modal"
-          data-target="#updateProfile"
-          className="bt2"
+          data-target="#updateProfilePic"
+          className= "bt"
         >
-          Update Profile
+          Change Profile Picture
         </button>
       </div>
       {console.log(profile)}
@@ -30,7 +27,7 @@ export default function Exercise() {
         <div>
           <div
             class="modal fade"
-            id="updateProfile"
+            id="updateProfilePic"
             tabIndex="-1"
             role="dialog"
             aria-labelledby="exampleModalLabel"
@@ -40,7 +37,7 @@ export default function Exercise() {
               <div class="modal-content">
                 <div class="modal-header">
                   <h5 class="modal-title" id="exampleModalLabel">
-                    Update Profile
+                    Update Profile Picture
                   </h5>
                   <button
                     type="button"
@@ -63,42 +60,13 @@ export default function Exercise() {
                     </div>
                     <br />
                     <div class="form-group">
-                      <label for="dateOfBirth">Date of Birth</label>
+                      <label for="Profile Picture">Profile Picture</label>
                       <input
-                        type="date"
-                        name="dateOfBirth"
+                        type="text"
+                        name="ProfilePic"
                         class="form-control"
                       />
                     </div>
-                    <br />
-                    <div class="form-group">
-                      <label for="heightFeet">Height (Feet)</label>
-                      <input
-                        type="number"
-                        name="heightFeet"
-                        class="form-control"
-                      />
-                    </div>
-                    <br />
-                    <div class="form-group">
-                      <label for="heightInches">Height (Inches)</label>
-                      <input
-                        type="number"
-                        name="heightInches"
-                        class="form-control"
-                      />
-                    </div>
-                    <br />
-                    <div class="form-group">
-                      <label for="weight">Weight (Pounds)</label>
-                      <input type="number" name="weight" class="form-control" />
-                    </div>
-                    <br />
-                    <div class="form-group">
-                      <label for="notes">Notes</label>
-                      <input type="text" name="notes" class="form-control" />
-                    </div>
-                    <br />
                   </div>
                   <div class="modal-footer">
                     <button
@@ -125,7 +93,7 @@ export default function Exercise() {
             <div>
               <div
                 class="modal fade"
-                id="updateProfile"
+                id="updateProfilePic"
                 tabIndex="-1"
                 role="dialog"
                 aria-labelledby="exampleModalLabel"
@@ -135,7 +103,7 @@ export default function Exercise() {
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLabel">
-                        Update Profile
+                        Update Profile Picture
                       </h5>
                       <button
                         type="button"
@@ -154,51 +122,11 @@ export default function Exercise() {
                       <div class="modal-body">
                         <br />
                         <div class="form-group">
-                          <label for="dateOfBirth">Date of Birth</label>
-                          <input
-                            type="date"
-                            name="dateOfBirth"
-                            defaultValue={profile.dateOfBirth}
-                            class="form-control"
-                          />
-                        </div>
-                        <br />
-                        <div class="form-group">
-                          <label for="heightFeet">Height (Feet)</label>
-                          <input
-                            type="number"
-                            name="heightFeet"
-                            defaultValue={profile.heightFeet}
-                            class="form-control"
-                          />
-                        </div>
-                        <br />
-                        <div class="form-group">
-                          <label for="heightInches">Height (Inches)</label>
-                          <input
-                            type="number"
-                            name="heightInches"
-                            defaultValue={profile.heightInches}
-                            class="form-control"
-                          />
-                        </div>
-                        <br />
-                        <div class="form-group">
-                          <label for="weight">Weight (Pounds)</label>
-                          <input
-                            type="number"
-                            name="weight"
-                            defaultValue={profile.weight}
-                            class="form-control"
-                          />
-                        </div>
-                        <br />
-                        <div class="form-group">
-                          <label for="notes">Notes</label>
+                          <label for="Profile Picture">Profile Picture</label>
                           <input
                             type="text"
-                            name="notes"
-                            defaultValue={profile.notes}
+                            name="profilePic"
+                            defaultValue={profile.profilePic}
                             class="form-control"
                           />
                         </div>
@@ -222,19 +150,10 @@ export default function Exercise() {
                   </div>
                 </div>
               </div>
-              <br />
-              <p className="inf">
-                Name: {user.fullName}
-                <br />
-                Date of Birth: {profile.dateOfBirth}
-                <br />
-                Height: {profile.heightFeet} Feet {profile.heightInches} Inches
-                <br />
-                Weight: {profile.weight}
-                <br />
-                Notes: {profile.notes}
-                <br />
-                Last Updated: {profile.createdAt}
+              <p>
+                  <img src = {profile.profilePic} alt = "HTML5" 
+                  style={{width: 200, height: 200,borderRadius: 100, position: 'absolute'}}
+                  />    
               </p>
             </div>
           ))}

@@ -31,14 +31,6 @@ const CreateWorkout = ({closeModal,splitID,handleAddWorkout, user}) => {
         setShowAddExercise(false)
       )
     }
-
-  const handleAddExercise = (exercise) => {
-    const newExercises = exercises.concat(exercise);
-    setExercises(newExercises);
-    setShowAddExercise1(true);
-    return setShowAddExercise(false);
-  };
-
     const handleClose = () => {
         document.getElementById('workoutName').value = '';
         setShowAddExercise1(true);
@@ -79,12 +71,9 @@ const CreateWorkout = ({closeModal,splitID,handleAddWorkout, user}) => {
         <div className="exerciseList">
           <ListExercises className="exercises" exercises={exercises} />
         </div>
-      </div>
-
         <Button variant="primary" id="addWorkout" type="button" onClick={handleCreateWorkoutObject} >
             Create Workout
         </Button>
-        
     </Form>
   );
 };
