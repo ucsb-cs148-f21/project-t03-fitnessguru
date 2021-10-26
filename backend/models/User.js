@@ -29,6 +29,11 @@ const UserSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  profilePic:
+  {
+    type: String,
+    default: "https://as2.ftcdn.net/v2/jpg/02/15/84/43/1000_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"
+  }
 });
 
 module.exports = mongoose.model("User", UserSchema);
