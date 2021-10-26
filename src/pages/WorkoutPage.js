@@ -7,6 +7,8 @@ import ListSplits from '../components/Workout/ListSplits'
 
 
 const WorkoutPage = () => {
+
+
     const user = getUser();
 
     const [splits, setSplits] = useState([]);
