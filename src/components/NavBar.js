@@ -19,11 +19,7 @@ export default function NavBar(props) {
             {user && <Nav.Link href="/myexercises">My Exercises</Nav.Link>}
             {user && <Nav.Link href="/myworkouts">My Workouts</Nav.Link>}
             {user && <Nav.Link href="/createworkout">Create Workout</Nav.Link>}
-<<<<<<< HEAD
-            {user && <Nav.Link href="/mysplits">My Splits</Nav.Link>}
-=======
             {user && <Nav.Link href="/workout">Workout</Nav.Link>}
->>>>>>> 76feff88ed0ec67c93d2e7d5a274059765dc1231
           </Nav>
           <Nav>
             {!user ? (
