@@ -9,13 +9,10 @@ import MyWorkouts from "./pages/MyWorkouts";
 import CreateWorkout from "./pages/CreateWorkout";
 import PageNotFound from "./pages/PageNotFound";
 import MyExercises from "./pages/MyExercises";
-<<<<<<< HEAD
 import MySplits from "./pages/MySplits";
 
 
-=======
 import WorkoutPage from "./pages/WorkoutPage";
->>>>>>> 76feff88ed0ec67c93d2e7d5a274059765dc1231
 
 export default function App() {
   const [isSignedIn, setIsSignedIn] = useState(null);
@@ -61,11 +58,8 @@ export default function App() {
           <PrivateRoute exact path="/myexercises" component={MyExercises} />
           <PrivateRoute exact path="/myworkouts" component={MyWorkouts} />
           <PrivateRoute exact path="/createworkout" component={CreateWorkout} />
-<<<<<<< HEAD
           <PrivateRoute exact path="/mysplits" component={MySplits} />
-=======
           <PrivateRoute exact path="/workout" component={WorkoutPage} />
->>>>>>> 76feff88ed0ec67c93d2e7d5a274059765dc1231
           <Route path="/" component={PageNotFound} />
         </Switch>
       </BrowserRouter>

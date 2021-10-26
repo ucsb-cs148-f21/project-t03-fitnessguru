@@ -1,18 +1,10 @@
 .splitForm {
-<<<<<<< HEAD
     border: 1px solid black;
     border-radius: 25px;
     padding: 20px;
     width: auto;
     height: 600px;
     overflow-y: scroll;
-=======
-  border: 1px solid black;
-  border-radius: 25px;
-  padding: 20px;
-  width: auto;
-  height: auto;
->>>>>>> 76feff88ed0ec67c93d2e7d5a274059765dc1231
 }
 
 .splitForm .label {
@@ -33,7 +25,6 @@
   margin-top: 25px;
 }
 
-<<<<<<< HEAD
 #addSplit {
     background-color: transparent;
     border: 1px solid black;
@@ -52,23 +43,6 @@
     background-color: #4FB9FA;
     color: white;
     border: none;
-=======
-.makeNewSplit button {
-  background-color: transparent;
-  border: 1px solid white;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-}
-
-.makeNewSplit button:hover {
-  background-color: #4fb9fa;
-  border: none;
->>>>>>> 76feff88ed0ec67c93d2e7d5a274059765dc1231
 }
 
 .makeNewSplit {
@@ -83,28 +57,6 @@
 .createSplitForm {
   margin: 10px;
 }
-<<<<<<< HEAD
-=======
-.addName {
-  display: flex;
-  margin: 10px;
-  margin-left: 50px;
-  font-size: 20px;
-}
-.addName label {
-  margin-right: 5px;
-}
-
-.addNotes {
-  display: flex;
-  margin: 10px;
-  margin-left: 50px;
-  font-size: 20px;
-}
-.addNotes label {
-  margin-right: 5px;
-}
->>>>>>> 76feff88ed0ec67c93d2e7d5a274059765dc1231
 
 .addingWorkout {
   display: block;
@@ -118,7 +70,6 @@
 }
 
 .addingWorkout .workoutList {
-<<<<<<< HEAD
     margin-top: 20px;
 
     
@@ -130,16 +81,4 @@
 
 #notesInput {
     margin-top: 30px;
-=======
-  margin-top: 20px;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  max-width: 80em;
-  padding: 1em 0;
-}
-
-#addSplit {
-  margin-left: 450px;
->>>>>>> 76feff88ed0ec67c93d2e7d5a274059765dc1231
 }

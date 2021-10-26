@@ -1,7 +1,7 @@
-import React from "react";
-import { useState } from "react";
-import CreateExercise from "./CreateExercise";
-import ListExercises from "./ListExercises";
+import React from 'react';
+import {useState} from 'react';
+import CreateExercise from './CreateExercise';
+import ListExercises from './ListExercises';
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import './CreateWorkout.css';
@@ -32,12 +32,11 @@ const CreateWorkout = ({closeModal,splitID,handleAddWorkout, user}) => {
       )
     }
 
-  const handleAddExercise = (exercise) => {
-    const newExercises = exercises.concat(exercise);
-    setExercises(newExercises);
-    setShowAddExercise1(true);
-    return setShowAddExercise(false);
-  };
+    const handleSetShowAddExercise = (e) => {
+        e.preventDefault();
+        setShowAddExercise1(false);
+        return(setShowAddExercise(true));
+    }
 
     const handleClose = () => {
         document.getElementById('workoutName').value = '';
@@ -76,17 +75,24 @@ const CreateWorkout = ({closeModal,splitID,handleAddWorkout, user}) => {
         
         {showAddExercise && <CreateExercise workoutID={workoutID} handleAddExercise={handleAddExercise} user={user}/>}<br /><br />
 
-        <div className="exerciseList">
-          <ListExercises className="exercises" exercises={exercises} />
+        <div className="addExercise">
+            <div className="addButton">
+            {showAddExercise1 && <Button className="addWorkout" onClick={handleSetShowAddExercise}>Add Exercise</Button>}
+            </div>
+        
+            <div className="exerciseList">
+                <ListExercises className="exercises" exercises={exercises}/>
+            </div>
+           
+          
         </div>
-      </div>
 
         <Button variant="primary" id="addWorkout" type="button" onClick={handleCreateWorkoutObject} >
             Create Workout
         </Button>
         
     </Form>
-  );
-};
+   )
+  }
 
-export default CreateWorkout;
+  export default CreateWorkout;

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react';
 import {useState, useEffect} from 'react';
 import Split from './Split'
@@ -41,20 +40,3 @@ export default function ListSplits({user}) {
     )
     */
 }
-=======
-import React from "react";
-import Split from "./Split";
-import "./ListSplits.css";
-
-const ListSplits = ({ splits }) => {
-  return (
-    <div className="splitList">
-      {splits.map((s) => {
-        return <Split className="split" s={s} />;
-      })}
-    </div>
-  );
-};
-
-export default ListSplits;
->>>>>>> 76feff88ed0ec67c93d2e7d5a274059765dc1231
