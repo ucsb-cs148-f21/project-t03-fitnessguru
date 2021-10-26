@@ -1,12 +1,12 @@
 .exerciseBody {
-    border-radius: 25px;
-    background: #468DA3;
-    color: white;
-    margin: 5px 0px 5px 0px;
-    width: 250px;
+  border-radius: 25px;
+  background: #468da3;
+  color: white;
+  margin: 5px 0px 5px 0px;
+  width: 250px;
 }
 
-.exerciseStats{
-    display: inline;
-    padding: 5px;
+.exerciseStats {
+  display: inline;
+  padding: 5px;
 }

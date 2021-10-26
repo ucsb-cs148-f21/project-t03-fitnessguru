@@ -17,19 +17,13 @@ export default function Home() {
     <Layout user={user}>
       <Container>
         <h1>
-          {
-          (user != null)
-          ? "Hello " + user.givenName + ", " 
-          : ""
-          }
+          {user != null ? "Hello " + user.givenName + ", " : ""}
           Welcome to Fitness Guru!
         </h1>
         <TextWrapper>
-          {
-            (user != null)
+          {user != null
             ? "You can now create custom workouts and track your progress!"
-            : "Please log in to start using the app!"
-          }
+            : "Please log in to start using the app!"}
         </TextWrapper>
       </Container>
     </Layout>

@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 
 import getUser from "../utils/get-user";
 import Layout from "../components/Layout";
-import ProfileComponent from "../components/Profile"
+import ProfileComponent from "../components/Profile";
 
 export default function Profile() {
   const user = getUser();
@@ -12,9 +12,9 @@ export default function Profile() {
     <Layout user={user}>
       <Container>
         <h1>{"Hello " + user.givenName + ", this is your Profile page!"}</h1>
-        <br/>
+        <br />
         <ProfileComponent />
-        <br/>
+        <br />
       </Container>
     </Layout>
   );
