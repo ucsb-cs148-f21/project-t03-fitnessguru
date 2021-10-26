@@ -10,7 +10,6 @@ export default function Footer() {
         </a>
         .
       </div>
-      
     </Container>
   );
 }

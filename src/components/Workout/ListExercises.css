@@ -1,4 +1,5 @@
 .exercisesBody {
+<<<<<<< HEAD
     padding: 20px;
     color: black;    
     display: grid;
@@ -9,3 +10,15 @@
     text-align: center;
     margin-left: -10px;
 }
+=======
+  padding: 20px;
+  color: black;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  max-width: 80em;
+  padding: 1em 0;
+  text-align: center;
+  margin-left: 20%;
+}
+>>>>>>> 76feff88ed0ec67c93d2e7d5a274059765dc1231

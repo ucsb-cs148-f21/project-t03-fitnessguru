@@ -1,31 +1,42 @@
 .splitBody {
-    border: 1px solid black;
-    border-radius: 25px;
-    background-color: white;
-    color: black;
-    display:flex;
-    margin: 20px;
+  border: 1px solid black;
+  border-radius: 25px;
+  background-color: white;
+  color: black;
+  display: flex;
+  margin: 20px;
 }
 
 .description {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    width: 250px;
-    margin-left: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 250px;
+  margin-left: 30px;
 }
 
+<<<<<<< HEAD
+=======
+.splitName {
+}
+
+.splitNotes {
+  margin-top: -260px;
+}
+
+>>>>>>> 76feff88ed0ec67c93d2e7d5a274059765dc1231
 .workoutList {
-    display:flex;
-    margin: 10px;
-    width: 500px;
+  display: flex;
+  margin: 10px;
+  width: 500px;
 }
 
-.workoutCards .overlay .showWorkout{
-    color: red;
+.workoutCards .overlay .showWorkout {
+  color: red;
 }
 
 .workoutGrid {
+<<<<<<< HEAD
     padding: 15px;
     display: flex;
     display: grid;
@@ -59,3 +70,11 @@
 #delete{
     margin-left: 50px;
 }
+=======
+  padding: 15px;
+  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+>>>>>>> 76feff88ed0ec67c93d2e7d5a274059765dc1231

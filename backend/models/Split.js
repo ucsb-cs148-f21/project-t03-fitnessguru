@@ -1,4 +1,4 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 const SplitSchema = new mongoose.Schema({
     googleId: {
@@ -19,4 +19,4 @@ const SplitSchema = new mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Split', SplitSchema)
+module.exports = mongoose.model("Split", SplitSchema);

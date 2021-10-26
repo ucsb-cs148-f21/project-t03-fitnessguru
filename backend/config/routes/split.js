@@ -1,7 +1,7 @@
-const express = require('express')
-const router = express.Router()
+const express = require("express");
+const router = express.Router();
 
-const Split = require('../../models/Split')
+const Split = require("../../models/Split");
 
 // Get
 router.get('/:googleId', async (req, res) => {
@@ -27,4 +27,4 @@ router.post('/delete/:id', async (req,res) => {
     res.redirect('back')
 })
 
-module.exports = router
+module.exports = router;

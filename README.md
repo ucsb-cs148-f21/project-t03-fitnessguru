@@ -36,8 +36,6 @@ Fitness Guru will help people who go to the gym keep track of their progress (bo
 
 * Admins / Fitness Trainers can post challenges to keep users engaged.
 
-===================================================================================
-
 # Installation
 
 ## Prerequisites
