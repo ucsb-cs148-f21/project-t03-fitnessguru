@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import getUser from "../utils/get-user";
+import { Table } from 'reactstrap';
 
 export default function Exercise() {
   const [exercises, setExercises] = useState([]);
@@ -105,7 +106,8 @@ export default function Exercise() {
         </div>
       </div>
       <br />
-      <table class="table table-bordered">
+      <Table bordered>
+        <thead>
         <tr>
           <th>Exercise</th>
           <th>Sets</th>
@@ -114,6 +116,8 @@ export default function Exercise() {
           <th>Notes</th>
           <th></th>
         </tr>
+        </thead>
+        <tbody>
         {exercises.map((exercise) => (
           <tr>
             <td>{exercise.name}</td>
@@ -222,7 +226,7 @@ export default function Exercise() {
                   </div>
                 </div>
               </div>
-
+              <br />
               <form
                 action={"/exercises/delete/" + exercise._id}
                 method="POST"
@@ -237,7 +241,8 @@ export default function Exercise() {
             </td>
           </tr>
         ))}
-      </table>
+        </tbody>
+      </Table>
     </div>
   );
 }
