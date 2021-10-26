@@ -39,22 +39,57 @@ Fitness Guru will help people who go to the gym keep track of their progress (bo
 # Installation
 
 ## Prerequisites
-TODO: List what a user needs to have installed before running the installation instructions below (e.g., git, which version(s) of your framework(s) of choice)
+* Computer with Internet Access
+* Web Browser (Google Chrome, Mozilla Firefox)
+* Git (install here: https://git-scm.com/downloads)
+* Node and NPM (install here: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+
+On Ubuntu:
+
+```sh
+sudo apt install git-all
+```
+
+```sh
+sudo apt install nodejs npm
+```
 
 ## Dependencies
-TODO: List which libraries / add-ons you added to the project, and the purpose each of those add-ons serves in your app.
+* react, react-dom, react-router-dom, react-scripts for running the app
+* bootstrap, react-bootstrap, reactstrap, styled-components for styling the app
+* express and mongoose for the backend with MongoDB database
+* dotenv for loading environment variables
+* prettier for code formatting
+* concurrently to run the frontend and the backend concurrently
+* nodemon to refresh the app
 
 ## Installation Steps
-TODO: Describe the installation process (making sure you give complete instructions to get your project going from scratch). Instructions need to be such that a user can just copy/paste the commands to get things set up and running. Note that with the use of GitHub Actions, these instructions can eventually be fully automated (e.g. with act, you can run GitHub Actions locally).
+* clone this repo:
+```sh
+git clone git@github.com:ucsb-cs148-f21/project-t03-fitnessguru.git
+```
+* run npm install:
+```sh
+npm install
+```
+* cd into the backend direction and run npm install:
+```sh
+cd backend
+npm install
+```
+* run the app concurrently with npm run dev:
+```sh
+npm run dev
+```
 
 ## Functionality
-TODO: Write usage instructions. Structuring it as a walkthrough can help structure this section, and showcase your features.
+* You can view your profile on the Profile page. Click the Update Profile button to update your profile.
+* You can view your exercises on the My Exercises page. Click the Add Exercise button to add an exercise. Click Update to update the exercise and Delete to delete the exercise.
 
 ## Known Problems
-TODO: Describe any known issues, bugs, odd behaviors or code smells. Provide steps to reproduce the problem and/or name a file or a function where the problem lives.
+* The "Last Updated" time for the Profile page does not update correctly. To reproduce, update the profile. The "Last Updated" time will not update.
 
 ## Contributing
-TODO: Leave the steps below if you want others outside your team to contribute to your project.
 
 ## Fork it!
 1. Create your feature branch: git checkout -b my-new-feature
