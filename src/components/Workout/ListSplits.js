@@ -15,7 +15,7 @@ export default function ListSplits({user}) {
     }, [user.id])
 
     return (
-        <div>
+        <div className="splitList">
             {splits.map((split)=>{
                 return <Split className="split" split={split} user={user} />
             })}

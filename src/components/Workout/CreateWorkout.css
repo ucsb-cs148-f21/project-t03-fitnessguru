@@ -4,11 +4,12 @@
     box-shadow: 0px 0px 1px 5000px rgba(0,0,0,0.8);
     border-radius: 25px;
     padding: 20px;
-    width: 500px;
-    height: auto;
+    width: 550px;
     position: absolute;
     top: 160px;
     left: 540px;
+    height: 400px;
+    overflow-y: scroll
 }
 
 .addExercise {
@@ -26,8 +27,14 @@
 .label {
     font-size: 20px;
     font-weight: bold;
+    margin-right: 10px;
+    margin-left: 40px;
 }
 
 #addWorkout {
     margin-left: 35%;
+}
+
+#workoutName {
+    
 }

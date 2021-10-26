@@ -1,14 +1,9 @@
-.workoutList {
-    border: none;
-    border-radius: 25px;
-    padding: 20px;
-    color: black;    
-}
-
 .workoutList .workouts {
+    margin-top: 20px;
     padding: 15px;
     display: flex;
     display: grid;
-    grid-template-columns: repeat(1, 1fr);
-    gap: 2px;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: auto;
 }

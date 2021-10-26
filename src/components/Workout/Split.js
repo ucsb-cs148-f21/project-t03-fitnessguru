@@ -55,15 +55,22 @@ const Split = ({split, user}) => {
         <div className="splitItem">
             <Card id="splitCard"style={{ width: '18rem' }}>
                 <Card.Header id="splitName">
-                  <div id="title">{split.name}</div>
-                  <div id="notes">{split.notes}</div>
+                  <div className="card-top">
+                    <div>
+                    <div id="title">{split.name}</div>
+                    
+                    </div>
+                
+                  <form action={"/splits/delete/" + split._id} method="POST" class="mb-4">
+                    <input id="delete" type="submit" value="Delete" class="btn btn-danger"/>
+                  </form>
                   {/*}
-                  <button id="delete" onClick={() => handleDeleteSplit(s)}>
-                    <img src="https://api.iconify.design/bx:bx-trash.svg?height=24" aria-hidden="true" />
-    </button> */}
-                <button type="button" class="btn btn-primary btn-block" data-toggle="modal" data-target="#updateSplit">
-                  Update
-                </button>
+                  <button id="update" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#updateSplit">
+                    Update
+    </button>*/}
+               
+                </div>
+                <div id="notes">{split.notes}</div>
 
                 <div class="modal fade" id="updateSplit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
