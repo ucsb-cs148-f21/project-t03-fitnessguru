@@ -122,7 +122,7 @@ export default function ProfilePicChanger() {
                       <div class="modal-body">
                         <br />
                         <div class="form-group">
-                          <label for="Profile Picture">Profile Picture</label>
+                          <label for="Profile Picture">Enter link to profile picture:</label>
                           <input
                             type="text"
                             name="profilePic"
@@ -151,7 +151,7 @@ export default function ProfilePicChanger() {
                 </div>
               </div>
               <p>
-                  <img src = {profile.profilePic} alt = "Invalid Profile Picture" 
+                  <img src = {profile.profilePic} alt = "" 
                   style={{width: 200, height: 200,borderRadius: 100, position: 'absolute'}}
                   />    
               </p>

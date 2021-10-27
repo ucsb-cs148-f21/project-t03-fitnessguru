@@ -223,19 +223,19 @@ export default function Exercise() {
                 </div>
               </div>
               <br />
-              <p className="inf">
-                Name: {user.fullName}
+              <ul className="inf">
+                <li> <b> Name: </b> {user.fullName} </li>
                 <br />
-                Date of Birth: {profile.dateOfBirth}
+                <li className = "item"> <b> Date of Birth: </b> {profile.dateOfBirth} </li>
                 <br />
-                Height: {profile.heightFeet} Feet {profile.heightInches} Inches
+                <li className = "item"> <b> Height: </b> {profile.heightFeet} Feet {profile.heightInches} Inches </li>
                 <br />
-                Weight: {profile.weight}
+                <li className = "item"> <b> Weight: </b> {profile.weight} Pounds</li>
                 <br />
-                Notes: {profile.notes}
+                <li className = "item"> <b> Notes: </b> {profile.notes} </li>
                 <br />
-                Last Updated: {profile.createdAt}
-              </p>
+                <li className = "item"> <b> Joined: </b> {profile.createdAt.split('T').at(0)} </li>
+              </ul>
             </div>
           ))}
         </div>
