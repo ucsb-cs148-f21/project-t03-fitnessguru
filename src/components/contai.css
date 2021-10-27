@@ -10,7 +10,6 @@
 
   .av{
       display: flex;
-      position: absolute;
       bottom: 100px;
       margin: 50px; 
   }
@@ -52,7 +51,7 @@
     text-decoration: none;
     display: inline-block;
     border-radius: 7px;
-    font-size: 12px;
+    font-size: 12px;    
   }
 
 .item{
