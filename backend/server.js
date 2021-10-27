@@ -2,6 +2,10 @@ const express = require("express");
 const mongoose = require("mongoose");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const path = require('path')
+
+// Serve static files from the React frontend app
+app.use(express.static(path.join(__dirname, '../build')))
 
 // Load config
 dotenv.config({ path: "./config/config.env" });
@@ -20,5 +24,9 @@ app.use("/user", require("./config/routes/user"));
 app.use("/exercises", require("./config/routes/exercise"));
 app.use("/workouts", require("./config/routes/workout"));
 app.use("/splits", require("./config/routes/split"));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname + '../build/index.html'))
+  })
 
 app.listen(PORT, console.log(`Server running on port ${PORT}`));
