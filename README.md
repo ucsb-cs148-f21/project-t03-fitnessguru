@@ -97,3 +97,7 @@ npm run dev
 2. Commit your changes: git commit -am 'Add some feature'
 3. Push to the branch: git push origin my-new-feature
 4. Submit a pull request :D
+
+# Current Deployment
+
+Check out our most recent deployment here: https://fitness-guru-deployment.herokuapp.com/
