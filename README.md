@@ -87,6 +87,7 @@ npm run dev
 * You can view your exercises on the My Exercises page. Click the Add Exercise button to add an exercise. Click Update to update the exercise and Delete to delete the exercise.
 
 ## Known Problems
+* You may not be able to run the app locally without a Google Client ID for OAuth. Don't worry, we will update our instructions soon!
 * The "Last Updated" time for the Profile page does not update correctly. To reproduce, update the profile. The "Last Updated" time will not update.
 
 ## Contributing
