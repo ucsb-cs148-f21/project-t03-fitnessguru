@@ -40,8 +40,8 @@
   .bt2{
     background-color: #ffdab9    ;
     position:absolute;
-    right: -1100px;
-    top: -275px;
+    right: 30px;
+    top: 75px;
     border: none;
     color: black;
     padding: 10px 13px;
@@ -60,7 +60,7 @@
   .inf{
     font-size: large;
     position:relative;
-    bottom: 100;
+    bottom: -200px;
     background-color:rgb(211, 205, 205);
     margin-top: 10px;
     padding-top: 10px;
