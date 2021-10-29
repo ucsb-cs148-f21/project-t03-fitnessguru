@@ -5,14 +5,12 @@ import CheckingSignedIn from "./pages/CheckingSignedIn";
 import Home from "./pages/Home";
 import Profile from "./pages/Profile";
 import Private from "./pages/Private";
-import MyWorkouts from "./pages/MyWorkouts"
-import CreateWorkout from "./pages/CreateWorkout"
+import MyWorkouts from "./pages/MyWorkouts";
+import CreateWorkout from "./pages/CreateWorkout";
 import PageNotFound from "./pages/PageNotFound";
 import MyExercises from "./pages/MyExercises";
 import WorkoutPage from "./pages/WorkoutPage";
 import ProgressPage from "./pages/ProgressPage";
-
-
 
 export default function App() {
   const [isSignedIn, setIsSignedIn] = useState(null);

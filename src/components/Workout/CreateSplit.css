@@ -1,100 +1,98 @@
 .splitForm {
-    border: 1px solid black;
-    border-radius: 25px;
-    padding: 20px;
-    width: auto;
-    height: auto;
+  border: 1px solid black;
+  border-radius: 25px;
+  padding: 20px;
+  width: auto;
+  height: auto;
 }
 
 .splitForm .label {
-    font-size: 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .splitForm .showWorkouts {
-    margin: 0 auto;
+  margin: 0 auto;
 }
 
 .splitForm .showWorkouts .addingWorkout {
-    display: flex;
+  display: flex;
 }
 
 .splitForm .showWorkouts .addWorkout {
-    height: 50px;
-    margin-top: 25px;
+  height: 50px;
+  margin-top: 25px;
 }
 
-
 .makeNewSplit button {
-    background-color: transparent;
-    border: 1px solid white;
-    color: white;
-    padding: 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
+  background-color: transparent;
+  border: 1px solid white;
+  color: white;
+  padding: 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
 }
 
 .makeNewSplit button:hover {
-    background-color: #4FB9FA;
-    border: none;
+  background-color: #4fb9fa;
+  border: none;
 }
 
 .makeNewSplit {
-    width: 400px;
-    color:white;
-    background-color: grey;
-    border-radius: 25px;
-    display: inline-block;
-    margin: 10px;
-    font-family: Arial, Helvetica, sans-serif;
+  width: 400px;
+  color: white;
+  background-color: grey;
+  border-radius: 25px;
+  display: inline-block;
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .createSplitForm {
-    margin: 10px;
+  margin: 10px;
 }
 .addName {
-    display: flex;
-    margin: 10px;
-    margin-left: 50px;
-    font-size: 20px
-    
+  display: flex;
+  margin: 10px;
+  margin-left: 50px;
+  font-size: 20px;
 }
-.addName label{
-    margin-right: 5px;
+.addName label {
+  margin-right: 5px;
 }
 
 .addNotes {
-    display: flex;
-    margin: 10px;
-    margin-left: 50px;
-    font-size: 20px;
+  display: flex;
+  margin: 10px;
+  margin-left: 50px;
+  font-size: 20px;
 }
-.addNotes label{
-    margin-right: 5px;
-}
-
-.addingWorkout{
-    display: block;
-    position: relative;
+.addNotes label {
+  margin-right: 5px;
 }
 
-.addingWorkout .addWorkout{
-    position: absolute;
-    top: -20px;
-    left: 450px;
+.addingWorkout {
+  display: block;
+  position: relative;
+}
+
+.addingWorkout .addWorkout {
+  position: absolute;
+  top: -20px;
+  left: 450px;
 }
 
 .addingWorkout .workoutList {
-    margin-top: 20px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    max-width: 80em;
-    padding: 1em 0;
+  margin-top: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  max-width: 80em;
+  padding: 1em 0;
 }
 
 #addSplit {
-    margin-left: 450px;
+  margin-left: 450px;
 }

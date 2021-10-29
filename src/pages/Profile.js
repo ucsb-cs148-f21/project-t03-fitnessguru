@@ -1,35 +1,28 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-import styled from "styled-components";
 
 import getUser from "../utils/get-user";
 import Layout from "../components/Layout";
-import DoggoImg from "../images/doggo.jpg";
-
-const Doggo = styled.img`
-  width: 500px;
-  max-width: 100%;
-  height: auto;
-`;
-
+import ProfileComponent from "../components/Profile";
+import ProfilePicComponent from "../components/ProfilePicture"
+import "../components/contai.css"
 export default function Profile() {
   const user = getUser();
 
   return (
     <Layout user={user}>
-      <Container>
-        <h1>This is your Profile page!</h1>
-        <div>
-          Here's what this app knows about you based on your Google login:
+      <h1 className = "welcome">
+      Hello {user.fullName}! This is your profile page.
+        </h1>
+        <div className = "c">
+        <h className = "prof">
+        <ProfilePicComponent />
+        </h>
         </div>
-        <pre>{JSON.stringify(user, null, "\t")}</pre>
-        <div>
-          Your name is "{user.fullName}" and your email is "{user.email}."
-        </div>
-        <div>Google also thinks you'll like this picture :)</div>
         <br />
-        <Doggo src={DoggoImg} />
-      </Container>
+        <h className = "av">
+        <ProfileComponent />
+        </h>
     </Layout>
   );
 }

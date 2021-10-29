@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-.footer{
+.footer {
   margin-top: 1rem;
   padding: 1rem;
   background-color: lightblue;
@@ -23,7 +23,7 @@ code {
   text-align: center;
 }
 
-.color-nav{
+.color-nav {
   margin-bottom: 1rem;
   padding: 1rem;
   background-color: lightskyblue;
