@@ -63,14 +63,17 @@ export default function MySplits(){
     return(
         <Layout user={user}>
             <Container>
+
                 {showAddSplit && <button type="button" class="btn btn-primary btn-block" onClick={handleShowCreateSplit}>
                     Add Split
                 </button>}
-                <ListSplits user={user} />
+                
                 {showCreateSplit && <CreateSplit handleAddSplit={handleAddSplit} closePrompt={closeSplitModal} user={user} id={"createSplit"}/>}
                 <div class="modal" id="createWorkout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <CreateWorkout closeModal={closeWorkoutModal} splitID={splitID} handleAddWorkout={handleAddWorkout} user={user}/>
-                </div>
+                </div> <br/>
+                <h2>My Splits</h2>
+                <ListSplits user={user} />
             </Container>
             
         </Layout>
