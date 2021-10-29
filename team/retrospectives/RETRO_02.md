@@ -31,15 +31,15 @@
 
 ## Action item
 
-* a goal: 
-* a change: 
-* a measurement: 
+* a goal: Get issues done, which are split more evenly, before the deadlines. If help is needed, reach out!
+* a change: Communicate with the group before merging a pull request!!
+* a measurement: Amount of issues done before the deadline!
 
 ## Retro Assessment
 
 * A brief description of what retro outline or process you used.
   - I used the Darby/Larson 5-step retro with prompts from retromat.org. The process can be seen above.
 * A brief assessment of how it went.
-  - It went very well. All the group members were engaged and provided valuable insights.
+  - It went very well. All the group members provided valuable insights.
 * What advice would you give to the next person leading a retro based on what you learned today?
-  - Come prepared. Write out the prompts for the retro before the meeting, and follow your pre-made schedule. Getting ideas from retromat.org was helpful.
+  - Come prepared, add on to other people's insights. This often leads to better discussions!
