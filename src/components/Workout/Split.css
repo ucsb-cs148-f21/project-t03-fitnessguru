@@ -15,13 +15,6 @@
   margin-left: 30px;
 }
 
-.splitName {
-}
-
-.splitNotes {
-  margin-top: -260px;
-}
-
 .workoutList {
   display: flex;
   margin: 10px;
@@ -33,9 +26,36 @@
 }
 
 .workoutGrid {
-  padding: 15px;
-  display: flex;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+    padding: 15px;
+    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+#title {
+    font-weight: bold;
+}
+
+#notes {
+    color: grey;
+    margin-top: -10px;
+}
+
+.card-top {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.card-top #update{
+    height: 38px;
+}
+.update-delete button{
+    margin-top: -30px;
+    width: 80px;
+}
+
+#delete{
+    margin-left: 50px;
 }
