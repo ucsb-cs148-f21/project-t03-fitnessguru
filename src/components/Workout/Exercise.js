@@ -16,4 +16,3 @@ const Exercise = ({e}) => {
   }
 
 export default Exercise;
-

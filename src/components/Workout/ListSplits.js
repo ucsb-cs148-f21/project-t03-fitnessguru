@@ -12,6 +12,8 @@ export default function ListSplits({user}) {
         fetch(`/splits/${user.id}`)
         .then(res => res.json())
         .then(splits => setSplits(splits))
+
+        console.log(splits);
     }, [user.id])
 
     return (
