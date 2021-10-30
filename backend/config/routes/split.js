@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
 
 // Put
 router.post('/put/:id', async (req,res) => {
-    await Split.findOneAndDelete({_id: req.params.id})
+    await Split.findOneAndUpdate({_id: req.params.id}, req.body)
     res.redirect('back')
 })
 

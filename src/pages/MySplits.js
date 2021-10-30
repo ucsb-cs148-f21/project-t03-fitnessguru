@@ -10,7 +10,6 @@ import Layout from "../components/Layout";
 import ListSplits from "../components/Workout/ListSplits"
 import CreateWorkout from "../components/Workout/CreateWorkout"
 import objectID from "../utils/objectID";
-import ListWorkouts from "../components/Workout/ListWorkouts";
 import CreateSplit from "../components/Workout/CreateSplit";
 import Modal from "react-bootstrap/Modal";
 
@@ -18,15 +17,11 @@ import Modal from "react-bootstrap/Modal";
 
 export default function MySplits(){
     const user = getUser();
-    const [workouts,setWorkouts] = useState([]);
+    
     const [splitID,setSplitID] = useState(objectID());
     const [showCreateSplit, setShowCreateSplit] = useState(false);
     const [showAddSplit, setShowAddSplit] = useState(true);
-    const handleAddWorkout = (workout) => {
-        const newWorkouts = workouts.concat(workout);
-        setWorkouts(newWorkouts);
-    }
-
+    
     const closeWorkoutModal = () => {
         $('#createWorkout').hide();
         $('#createSplit').show();
@@ -70,7 +65,7 @@ export default function MySplits(){
                 
                 {showCreateSplit && <CreateSplit handleAddSplit={handleAddSplit} closePrompt={closeSplitModal} user={user} id={"createSplit"}/>}
                 <div class="modal" id="createWorkout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <CreateWorkout closeModal={closeWorkoutModal} splitID={splitID} handleAddWorkout={handleAddWorkout} user={user}/>
+                    <CreateWorkout closeModal={closeWorkoutModal} splitID={splitID} user={user}/>
                 </div> <br/>
                 <h2>My Splits</h2>
                 <ListSplits user={user} />
