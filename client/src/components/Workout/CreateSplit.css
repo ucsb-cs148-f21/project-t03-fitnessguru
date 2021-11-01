@@ -8,21 +8,21 @@
 }
 
 .splitForm .label {
-font-size: 20px;
-font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .splitForm .showWorkouts {
-margin: 0 auto;
+  margin: 0 auto;
 }
 
 .splitForm .showWorkouts .addingWorkout {
-display: flex;
+  display: flex;
 }
 
 .splitForm .showWorkouts .addWorkout {
-height: 50px;
-margin-top: 25px;
+  height: 50px;
+  margin-top: 25px;
 }
 
 #addSplit {
@@ -40,39 +40,37 @@ margin-top: 25px;
 }
 
 #addSplit:hover {
-  background-color: #4FB9FA;
+  background-color: #4fb9fa;
   color: white;
   border: none;
 }
 
 .makeNewSplit {
-width: 400px;
-color: white;
-background-color: grey;
-border-radius: 25px;
-display: inline-block;
-margin: 10px;
-font-family: Arial, Helvetica, sans-serif;
+  width: 400px;
+  color: white;
+  background-color: grey;
+  border-radius: 25px;
+  display: inline-block;
+  margin: 10px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .createSplitForm {
-margin: 10px;
+  margin: 10px;
 }
 
 .addingWorkout {
-display: block;
-position: relative;
+  display: block;
+  position: relative;
 }
 
 .addingWorkout .addWorkout {
-position: absolute;
-top: -20px;
-left: 450px;
+  position: absolute;
+  top: -20px;
+  left: 450px;
 }
 
 .addingWorkout .workoutList {
   margin-top: 20px;
-
-  
 }
 
 #addSplit {

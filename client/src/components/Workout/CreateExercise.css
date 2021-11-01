@@ -1,15 +1,15 @@
 .formBodyExercise {
-    margin-left: 25%
+  margin-left: 25%;
 }
 
 .mb-3 {
-    font-weight: bold;
+  font-weight: bold;
 }
 
 input {
-    margin-left: 10px;
+  margin-left: 10px;
 }
 
 #addExercise {
-    margin-left: 170px
+  margin-left: 170px;
 }

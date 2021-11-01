@@ -11,9 +11,7 @@ export default function MyExercises() {
   return (
     <Layout user={user}>
       <Container>
-        
         <Exercise />
-        
       </Container>
     </Layout>
   );

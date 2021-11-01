@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import getUser from "../utils/get-user";
-import "./contai.css"
+import "./contai.css";
 export default function Exercise() {
   const [profile, setProfile] = useState({});
 
@@ -224,17 +224,36 @@ export default function Exercise() {
               </div>
               <br />
               <ul className="inf">
-                <li> <b> Name: </b> {user.fullName} </li>
+                <li>
+                  {" "}
+                  <b> Name: </b> {user.fullName}{" "}
+                </li>
                 <br />
-                <li className = "item"> <b> Date of Birth: </b> {profile.dateOfBirth} </li>
+                <li className="item">
+                  {" "}
+                  <b> Date of Birth: </b> {profile.dateOfBirth}{" "}
+                </li>
                 <br />
-                <li className = "item"> <b> Height: </b> {profile.heightFeet} Feet {profile.heightInches} Inches </li>
+                <li className="item">
+                  {" "}
+                  <b> Height: </b> {profile.heightFeet} Feet{" "}
+                  {profile.heightInches} Inches{" "}
+                </li>
                 <br />
-                <li className = "item"> <b> Weight: </b> {profile.weight} Pounds</li>
+                <li className="item">
+                  {" "}
+                  <b> Weight: </b> {profile.weight} Pounds
+                </li>
                 <br />
-                <li className = "item"> <b> Notes: </b> {profile.notes} </li>
+                <li className="item">
+                  {" "}
+                  <b> Notes: </b> {profile.notes}{" "}
+                </li>
                 <br />
-                <li className = "item"> <b> Joined: </b> {profile.createdAt.split('T').at(0)} </li>
+                <li className="item">
+                  {" "}
+                  <b> Joined: </b> {profile.createdAt.split("T").at(0)}{" "}
+                </li>
               </ul>
             </div>
           ))}

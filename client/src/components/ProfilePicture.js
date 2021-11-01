@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import getUser from "../utils/get-user";
-import "./contai.css"
+import "./contai.css";
 export default function ProfilePicChanger() {
   const [profile, setProfile] = useState({});
   const user = getUser();
@@ -17,7 +17,7 @@ export default function ProfilePicChanger() {
           class="btn btn-primary btn-block"
           data-toggle="modal"
           data-target="#updateProfilePic"
-          className= "bt"
+          className="bt"
         >
           Change Profile Picture
         </button>
@@ -122,7 +122,9 @@ export default function ProfilePicChanger() {
                       <div class="modal-body">
                         <br />
                         <div class="form-group">
-                          <label for="Profile Picture">Enter link to profile picture:</label>
+                          <label for="Profile Picture">
+                            Enter link to profile picture:
+                          </label>
                           <input
                             type="text"
                             name="profilePic"
@@ -151,9 +153,16 @@ export default function ProfilePicChanger() {
                 </div>
               </div>
               <p>
-                  <img src = {profile.profilePic} alt = "" 
-                  style={{width: 200, height: 200,borderRadius: 100, position: 'absolute'}}
-                  />    
+                <img
+                  src={profile.profilePic}
+                  alt=""
+                  style={{
+                    width: 200,
+                    height: 200,
+                    borderRadius: 100,
+                    position: "absolute",
+                  }}
+                />
               </p>
             </div>
           ))}

@@ -11,7 +11,6 @@ import PageNotFound from "./pages/PageNotFound";
 import MyExercises from "./pages/MyExercises";
 import MySplits from "./pages/MySplits";
 
-
 import WorkoutPage from "./pages/WorkoutPage";
 
 export default function App() {
