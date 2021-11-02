@@ -6,20 +6,20 @@ Type of meeting: daily scrum
 
 Team:
 
-Kevin Weng          [X]
-Hima Kumar          [X]
-John Judge          [X]
-Martin Cabello      [X]
-Michael Curtis      [X]
+Kevin Weng [X]
+Hima Kumar [X]
+John Judge [X]
+Martin Cabello [X]
+Michael Curtis [X]
 
 #### Scribed Discussion:
 
-* Kevin (pass)
+- Kevin (pass)
 
-* Hima (pass)
+- Hima (pass)
 
-* John (pass)
+- John (pass)
 
-* Martin (pass)
+- Martin (pass)
 
-* Mikey (pass)
+- Mikey (pass)
