@@ -12,8 +12,6 @@ export default function ListSplits({user}) {
         fetch(`/splits/${user.id}`)
         .then(res => res.json())
         .then(splits => setSplits(splits))
-
-        console.log(splits);
     }, [user.id])
 
     return (
@@ -23,22 +21,4 @@ export default function ListSplits({user}) {
             })}
         </div>
     )
-    /*
-    const handleDelete = (split) => {
-        let newSplits = splits;
-        const index = newSplits.indexOf(split);
-        if(index > -1){
-            newSplits.splice(index,1);
-        }
-        splits = newSplits;
-        return(handleDeleteSplit(split))
-    }
-    return(
-        <div className="splitList">
-            {splits.map((s)=>{
-                return <Split className="split" handleDeleteSplit={handleDelete} s={s} />
-            })}
-        </div>
-    )
-    */
 }
