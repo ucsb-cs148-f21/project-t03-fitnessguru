@@ -1,14 +1,14 @@
 .workoutBody {
-  border-radius: 25px;
-  background-color: black;
-  color: white;
-  padding: 5px;
-  margin: 2px;
-  margin-right: 10px;
-  width: 250px;
-  height: auto;
+    border-radius: 25px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    margin: 2px;
+    margin-right: 10px;
+    width: 250px;
+    height: auto;
 }
 
 .workoutList {
-  flex: 1;
+    flex: 1;
 }

@@ -6,13 +6,13 @@ import Layout from "../components/Layout";
 import Exercise from "../components/Exercise";
 
 export default function MyExercises() {
-  const user = getUser();
+    const user = getUser();
 
-  return (
-    <Layout user={user}>
-      <Container>
-        <Exercise />
-      </Container>
-    </Layout>
-  );
+    return (
+        <Layout user={user}>
+            <Container>
+                <Exercise />
+            </Container>
+        </Layout>
+    );
 }
