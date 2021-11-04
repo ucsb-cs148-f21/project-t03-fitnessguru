@@ -13,7 +13,6 @@ class Chart extends Component{
     displayTitle:true,
     displayLegend: true,
     legendPosition:'right',
-    exercise:'Bench Press'
   }
 
   render(){
@@ -30,7 +29,7 @@ class Chart extends Component{
             plugins:{
               title:{
                 display:this.props.displayTitle,
-                text:'Weight Changes for '+ this.props.exercise,
+                text:'Weight Changes for '+ this.props.exercise + ", " + this.props.repetitions + " Repetitions",
                 color: 'rgba(54, 162, 235, 0.6)', 
                 font: { size: 25, weight:'900'}
               },
@@ -43,7 +42,7 @@ class Chart extends Component{
               y: {
                 title:{
                   display: true,
-                  text: 'Weight Utilized in lb',
+                  text: 'Weight (lb)',
                   color: 'rgba(54, 162, 235, 0.6)', 
                   font: { size: 20, weight:'900'}
                 },
@@ -70,24 +69,3 @@ class Chart extends Component{
 }
 
 export default Chart;
-
-// Bar Code
-        {/* <Bar
-          data={this.state.chartData}
-          width={40}
-	        height={20}
-          options={{
-            title:{
-              display:this.props.displayTitle,
-              text:'Weight Changes for '+ this.props.exercise,
-              fontSize:15
-            },
-            legend:{
-              display:this.props.displayLegend,
-              position:this.props.legendPosition,
-              labels:{
-                fontColor: '000'
-              }
-            }
-          }}
-        /> */}
