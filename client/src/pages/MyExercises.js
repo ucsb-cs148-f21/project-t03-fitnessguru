@@ -21,17 +21,8 @@ export default function MyExercises() {
   const user = getUser();
   const [exercises,setExercises] = useState();
 
-  const exercisesURL = "https://wger.de/api/v2/exercise/?limit=20&offset=20&language=2&category=9"
-  
-  const showExercises = (event) => {
-    event.preventDefault();
-    axios.get(exercisesURL)
-      .then((res) => setExercises(res.data.results))
-      .catch((error) => console.log(error))
-  }
-
   const handleGetExercises = (category) => {
-    const url = `https://wger.de/api/v2/exercise/?limit=20&offset=20&language=2&category=${category}`
+    const url = `https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=${category}`
     axios.get(url)
       .then((res) => setExercises(res.data.results))
       .catch((error) => console.log(error))
@@ -42,22 +33,20 @@ export default function MyExercises() {
   return (
     <Layout user={user}>
       <Container>
-        <Exercise />
-        <button onClick={showExercises}>Show Exercises</button>
-        
+        <Exercise />        
         <Dropdown>
           <Dropdown.Toggle variant="success" id="dropdown-basic">
             Exercises
           </Dropdown.Toggle>
         
           <Dropdown.Menu>
-            <Dropdown.Item onClick={handleGetExercises(8)}>Arms</Dropdown.Item>
-            <Dropdown.Item onClick={handleGetExercises(9)}>Legs</Dropdown.Item>
-            <Dropdown.Item onClick={handleGetExercises(10)}>Abs</Dropdown.Item>
-            <Dropdown.Item onClick={handleGetExercises(11)}>Chest</Dropdown.Item>
-            <Dropdown.Item onClick={handleGetExercises(12)}>Back</Dropdown.Item>
-            <Dropdown.Item onClick={handleGetExercises(13)}>Shoulders</Dropdown.Item>
-            <Dropdown.Item onClick={handleGetExercises(14)}>Calves</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleGetExercises(8)}>Arms</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleGetExercises(9)}>Legs</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleGetExercises(10)}>Abs</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleGetExercises(11)}>Chest</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleGetExercises(12)}>Back</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleGetExercises(13)}>Shoulders</Dropdown.Item>
+            <Dropdown.Item onClick={() => handleGetExercises(14)}>Calves</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
 
