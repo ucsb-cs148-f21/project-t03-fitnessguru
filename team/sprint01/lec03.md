@@ -14,12 +14,12 @@ Michael Curtis [X]
 
 #### Scribed Discussion:
 
-- Kevin (pass)
+-   Kevin (pass)
 
-- Hima (pass)
+-   Hima (pass)
 
-- John (pass)
+-   John (pass)
 
-- Martin (pass)
+-   Martin (pass)
 
-- Mikey (pass)
+-   Mikey (pass)

@@ -31,24 +31,24 @@ Fitness Guru will help people who go to the gym keep track of their progress (bo
 
 # User Roles
 
-- People who go to the gym (new or experienced)
+-   People who go to the gym (new or experienced)
 
-- Admins / Fitness Trainers
+-   Admins / Fitness Trainers
 
 # User Permissions
 
-- People who go to the gym (new or experienced) can create their own custom workouts, track their own progress, and share their workouts with other users.
+-   People who go to the gym (new or experienced) can create their own custom workouts, track their own progress, and share their workouts with other users.
 
-- Admins / Fitness Trainers can post challenges to keep users engaged.
+-   Admins / Fitness Trainers can post challenges to keep users engaged.
 
 # Installation
 
 ## Prerequisites
 
-- Computer with Internet Access
-- Web Browser (Google Chrome, Mozilla Firefox)
-- Git (install here: https://git-scm.com/downloads)
-- Node and NPM (install here: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+-   Computer with Internet Access
+-   Web Browser (Google Chrome, Mozilla Firefox)
+-   Git (install here: https://git-scm.com/downloads)
+-   Node and NPM (install here: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
 On Ubuntu:
 
@@ -62,36 +62,36 @@ sudo apt install nodejs npm
 
 ## Dependencies
 
-- react, react-dom, react-router-dom, react-scripts for running the app
-- bootstrap, react-bootstrap, reactstrap, styled-components for styling the app
-- express and mongoose for the backend with MongoDB database
-- dotenv for loading environment variables
-- prettier for code formatting
-- concurrently to run the frontend and the backend concurrently
-- nodemon to refresh the app
+-   react, react-dom, react-router-dom, react-scripts for running the app
+-   bootstrap, react-bootstrap, reactstrap, styled-components for styling the app
+-   express and mongoose for the backend with MongoDB database
+-   dotenv for loading environment variables
+-   prettier for code formatting
+-   concurrently to run the frontend and the backend concurrently
+-   nodemon to refresh the app
 
 ## Installation Steps
 
-- clone this repo:
+-   clone this repo:
 
 ```sh
 git clone git@github.com:ucsb-cs148-f21/project-t03-fitnessguru.git
 ```
 
-- run npm install:
+-   run npm install:
 
 ```sh
 npm install
 ```
 
-- cd into the backend direction and run npm install:
+-   cd into the backend direction and run npm install:
 
 ```sh
 cd backend
 npm install
 ```
 
-- run the app concurrently with npm run dev:
+-   run the app concurrently with npm run dev:
 
 ```sh
 npm run dev
@@ -99,13 +99,13 @@ npm run dev
 
 ## Functionality
 
-- You can view your profile on the Profile page. Click the Update Profile button to update your profile.
-- You can view your exercises on the My Exercises page. Click the Add Exercise button to add an exercise. Click Update to update the exercise and Delete to delete the exercise.
+-   You can view your profile on the Profile page. Click the Update Profile button to update your profile.
+-   You can view your exercises on the My Exercises page. Click the Add Exercise button to add an exercise. Click Update to update the exercise and Delete to delete the exercise.
 
 ## Known Problems
 
-- You may not be able to run the app locally without a Google Client ID for OAuth. Don't worry, we will update our instructions soon!
-- The "Last Updated" time for the Profile page does not update correctly. To reproduce, update the profile. The "Last Updated" time will not update.
+-   You may not be able to run the app locally without a Google Client ID for OAuth. Don't worry, we will update our instructions soon!
+-   The "Last Updated" time for the Profile page does not update correctly. To reproduce, update the profile. The "Last Updated" time will not update.
 
 ## Contributing
 

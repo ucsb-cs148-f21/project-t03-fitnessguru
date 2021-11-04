@@ -1,61 +1,61 @@
 .splitBody {
-  border: 1px solid black;
-  border-radius: 25px;
-  background-color: white;
-  color: black;
-  display: flex;
-  margin: 20px;
+    border: 1px solid black;
+    border-radius: 25px;
+    background-color: white;
+    color: black;
+    display: flex;
+    margin: 20px;
 }
 
 .description {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  width: 250px;
-  margin-left: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 250px;
+    margin-left: 30px;
 }
 
 .workoutList {
-  display: flex;
-  margin: 10px;
-  width: 500px;
+    display: flex;
+    margin: 10px;
+    width: 500px;
 }
 
 .workoutCards .overlay .showWorkout {
-  color: red;
+    color: red;
 }
 
 .workoutGrid {
-  padding: 15px;
-  display: flex;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+    padding: 15px;
+    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
 #title {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 #notes {
-  color: grey;
-  margin-top: -10px;
+    color: grey;
+    margin-top: -10px;
 }
 
 .card-top {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
 }
 
 .card-top #update {
-  height: 38px;
+    height: 38px;
 }
 .update-delete button {
-  margin-top: -30px;
-  width: 80px;
+    margin-top: -30px;
+    width: 80px;
 }
 
 #delete {
-  margin-left: 50px;
+    margin-left: 50px;
 }
