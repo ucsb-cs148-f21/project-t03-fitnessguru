@@ -30,6 +30,9 @@ export default function NavBar(props) {
                         {user && (
                             <Nav.Link href="/myweights">My Weights</Nav.Link>
                         )}
+                        {user && (
+                            <Nav.Link href="/progress">My Progress</Nav.Link>
+                        )}
                     </Nav>
                     <Nav>
                         {!user ? (
