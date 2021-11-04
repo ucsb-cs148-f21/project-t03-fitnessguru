@@ -9,6 +9,13 @@
   height: auto;
 }
 
-.workoutList {
-  flex: 1;
+
+#workoutHead {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.workoutName {
+  font-size: 28px;
+  font-weight: bold;
 }
