@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 
 import getUser from "../utils/get-user";
 import Layout from "../components/Layout";
-import Weights from "../components/Weights";
+import TrackedExercises from "../components/TrackedExercises";
 
 export default function MyWeights() {
     const user = getUser();
@@ -11,7 +11,7 @@ export default function MyWeights() {
     return (
         <Layout user={user}>
             <Container>
-                <Weights />
+                <TrackedExercises />
             </Container>
         </Layout>
     );

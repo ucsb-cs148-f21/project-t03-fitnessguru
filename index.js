@@ -24,7 +24,9 @@ app.use("/user", require("./config/routes/user"));
 app.use("/exercises", require("./config/routes/exercise"));
 app.use("/workouts", require("./config/routes/workout"));
 app.use("/splits", require("./config/routes/split"));
-app.use("/weights", require("./config/routes/weights"));
+app.use("/trackedexercises", require("./config/routes/trackedExercises"));
+app.use("/repetitions", require("./config/routes/repetitions"));
+app.use("/weight", require("./config/routes/weight"));
 
 // Anything that doesn't match the above, send back index.html
 app.get("*", (req, res) => {
