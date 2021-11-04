@@ -1,6 +1,18 @@
+<<<<<<< HEAD
 #workoutList {
   padding: 15px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
+=======
+.workoutList .workouts {
+    margin-top: 20px;
+    padding: 15px;
+    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: auto;
+}
+>>>>>>> 8aaf271750566e423077b4f5243412b6b56e9173

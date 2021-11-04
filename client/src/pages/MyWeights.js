@@ -3,16 +3,15 @@ import Container from "react-bootstrap/Container";
 
 import getUser from "../utils/get-user";
 import Layout from "../components/Layout";
+import TrackedExercises from "../components/TrackedExercises";
 
-export default function Login() {
+export default function MyWeights() {
     const user = getUser();
 
     return (
         <Layout user={user}>
             <Container>
-                <h1>This page is private!</h1>
-                <div>(meaning you have to login to view the page)</div>
-                <br />
+                <TrackedExercises />
             </Container>
         </Layout>
     );

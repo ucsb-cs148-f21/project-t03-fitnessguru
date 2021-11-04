@@ -3,16 +3,15 @@ const router = express.Router();
 
 const Workout = require("../../models/Workout");
 
-// Get
-router.get("/:googleId", async (req, res) => {
-  const workouts = await Workout.find({googleId: req.params.googleId});
-  res.send(workouts);
+router.get("/", async (req, res) => {
+    const workouts = await Workout.find();
+    res.send(workouts);
 });
 
 // Post
 router.post("/", async (req, res) => {
-  result = await Workout.create(req.body);
-  res.redirect('back');
+    result = await Workout.create(req.body);
+    res.send(result);
 });
 
 // Put

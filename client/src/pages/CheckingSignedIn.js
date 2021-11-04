@@ -6,25 +6,25 @@ import Navbar from "react-bootstrap/Navbar";
 import Container from "react-bootstrap/Container";
 
 const CheckingSignedInWrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(0, 0, 0, 0.1);
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.1);
 `;
 
 export default function CheckingSignedIn() {
-  return (
-    <>
-      <Navbar bg="light" expand="lg">
-        <Container>
-          <Navbar.Brand href="/">Fitness Guru</Navbar.Brand>
-        </Container>
-      </Navbar>
-      <CheckingSignedInWrapper>
-        <Spinner animation="border" role="status" />
-      </CheckingSignedInWrapper>
-    </>
-  );
+    return (
+        <>
+            <Navbar bg="light" expand="lg">
+                <Container>
+                    <Navbar.Brand href="/">Fitness Guru</Navbar.Brand>
+                </Container>
+            </Navbar>
+            <CheckingSignedInWrapper>
+                <Spinner animation="border" role="status" />
+            </CheckingSignedInWrapper>
+        </>
+    );
 }
