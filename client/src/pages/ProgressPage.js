@@ -3,7 +3,7 @@ import getUser from "../utils/get-user";
 import Chart from '../components/Chart';
 import Layout from "../components/Layout";
 import Container from "react-bootstrap/Container";
-import Exercise from '../components/Exercise';
+import { DropdownButton, Dropdown } from 'react-bootstrap';
 
 
 export default function ProgressPage(){  
@@ -45,10 +45,15 @@ function getChartData(){
       <Layout user={user}>
         <Container>
             <h2>Check Your Progress</h2>
+            <DropdownButton id="dropdown-basic-button" title="Select an Exercise" menuVariant = 'light'>
+              {exercises.map(exercise =>
+                <Dropdown.Item href="/profile">{exercise.name}</Dropdown.Item>
+              )}
+            </DropdownButton>       
             {exercises.map(exercise => 
             <Chart chartData={chartData} exercise = {exercise.name}/>
             )}
-          </Container>
+        </Container>
       </Layout>  
     );
 }
