@@ -8,6 +8,7 @@ import { DropdownButton, Dropdown } from 'react-bootstrap';
 
 export default function ProgressPage(){  
 
+  const [selectedExercise, setSelectedExercise] = useState('')
   const [exercises, setExercises] = useState([])
   const [chartData, setChartData] = useState(
             {
@@ -30,7 +31,7 @@ export default function ProgressPage(){
   useEffect(() => {
     fetch(`/exercises/${user.id}`)
     .then(res => res.json())
-    .then(exercises => setExercises(exercises))
+    .then(exercises => {setExercises(exercises) ; setSelectedExercise(exercises[0].name)})
 }, [user.id])
 
 
@@ -47,10 +48,13 @@ function getChartData(){
             <h2>Check Your Progress</h2>
             <DropdownButton id="dropdown-basic-button" title="Select an Exercise" menuVariant = 'light'>
               {exercises.map(exercise =>
-                <Dropdown.Item href="/profile">{exercise.name}</Dropdown.Item>
+                <Dropdown.Item onClick = {() => setSelectedExercise(exercise.name)}> 
+                  {exercise.name}
+                </Dropdown.Item>
               )}
-            </DropdownButton>       
-            {exercises.map(exercise => 
+            </DropdownButton>   
+            {  
+            exercises.filter(exercise => exercise.name === selectedExercise).map(exercise => 
             <Chart chartData={chartData} exercise = {exercise.name}/>
             )}
         </Container>
