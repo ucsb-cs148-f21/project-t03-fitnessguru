@@ -19,6 +19,7 @@ export default function NavBar(props) {
             {user && <Nav.Link href="/myexercises">My Exercises</Nav.Link>}
             {user && <Nav.Link href="/myworkouts">My Workouts</Nav.Link>}
             {user && <Nav.Link href="/mysplits">My Splits</Nav.Link>}
+            {user && <Nav.Link href="/progress">Progress</Nav.Link>}
           </Nav>
           <Nav>
             {!user ? (
