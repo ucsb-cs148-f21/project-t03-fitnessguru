@@ -1,5 +1,5 @@
 import React from "react";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import $ from "jquery";
 import 'bootstrap';
 import Container from "react-bootstrap/Container";
@@ -12,6 +12,7 @@ import ListWorkouts from "../components/Workout/ListWorkouts";
 
 export default function MyWorkouts() {
   const user = getUser();
+  const [workouts, setWorkouts] = useState([]);
   const [showAddWorkout, setShowAddWorkout] = useState(true);
 
   const closeWorkoutModal = () => {
@@ -22,6 +23,13 @@ export default function MyWorkouts() {
     setShowAddWorkout(false);
     $('#createWorkout').show();
   }
+
+  useEffect(() => {
+    fetch(`/workouts/${user.id}`)
+    .then(res => res.json())
+    .then(workouts => setWorkouts(workouts))
+  }, [user.id])
+
 
 
   return (
@@ -35,7 +43,7 @@ export default function MyWorkouts() {
               <CreateWorkout closeModal={closeWorkoutModal} splitID={null} user={user}/>
           </div> <br/>
           <h2>My Workouts</h2>
-          <ListWorkouts user={user} />
+          <ListWorkouts workouts={workouts} />
       </Container>
     </Layout>
   );

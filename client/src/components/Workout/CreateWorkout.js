@@ -15,7 +15,7 @@ function objectID() {
     return(ObjectId);
 }
 
-const CreateWorkout = ({closeModal,splitID, user}) => {
+const CreateWorkout = ({closeModal,splitID, handleAddWorkout, user}) => {
     let workout = {};
 
     const [exercises, setExercises] = useState([]);
@@ -51,9 +51,15 @@ const CreateWorkout = ({closeModal,splitID, user}) => {
         workout._id = workoutID;
         workout.split = splitID;
         workout.googleId = user.id;
-        axios.post('/workouts',workout)
-            .then(window.location.reload())
-            .catch(console.log("Couldn't post workout."))
+        if(splitID == null){
+            axios.post('/workouts',workout)
+                .then(window.location.reload())
+                .catch(console.log("Couldn't post workout."))
+        }
+        else{
+            axios.post('/workouts',workout);
+            handleAddWorkout(workout);
+        }
         setExercises([]);
         document.getElementById('workoutName').value='';
         setShowAddExercise1(true);

@@ -3,15 +3,7 @@ import {useState, useEffect} from "react";
 import Workout from "./Workout";
 import "./ListWorkouts.css";
 
-const ListWorkouts = ({ user }) => {
-  const [workouts, setWorkouts] = useState([]);
-
-  useEffect(() => {
-    fetch(`/workouts/${user.id}`)
-    .then(res => res.json())
-    .then(workouts => setWorkouts(workouts))
-  }, [user.id])
-
+const ListWorkouts = ({ workouts }) => {
   return (
     <div id="workoutList">
       {workouts.map((workout=>{
