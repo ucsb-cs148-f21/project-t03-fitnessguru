@@ -12,7 +12,7 @@ Fri 10/08 | Kevin Weng | Led scrum meeting
 
 Fri 10/08 | Hima Kumar | Led team discussion of Sprint02
 
-Wed 10/13 | Michael Curtis | Will lead first Retro
+Wed 10/13 | Michael Curtis | Led first Retro
 
 Fri 10/29 | Martin Cabello | Led second Retro
 
