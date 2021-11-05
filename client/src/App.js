@@ -50,7 +50,6 @@ export default function App() {
         return <Route {...rest} component={isSignedIn ? component : Private} />;
     }
 
-<<<<<<< HEAD
     if (isSignedIn !== null) {
         return (
             <BrowserRouter>
@@ -78,29 +77,16 @@ export default function App() {
                         path="/workout"
                         component={WorkoutPage}
                     />
+                    <PrivateRoute
+                        exact
+                        path="/progress"
+                        component={ProgressPage}
+                    />
                     <Route path="/" component={PageNotFound} />
                 </Switch>
             </BrowserRouter>
         );
     }
-=======
-  if (isSignedIn !== null) {
-    return (
-      <BrowserRouter>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <PrivateRoute exact path="/profile" component={Profile} />
-          <PrivateRoute exact path="/myexercises" component={MyExercises} />
-          <PrivateRoute exact path="/myworkouts" component={MyWorkouts} />
-          <PrivateRoute exact path="/mysplits" component={MySplits} />
-          <PrivateRoute exact path="/workout" component={WorkoutPage} />
-          <PrivateRoute exact path="/progress" component={ProgressPage} />
-          <Route path="/" component={PageNotFound} />
-        </Switch>
-      </BrowserRouter>
-    );
-  }
->>>>>>> main
 
     return <CheckingSignedIn />;
 }
