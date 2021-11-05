@@ -13,12 +13,12 @@ For our integration testing requirement from this week's lab, we performed front
 - We used the react testing library, which works more directly with DOM nodes, along with Jest for improved assertions.
 - We tested that the Navbar component renders correctly without crashing.
 - We tested that the Navbar component correctly displays the Home page button before a user is logged in.
-We tested that the Navbar component correctly displays the user's full name after a user is logged in.
-We tested that the Navbar component correctly displays the Profile page button after a user is logged in.
-We tested that the Navbar component correctly displays the My Exercises page button after a user is logged in.
-We tested that the Navbar component correctly displays the My Workouts page button after a user is logged in.
-We tested that the Navbar component correctly displays the My Splits page button after a user is logged in.
-We tested that the Navbar component correctly displays the My Weights page button after a user is logged in.
+- We tested that the Navbar component correctly displays the user's full name after a user is logged in.
+- We tested that the Navbar component correctly displays the Profile page button after a user is logged in.
+- We tested that the Navbar component correctly displays the My Exercises page button after a user is logged in.
+- We tested that the Navbar component correctly displays the My Workouts page button after a user is logged in.
+- We tested that the Navbar component correctly displays the My Splits page button after a user is logged in.
+- We tested that the Navbar component correctly displays the My Weights page button after a user is logged in.
 
 4)
 Going forward, if the time allows us, we believe to implement high-level testing for both front end and back end.
