@@ -5,8 +5,8 @@ For our unit test requirement from the previous lab, we used the react testing l
 This unit test assures that the home page renders without crashing.
 
 2)
-Going forward, given the time constraint, I believe we will not go forward with unit tests to test functions and components. Instead, we plan on using higher level testing. We are restricted with time and we think higher level tests will be more benificial for us to determine weather the user functionility 
-componenets function well in the user's point of view.
+Going forward, given the time constraint, I believe we will not go forward with unit tests to test functions and components. Instead, we plan on using higher level testing. We are restricted with time and we think higher level tests will be more beneficial for us to determine whether the user functionality 
+components function well in the user's point of view.
 
 3)
 For our integration testing requirement from this week's lab, we performed front end integration testing on the Navbar component.
@@ -21,6 +21,6 @@ For our integration testing requirement from this week's lab, we performed front
 - We tested that the Navbar component correctly displays the My Weights page button after a user is logged in.
 
 4)
-Going forward, if the time allows us, we believe to implement high-level testing for both front end and back end.
+Going forward, if the time allows us, we want to implement high-level testing for both front end and back end.
 We would keep using the react test library along with Jest to write our tests so that we have a TDD approach when building the web application.
 This would allow us to make sure that all the components work well together and provide more user functionality.
