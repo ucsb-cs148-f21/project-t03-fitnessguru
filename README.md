@@ -118,4 +118,4 @@ npm run dev
 
 # Current Deployment
 
-Check out our most recent deployment here: https://fitness-guru-deployment.herokuapp.com/
+Check out our most recent deployment of our main branch here: https://fitness-guru-main.herokuapp.com/
