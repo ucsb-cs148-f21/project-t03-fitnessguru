@@ -9,15 +9,10 @@
     height: auto;
 }
 
-<<<<<<< HEAD
 
 #workoutHead {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-=======
-.workoutList {
-    flex: 1;
->>>>>>> 8aaf271750566e423077b4f5243412b6b56e9173
 }
 
 .workoutName {

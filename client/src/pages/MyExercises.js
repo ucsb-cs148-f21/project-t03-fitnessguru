@@ -5,6 +5,7 @@ import Container from "react-bootstrap/Container";
 import getUser from "../utils/get-user";
 import Layout from "../components/Layout";
 import Exercise from "../components/Exercise";
+import CreateExercise from "../components/Workout/CreateExercise";
 import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
 import "./MyExercises.css";
@@ -43,9 +44,11 @@ export default function MyExercises() {
   const [back, setBack] = useState();
   const [shoulders,setShoulders] = useState();
   const [calves, setCalves] = useState();
-
+  const [loading, setLoading] = useState(true);
+/*
   axios.get("https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=8")
       .then((res) => setArms(res.data.results))
+      .then(() => setLoading(false))
       .catch((error) => console.log(error))
 
   axios.get("https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=9")
@@ -71,19 +74,22 @@ export default function MyExercises() {
   axios.get("https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=14")
       .then((res) => setCalves(res.data.results))
       .catch((error) => console.log(error))
-
+*/
   return (
     <Layout user={user}>
       <Container>
-      <div id="categories">  
-        {arms && <ExerciseCatDropDown className="category" exercises={arms} title="Arms" />}
-        {legs && <ExerciseCatDropDown className="category" exercises={legs} title="Legs" />}
-        {chest && <ExerciseCatDropDown className="category" exercises={chest} title="chest" />}
-        {back && <ExerciseCatDropDown className="category" exercises={back} title="back" />}
-        {abs && <ExerciseCatDropDown className="category" exercises={abs} title="abs" />}
-        {shoulders && <ExerciseCatDropDown className="category" exercises={shoulders} title="shoulders" />}
-        {calves && <ExerciseCatDropDown className="category" exercises={calves} title="calves" />}
-        </div>  
+        {loading && <p>Loading Exercise Categories...Please wait.</p>}
+        { !loading &&
+        <div id="categories">  
+          {arms && <ExerciseCatDropDown className="category" exercises={arms} title="Arms" />}
+          {legs && <ExerciseCatDropDown className="category" exercises={legs} title="Legs" />}
+          {chest && <ExerciseCatDropDown className="category" exercises={chest} title="chest" />}
+          {back && <ExerciseCatDropDown className="category" exercises={back} title="back" />}
+          {abs && <ExerciseCatDropDown className="category" exercises={abs} title="abs" />}
+          {shoulders && <ExerciseCatDropDown className="category" exercises={shoulders} title="shoulders" />}
+          {calves && <ExerciseCatDropDown className="category" exercises={calves} title="calves" />}
+        </div>  }
+        <CreateExercise />
         <Exercise />    
         
       </Container>
