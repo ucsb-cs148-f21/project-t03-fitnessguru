@@ -77,6 +77,11 @@ export default function App() {
                         path="/workout"
                         component={WorkoutPage}
                     />
+                    <PrivateRoute
+                        exact
+                        path="/progress"
+                        component={ProgressPage}
+                    />
                     <Route path="/" component={PageNotFound} />
                 </Switch>
             </BrowserRouter>
