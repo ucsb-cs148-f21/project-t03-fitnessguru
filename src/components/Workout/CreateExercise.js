@@ -1,15 +1,7 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-import axios from 'axios';
-import "./CreateExercise.css";
 
-
-function objectID() {
-    const ObjectId = (m = Math, d = Date, h = 16, s = s => m.floor(s).toString(h)) =>
-    s(d.now() / 1000) + ' '.repeat(h).replace(/./g, () => s(m.random() * h));
-    return(ObjectId);
-}
 // component takes in handler function that handles where to add the exercise to
 const CreateExercise = ({ handleAddExercise }) => {
   let exercise = {};

@@ -1,107 +1,81 @@
-import React from 'react'
-import {useState} from 'react'
-import $ from 'jquery';
-import 'bootstrap';
-import CreateWorkout from './CreateWorkout'
-import ListWorkouts from './ListWorkouts';
-import './CreateSplit.css'
+import React from "react";
+import { useState } from "react";
+import CreateWorkout from "./CreateWorkout";
+import ListWorkouts from "./ListWorkouts";
+import "./CreateSplit.css";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-import axios from 'axios';
 
+const CreateSplit = ({ handleAddSplit }) => {
+  let split = {};
+  const [workouts, setWorkouts] = useState([]);
+  const [showAddWorkout, setShowAddWorkout] = useState(false);
+  const [showAddWorkout1, setShowAddWorkout1] = useState(true);
 
-function objectID() {
-    const ObjectId = (m = Math, d = Date, h = 16, s = s => m.floor(s).toString(h)) =>
-    s(d.now() / 1000) + ' '.repeat(h).replace(/./g, () => s(m.random() * h));
-    return(ObjectId);
-}
+  const handleSetShowAddWorkout = (e) => {
+    e.preventDefault();
+    setShowAddWorkout1(false);
+    return setShowAddWorkout(true);
+  };
 
-const CreateSplit = ({handleAddSplit, closePrompt, user}) => {
-    let split = {};
-    const [workouts, setWorkouts] = useState([]);
-    const [showAddWorkout, setShowAddWorkout] = useState(false);
-    const [showAddWorkout1, setShowAddWorkout1] = useState(true);
-    const [splitID, setSplitID] = useState(objectID());
+  const handleAddWorkout = (workout) => {
+    const newWorkouts = workouts.concat(workout);
+    setWorkouts(newWorkouts);
+    setShowAddWorkout1(true);
+    return setShowAddWorkout(false);
+  };
 
-    const closeWorkoutModal = () => {
-        $('#createWorkout').hide();
-        $('#createSplit').show();
-    }
+  const handleCreateSplitObject = () => {
+    split.name = document.getElementById("splitName").value;
+    split.notes = document.getElementById("notes").value;
+    split.workouts = workouts;
+    return handleAddSplit(split);
+  };
 
-    const openWorkoutModal= () => {
-        $('#createWorkout').show();
-        //$('#addSplit').hide();
-    }
+  return (
+    <Form className="splitForm">
+      <Form.Group className="mb-3" controlId="formBasicExercise">
+        <Form.Label className="label">Split Name</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder="Enter split name"
+          id="splitName"
+        />
+      </Form.Group>
 
-    const closeSplitModal = () => {
-        closePrompt();
-        //$('.modal-backdrop').remove()
-        setWorkouts([]);
-        document.getElementById('name').value = '';
-        document.getElementById('notes').value = '';
-    }
+      <Form.Group className="mb-3" controlId="formBasicNotes">
+        <Form.Label className="label">Notes</Form.Label>
+        <Form.Control as="textarea" rows={3} id="notes" />
+      </Form.Group>
 
-    const handleSetShowAddWorkout = (e) => {
-        e.preventDefault();
-        setShowAddWorkout1(false);
-        return(setShowAddWorkout(true));
-    }
-
-    const handleAddWorkout = (workout) => {
-        const newWorkouts = workouts.concat(workout);
-        setWorkouts(newWorkouts);
-        setShowAddWorkout1(true);
-        return(
-            setShowAddWorkout(false)
-        )
-    }
-
-    const handleCreateSplitObject = () => {
-        split.name = document.getElementById("name").value;
-        split.notes = document.getElementById("notes").value;
-        split.workouts = workouts;
-        split._id = splitID;
-        split.googleId = user.id;
-        handleAddSplit(split);
-        closeSplitModal();
-    }
-
-    return (
-        <Form className="splitForm">
-            
-            <Form.Group className="mb-3" controlId="formBasicExercise">
-                <Form.Label className="label">Split Name</Form.Label>
-                <input type="text" id="name" name="name" class="form-control"/>
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="formBasicNotes">
-                <Form.Label className="label">Notes</Form.Label>
-                <div id="notesInput">
-                <input type="text" id="notes" name="notes" class="form-control"/>
-                </div>
-                
-            </Form.Group>
-
-            <div className="showWorkouts">
-                <div className="addingWorkout">
-                    <Button className="addWorkout" onClick={openWorkoutModal}>Add Workout</Button><br />
-                    <div className="workoutList">
-                        <ListWorkouts workouts={workouts} />
-                    </div>
-                </div>
-
-            </div>
-            <div class="modal" id="createWorkout" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <CreateWorkout closeModal={closeWorkoutModal} splitID={splitID} handleAddWorkout={handleAddWorkout} user={user}/>
-            
-            </div>
-
-            <Button variant="primary" id="addSplit" type="button" onClick={handleCreateSplitObject} >
-                Create Split
+      <div className="showWorkouts">
+        <div className="addingWorkout">
+          {showAddWorkout1 && (
+            <Button className="addWorkout" onClick={handleSetShowAddWorkout}>
+              Add Workout
             </Button>
-        </Form>
-    )
-}
+          )}
+          <br />
+          <div className="workoutList">
+            <ListWorkouts workouts={workouts} />
+          </div>
+        </div>
 
+        {showAddWorkout && (
+          <CreateWorkout handleAddWorkout={handleAddWorkout} />
+        )}
+      </div>
+
+      <Button
+        variant="primary"
+        id="addSplit"
+        type="button"
+        onClick={handleCreateSplitObject}
+      >
+        Create Split
+      </Button>
+    </Form>
+  );
+};
 
 export default CreateSplit;
