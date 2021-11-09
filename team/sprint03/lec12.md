@@ -16,7 +16,7 @@ Michael Curtis [X]
 
 -   Kevin finished the backend for the weights / my progress page.
 
--   Hima finished implementing the integration testing requirement.
+-   Hima finished implementing the integration/component testing requirement.
 
 -   John is working on a search bar for profiles and followers / following.
 
