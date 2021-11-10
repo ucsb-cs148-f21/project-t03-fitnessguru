@@ -5,74 +5,93 @@
 -   Computer with Internet Access
 -   Web Browser (Google Chrome, Mozilla Firefox)
 -   Git (Install Here: https://git-scm.com/downloads)
--   Node and NPM (Install Here: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+-   Node and npm (Install Here: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
 
-On Ubuntu:
+## Client ID
+
+To obtain a client_id, please visit this link: https://console.cloud.google.com/apis/credentials and follow these steps after signing in or creating an account:
+
+* create a project
+* on the OAuth consent screen, set the User Type to "External" and complete the form
+* on the Credentials page, select Create Credentials and choose OAuth client ID
+* set the Application type to Web application
+* add the URI for your app to Authorized JavaScript origins and Authorized redirect URIs
+* for the local deployment, add "http://localhost:3000" to Authorized JavaScript origins and Authorized redirect URIs
+* click Create
+* copy Your Client ID
+
+You need to add the client_id for your app in the client directory.
+
+If you are in the root directory, you can cd into the client directory:
+
+```sh
+cd client
+```
+
+In the client directory, you will see a file named ".env.sample". Rename this file to ".env" and replace \<insert CLIENT_ID here> with your client_id.
+
+## Mongo URI
+
+To obtain a Mongo URI, please visit this link: https://www.mongodb.com/ and follow these steps after signing in or creating an account:
+
+* create a free Shared Cluster
+* after the cluster is created, click Connect
+* Add a connection IP address
+* Create a Database User
+* on the Choose a connection method screen, select Connect your application
+* Select your driver and version (Node.js, 4.0 or later)
+* copy the connection string
+
+You need to add the Mongo URI for your app in the config directory.
+
+If you are in the root directory, you can cd into the config directory:
+
+```sh
+cd config
+```
+
+In the config directory, you will see a file named "config.env.sample". Rename this file to "config.env" and replace \<insert MONGO_URI here> with your Mongo URI. Remember to replace \<password> in the connection string with the actual password for the database user you created!
+
+## On Ubuntu:
+
+To Install Git:
 
 ```sh
 sudo apt install git-all
 ```
 
+To Install npm:
+
 ```sh
 sudo apt install nodejs npm
 ```
 
-## Dependencies
-
--   react, react-dom, react-router-dom, react-scripts for running the app
--   bootstrap, react-bootstrap, reactstrap, styled-components for styling the app
--   express and mongoose for the backend with MongoDB database
--   dotenv for loading environment variables
--   prettier for code formatting
--   concurrently to run the frontend and the backend concurrently
--   nodemon to refresh the app
-
 ## Installation Steps
 
--   clone this repo:
+clone this repository:
 
 ```sh
 git clone git@github.com:ucsb-cs148-f21/project-t03-fitnessguru.git
 ```
 
--   run npm install:
+run npm install in the root directory:
 
 ```sh
 npm install
 ```
 
--   cd into the backend direction and run npm install:
+run npm install in the client directory:
 
 ```sh
-cd backend
+cd client
 npm install
 ```
 
--   run the app concurrently with npm run dev:
+run the app concurrently with npm run dev in the root directory:
 
 ```sh
+cd ..
 npm run dev
 ```
 
-## Functionality
-
--   You can view your profile on the Profile page. Click the Update Profile button to update your profile.
--   You can view your exercises on the My Exercises page. Click the Add Exercise button to add an exercise. Click Update to update the exercise and Delete to delete the exercise.
-
-## Known Problems
-
--   You may not be able to run the app locally without a Google Client ID for OAuth. Don't worry, we will update our instructions soon!
--   The "Last Updated" time for the Profile page does not update correctly. To reproduce, update the profile. The "Last Updated" time will not update.
-
-## Contributing
-
-## Fork it!
-
-1. Create your feature branch: git checkout -b my-new-feature
-2. Commit your changes: git commit -am 'Add some feature'
-3. Push to the branch: git push origin my-new-feature
-4. Submit a pull request :D
-
-# Current Deployment
-
-Check out our most recent deployment here: https://fitness-guru-deployment.herokuapp.com/
+The frontend should run on localhost:3000, and the backend should run on localhost:5000.
