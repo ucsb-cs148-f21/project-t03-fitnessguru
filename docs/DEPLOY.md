@@ -52,7 +52,7 @@ cd config
 
 In the config directory, you will see a file named "config.env.sample". Rename this file to "config.env" and replace \<insert MONGO_URI here> with your Mongo URI. Remember to replace \<password> in the connection string with the actual password for the database user you created!
 
-## On Ubuntu:
+## On On MacOS and Linux:
 
 To Install Git:
 
