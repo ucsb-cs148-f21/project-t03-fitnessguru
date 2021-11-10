@@ -24,7 +24,7 @@ export default function ProgressPage(){
                   80,
                   70,
                   90,
-                  120
+                  200
                 ]
               }
             ]
@@ -37,16 +37,7 @@ export default function ProgressPage(){
     .then(exercises => {setExercises(exercises)})
 }, [user.id])
 
-function getRepetitions(exercise){
-  fetch(`/repetitions/${exercise._id}`)
-  .then(res => res.json())
-  .then(repetitions => {setRepetitions(repetitions)})
-}
-
-function getChartData(repetitions){
-  fetch(`/weight/${repetitions._id}`)
-  .then(res => res.json())
-  .then(weight => {setWeights(weight)})
+useEffect(() => {
   let x_axis = []
   let dataSet = []
   weights.forEach(weight => {
@@ -69,6 +60,18 @@ function getChartData(repetitions){
     });
 
     console.log(chartData)
+}, [weights])
+
+function getRepetitions(exercise){
+  fetch(`/repetitions/${exercise._id}`)
+  .then(res => res.json())
+  .then(repetitions => {setRepetitions(repetitions)})
+}
+
+function getChartData(repetitions){
+  fetch(`/weight/${repetitions._id}`)
+  .then(res => res.json())
+  .then(weight => {setWeights(weight)})
   }
     return (
       <Layout user={user}>

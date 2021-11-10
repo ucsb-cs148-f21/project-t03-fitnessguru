@@ -1,25 +1,15 @@
 import React, {Component} from 'react';
 import {Bar, Line} from 'react-chartjs-2';
-
-class Chart extends Component{
-  constructor(props){
-    super(props);
-    this.state = {
-      chartData:props.chartData
-    }
-  }
-
-  static defaultProps = {
+function Chart(props){
+  const defaultProps = {
     displayTitle:true,
     displayLegend: true,
-    legendPosition:'right',
+    legendPosition:'left',
   }
-
-  render(){
     return (
       <div className="chart">
         <Line
-          data={this.state.chartData}
+          data={props.chartData}
           width={40}
 	        height={20}
           options={{
@@ -28,14 +18,14 @@ class Chart extends Component{
             borderColor: 'Gray',
             plugins:{
               title:{
-                display:this.props.displayTitle,
-                text:'Weight Changes for '+ this.props.exercise + ", " + this.props.repetitions + " Repetitions",
+                display:props.displayTitle,
+                text:'Weight Changes for '+ props.exercise + ", " + props.repetitions + " Repetitions",
                 color: 'rgba(54, 162, 235, 0.6)', 
                 font: { size: 25, weight:'900'}
               },
               legend:{
-                display:this.props.displayLegend,
-                position:this.props.legendPosition
+                display:props.displayLegend,
+                position:props.legendPosition
               }
             },
             scales: {
@@ -66,6 +56,5 @@ class Chart extends Component{
       </div>
     )
   }
-}
 
 export default Chart;
