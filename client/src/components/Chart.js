@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {Bar, Line} from 'react-chartjs-2';
 function Chart(props){
   const defaultProps = {
-    displayTitle:true,
     displayLegend: true,
     legendPosition:'left',
   }
