@@ -6,17 +6,17 @@ Fitness Guru allows users to create custom workouts and track their progress at 
 
 Team Members:
 
-Name (Github ID)
+Name | Github ID
 
-Martin Cabello (m-cabello)
+Martin Cabello | m-cabello
 
-Mikey Curtis (mikeycurtis)
+Mikey Curtis | mikeycurtis
 
-Himanshu Kumar (hima-97)
+Himanshu Kumar | hima-97
 
-John Judge (JohnnJudge)
+John Judge | JohnnJudge
 
-Kevin Weng (kweng149)
+Kevin Weng | kweng149
 
 # Tech Stack
 
@@ -41,26 +41,16 @@ Fitness Guru will help people who go to the gym keep track of their progress (bo
 
 -   Admins / Fitness Trainers can post challenges to keep users engaged.
 
-# Installation
+# Installation / Deployment
 
-## Prerequisites
+To install and deploy the app, follow the instructions here: https://github.com/ucsb-cs148-f21/project-t03-fitnessguru/blob/main/docs/DEPLOY.md
 
--   Computer with Internet Access
--   Web Browser (Google Chrome, Mozilla Firefox)
--   Git (install here: https://git-scm.com/downloads)
--   Node and NPM (install here: https://docs.npmjs.com/downloading-and-installing-node-js-and-npm)
+# Current Deployment
 
-On Ubuntu:
+To check out our most recent deployment of the app, visit the link here: https://fitness-guru-deployment.herokuapp.com/
 
-```sh
-sudo apt install git-all
-```
 
-```sh
-sudo apt install nodejs npm
-```
-
-## Dependencies
+# Dependencies
 
 -   react, react-dom, react-router-dom, react-scripts for running the app
 -   bootstrap, react-bootstrap, reactstrap, styled-components for styling the app
@@ -70,52 +60,22 @@ sudo apt install nodejs npm
 -   concurrently to run the frontend and the backend concurrently
 -   nodemon to refresh the app
 
-## Installation Steps
 
--   clone this repo:
-
-```sh
-git clone git@github.com:ucsb-cs148-f21/project-t03-fitnessguru.git
-```
-
--   run npm install:
-
-```sh
-npm install
-```
-
--   cd into the backend direction and run npm install:
-
-```sh
-cd backend
-npm install
-```
-
--   run the app concurrently with npm run dev:
-
-```sh
-npm run dev
-```
-
-## Functionality
+# Functionality
 
 -   You can view your profile on the Profile page. Click the Update Profile button to update your profile.
 -   You can view your exercises on the My Exercises page. Click the Add Exercise button to add an exercise. Click Update to update the exercise and Delete to delete the exercise.
 
-## Known Problems
+# Known Problems
 
 -   You may not be able to run the app locally without a Google Client ID for OAuth. Don't worry, we will update our instructions soon!
 -   The "Last Updated" time for the Profile page does not update correctly. To reproduce, update the profile. The "Last Updated" time will not update.
 
-## Contributing
+# Contributing
 
-## Fork it!
+# Fork it!
 
 1. Create your feature branch: git checkout -b my-new-feature
 2. Commit your changes: git commit -am 'Add some feature'
 3. Push to the branch: git push origin my-new-feature
 4. Submit a pull request :D
-
-# Current Deployment
-
-Check out our most recent deployment of our main branch here: https://fitness-guru-main.herokuapp.com/
