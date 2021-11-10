@@ -13,22 +13,7 @@ export default function ProgressPage(){
   const [selectedRepetitions, setSelectedRepetitions] = useState('')
   const [repetitions, setRepetitions] = useState([])
   const [weights, setWeights] = useState([])
-  const [chartData, setChartData] = useState(
-            {
-            labels: ['Week 1', 'Week 2', 'Week 3', 'Week 4', 'Week 5', 'Week 6'],
-            datasets:[ {
-                label:'Weight (lb)',
-                data:[
-                  65,
-                  65,
-                  80,
-                  70,
-                  90,
-                  200
-                ]
-              }
-            ]
-          })
+  const [chartData, setChartData] = useState()
   const user = getUser();
 
   useEffect(() => {
@@ -53,7 +38,6 @@ useEffect(() => {
   console.log(x_axis)
   console.log(y_axis)
   
-  
     setChartData({
         labels: x_axis,
         datasets: y_axis
@@ -72,6 +56,7 @@ function getChartData(repetitions){
   fetch(`/weight/${repetitions._id}`)
   .then(res => res.json())
   .then(weight => {setWeights(weight)})
+  
   }
     return (
       <Layout user={user}>
@@ -108,7 +93,6 @@ function getChartData(repetitions){
             
             {(selectedExercise != "") ? <Chart chartData={chartData} exercise = {selectedExercise} repetitions = {selectedRepetitions}/> : ""}
             
-          
         </Container>
       </Layout>  
     );

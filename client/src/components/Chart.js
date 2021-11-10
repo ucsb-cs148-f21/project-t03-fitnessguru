@@ -17,9 +17,9 @@ function Chart(props){
             pointBackgroundColor: 'Red',
             borderColor: 'Gray',
             plugins:{
-              title:{
-                display:props.displayTitle,
-                text:'Weight Changes for '+ props.exercise + ", " + props.repetitions + " Repetitions",
+              title: {
+                display: true,
+                text:'Weight Changes for '+ props.exercise + ", " + props.repetitions + ' Repetitions',
                 color: 'rgba(54, 162, 235, 0.6)', 
                 font: { size: 25, weight:'900'}
               },
