@@ -3,8 +3,8 @@ const router = express.Router();
 
 const Workout = require("../../models/Workout");
 
-router.get("/", async (req, res) => {
-    const workouts = await Workout.find();
+router.get("/:googleId", async (req, res) => {
+    const workouts = await Workout.find({ googleId: req.params.googleId });
     res.send(workouts);
 });
 

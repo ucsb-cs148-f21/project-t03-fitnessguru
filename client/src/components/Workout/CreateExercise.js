@@ -5,36 +5,87 @@ import 'bootstrap';
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
 import Exercise from "./Exercise";
 import ReactHtmlParser from 'react-html-parser';
 import "./CreateExercise.css";
 
-const Exx = ({ e}) => {
+
+const ExxCategory = ({title, category, user}) => {
+    const [exercises, setExercises] = useState();
+    
+    axios.get(`https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=${category}`)
+            .then((res) => setExercises(res.data.results))
+            .catch((error) => console.log(error))
+
+    return(
+    <div className="dropdown">
+        <DropdownButton id="dropdown-item-button" title={title}>
+            <div id="exercises-dropdown">
+                {exercises && exercises.map(exercise => <Exx e={exercise} user={user}/>)}
+            </div>
+        </DropdownButton>
+    </div>
+    )
+}
+
+const Exx = ({e, user}) => {
 
     const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+    const [muscles, setMuscles] = useState();
 
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        {e.name}
-      </Button>
+    /* THIS WILL BE FOR PUTTING MUSCLE ON FRONT OR BACK OF TEMPLATE
+    axios.get("https://wger.de/api/v2/muscle/")
+        .then((res) => setMuscles(res.data.results))
+        .catch((error) => console.log(error));
+    */ 
 
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>{e.name}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>{ReactHtmlParser(e.description)}</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+    const handleAddExx = () => {
+        console.log("test");
+        axios.post("/exercises", {
+            name: e.name,
+            notes: e.description.replace(/<[^>]+>/g, ''),
+            googleId: user.id
+        })
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err))
+
+        handleClose();
+    }
+
+    return (
+    <div className="exercise">
+        <Button variant="primary" onClick={handleShow}>
+            {e.name}
+        </Button>
+
+        <Modal show={show} onHide={handleClose}>
+            <Modal.Header closeButton>
+            <Modal.Title>{e.name}</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                {ReactHtmlParser(e.description)}
+                <div class="imagesFront">
+                    <img src={`https://wger.de/static/images/muscles/main/muscle-${e.muscles[0]}.svg`} />
+                    <img src={`https://wger.de/static/images/muscles/main/muscle-${e.muscles[1]}.svg`} />
+                    
+                </div>
+            </Modal.Body>
+            <Modal.Footer>
+            <Button variant="primary" onClick={handleAddExx}>
+                Add Exercise
+            </Button>
+            <Button variant="secondary" onClick={handleClose}>
+                Close
+            </Button>
+            </Modal.Footer>
+        </Modal>
+    </div>
   );
 
 }
@@ -53,8 +104,10 @@ function objectID() {
 const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
     let exercise = {};
     const [exercises, setExercises] = useState();
+    const [custom, setCustom] = useState(false);
 
     const handleCreateExerciseObject = () => {
+        setCustom(false);
         exercise.workout = workoutID;
         exercise._id = objectID();
         exercise.googleID = user.id;
@@ -63,8 +116,10 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
         exercise.repetitions = document.getElementById("reps").value;
         exercise.weight = document.getElementById("weight").value;
         exercise.notes = document.getElementById("exerciseNotes").value;
-        axios.post("/exercises", exercise);
-        return handleAddExercise(exercise);
+        axios.post("/exercises", exercise)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err))
+        //return handleAddExercise(exercise);
     };
 
     const handleGetExercises = (category) => {
@@ -74,26 +129,21 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
             .catch((error) => console.log(error))
     }
 
-    const handleClose = () => {
-        $('.modal').hide();
-        $('.modal-backdrop').hide();
-    }
-
     return (
         <>
         <div id="selectExerciseCategory">
-            <button onClick={() => handleGetExercises(8)}>Arms</button>
-            <button onClick={() => handleGetExercises(9)}>Legs</button>
-            <button onClick={() => handleGetExercises(10)}>Abs</button>
-            <button onClick={() => handleGetExercises(11)}>Chest</button>
-            <button onClick={() => handleGetExercises(12)}>Back</button>
-            <button onClick={() => handleGetExercises(13)}>Shoulders</button>
-            <button onClick={() => handleGetExercises(14)}>Calves</button>
-
-    {exercises && <ul id="exerciseOptions">{exercises.map(exercise => <li><Exx e={exercise}/></li>)}</ul>}
+            <ExxCategory className="category" title={"Arms"} category={8} user={user}/>
+            <ExxCategory className="category" title={"Legs"} category={9} user={user}/>
+            <ExxCategory className="category" title={"Abs"} category={10} user={user}/>
+            <ExxCategory className="category" title={"Chest"} category={11} user={user}/>
+            <ExxCategory className="category" title={"Back"} category={12} user={user}/>
+            <ExxCategory className="category" title={"Shoulders"} category={13} user={user}/>
+            <ExxCategory className="category" title={"Calves"} category={14} user={user}/>
         </div>
+
         <div id="form">
-            <Form className="formBodyExercise">
+            <Button onClick={() => setCustom(true)}>Custom</Button>
+            {custom && <><Form className="formBodyExercise">
                 <Form.Group
                     className="mb-3"
                     controlId="formBasicExercise"
@@ -138,7 +188,7 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
                 onClick={handleCreateExerciseObject}
             >
                 Add Exercise
-            </Button>
+            </Button></>}
         </div>
         </>
     );

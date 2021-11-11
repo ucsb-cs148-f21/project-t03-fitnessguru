@@ -78,18 +78,7 @@ export default function MyExercises() {
   return (
     <Layout user={user}>
       <Container>
-        {loading && <p>Loading Exercise Categories...Please wait.</p>}
-        { !loading &&
-        <div id="categories">  
-          {arms && <ExerciseCatDropDown className="category" exercises={arms} title="Arms" />}
-          {legs && <ExerciseCatDropDown className="category" exercises={legs} title="Legs" />}
-          {chest && <ExerciseCatDropDown className="category" exercises={chest} title="chest" />}
-          {back && <ExerciseCatDropDown className="category" exercises={back} title="back" />}
-          {abs && <ExerciseCatDropDown className="category" exercises={abs} title="abs" />}
-          {shoulders && <ExerciseCatDropDown className="category" exercises={shoulders} title="shoulders" />}
-          {calves && <ExerciseCatDropDown className="category" exercises={calves} title="calves" />}
-        </div>  }
-        <CreateExercise />
+        <CreateExercise user={user}/>
         <Exercise />    
         
       </Container>
