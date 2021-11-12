@@ -1,7 +1,9 @@
 # FitnessGuru Design
 
 ## Overview
+[FitnessGuru Design Diagram.pdf](https://github.com/ucsb-cs148-f21/project-t03-fitnessguru/files/7529966/FitnessGuru.Design.Diagram.pdf)
 
+## Specifics
 - Pages: Home, Profile, MyExercises, MyWorkouts, MySplits, MyWeights, Progress
 
   - Home
