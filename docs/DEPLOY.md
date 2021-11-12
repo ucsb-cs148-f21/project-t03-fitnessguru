@@ -1,5 +1,9 @@
 # Installation and Deployment
 
+## Deployment Video
+
+Check out the deployment video here:
+
 ## Prerequisites
 
 -   Computer with Internet Access
