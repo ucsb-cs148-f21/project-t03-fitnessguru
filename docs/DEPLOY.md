@@ -38,7 +38,8 @@ In the client directory, you will see a file named ".env.sample". Rename this fi
 
 To obtain a Mongo URI, please visit this link: https://www.mongodb.com/ and follow these steps after signing in or creating an account:
 
-* create a free Shared Cluster
+* create an organization, then create a project.
+* create a free Shared Cluster by clicking on build a database
 * after the cluster is created, click Connect
 * Add a connection IP address
 * Create a Database User
