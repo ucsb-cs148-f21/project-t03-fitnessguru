@@ -44,7 +44,7 @@
 
 -   a goal: Get issues done, which are split more evenly, before the deadlines. If help is needed, reach out!
 -   a change: Communicate with the group before merging a pull request!!
--   a measurement: Amount of issues done before the deadline!
+-   a measurement: Amount of issues done before the deadline and amount of communication with team mates and TAs.
 
 ## Retro Assessment
 
@@ -54,3 +54,11 @@
     -   It went very well. All the group members provided valuable insights.
 -   What advice would you give to the next person leading a retro based on what you learned today?
     -   Come prepared, add on to other people's insights. This often leads to better discussions!
+
+
+## Retro Outcome Assessment
+
+* Our retro 2 experiment was to get more issues, which are split up more evenly, done quicker and if help was needed, reach out to teamates and/or TAs.
+* Amount of issues done before the deadline, communication with teamates and TAs.
+* We were able to get several issues done and communication with TAs increased significantly, which is something we wished to happen. During this period of time, there was a several people sick and couldn't attend classses and sections and that could have perhaps hindered our ability to get even more issues done and communicate more within the team.
+* Based on the outcome, the team will cement this change going forward. I think the team definitly benifited from this change of procedures and I think the chnage could have been even more successfull if several of the team members did not get ill during the sprint.
