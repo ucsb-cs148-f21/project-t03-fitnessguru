@@ -62,7 +62,7 @@
     -   Come prepared. Write out the prompts for the retro before the meeting, and follow your pre-made schedule. Getting ideas from retromat.org was helpful.
 
 ## Retro Outcome Assessment
--   
+-   w
 -   
 -  
 -   
