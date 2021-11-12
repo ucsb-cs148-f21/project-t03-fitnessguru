@@ -69,7 +69,8 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
 
-        handleAddExercise(e)
+        if(handleAddExercise)
+            handleAddExercise(e)
         handleClose();
     }
 
@@ -135,7 +136,8 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
         axios.post("/exercises", exercise)
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
-        return handleAddExercise(exercise);
+        if(handleAddExercise)
+            handleAddExercise(exercise);
     };
 
     return (
