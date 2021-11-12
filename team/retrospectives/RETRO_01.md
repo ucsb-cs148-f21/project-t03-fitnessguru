@@ -60,3 +60,9 @@
     -   It went very well. All the group members were engaged and provided valuable insights.
 -   What advice would you give to the next person leading a retro based on what you learned today?
     -   Come prepared. Write out the prompts for the retro before the meeting, and follow your pre-made schedule. Getting ideas from retromat.org was helpful.
+
+## Retro Outcome Assessment
+-   
+-   
+-  
+-   
