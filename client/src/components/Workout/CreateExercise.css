@@ -44,11 +44,6 @@ input {
     position: relative;
 }
 
-.imagesFront > img {
-    position: relative;
-    background-image: url('https://wger.de/static/images/muscles/muscular_system_front.svg');
-}
-
 .imagesFront > img:first-child{
     z-index: 2;
 }

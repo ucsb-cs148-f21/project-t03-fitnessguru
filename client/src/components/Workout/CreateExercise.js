@@ -13,7 +13,7 @@ import ReactHtmlParser from 'react-html-parser';
 import "./CreateExercise.css";
 
 
-const ExxCategory = ({title, category, user}) => {
+const ExxCategory = ({title, category, user, workoutID, handleAddExercise}) => {
     const [exercises, setExercises] = useState();
     
     axios.get(`https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=${category}`)
@@ -24,37 +24,52 @@ const ExxCategory = ({title, category, user}) => {
     <div className="dropdown">
         <DropdownButton id="dropdown-item-button" title={title}>
             <div id="exercises-dropdown">
-                {exercises && exercises.map(exercise => <Exx e={exercise} user={user}/>)}
+                {exercises && exercises.map(exercise => <Exx e={exercise} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>)}
             </div>
         </DropdownButton>
     </div>
     )
 }
 
-const Exx = ({e, user}) => {
+const Exx = ({e, user, workoutID, handleAddExercise}) => {
 
+    let exercise = {};
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const [muscles, setMuscles] = useState();
+    let front = [];
+    let back = [];
+  
+    const isFront = new Map([[2, true], [1, true], [11, false], [13, true], [7, false], [8, false], [12, false], [14, true], [4, true], [10, true],
+                    [6, true], [3, true], [15, false], [9, false], [5, false]]);
 
-    /* THIS WILL BE FOR PUTTING MUSCLE ON FRONT OR BACK OF TEMPLATE
-    axios.get("https://wger.de/api/v2/muscle/")
-        .then((res) => setMuscles(res.data.results))
-        .catch((error) => console.log(error));
-    */ 
+    for(let i = 0; i < e.muscles.length; i++){
+        const primary = e.muscles[i];
+        if(isFront.get(primary) == true){
+            front.push(primary);
+        }
+        else if(isFront.get(primary) == false){
+            back.push(primary);
+        }
+        
+    }
+
+    console.log("AHH");
+    console.log(front);
+    console.log(back);
 
     const handleAddExx = () => {
-        console.log("test");
-        axios.post("/exercises", {
-            name: e.name,
-            notes: e.description.replace(/<[^>]+>/g, ''),
-            googleId: user.id
-        })
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err))
+        exercise.name = e.name;
+        exercise.notes = e.description;
+        exercise.workout = workoutID;
+        exercise.googleId = user.id;
+        axios.post("/exercises", exercise)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err))
 
+        handleAddExercise(e)
         handleClose();
     }
 
@@ -70,10 +85,11 @@ const Exx = ({e, user}) => {
             </Modal.Header>
             <Modal.Body>
                 {ReactHtmlParser(e.description)}
-                <div class="imagesFront">
-                    <img src={`https://wger.de/static/images/muscles/main/muscle-${e.muscles[0]}.svg`} />
-                    <img src={`https://wger.de/static/images/muscles/main/muscle-${e.muscles[1]}.svg`} />
-                    
+                <div class="muscleImages">
+                    <img class="musclesFront" style={{backgroundImage: front.map((muscle) => `url(https://wger.de/static/images/muscles/main/muscle-${muscle}.svg)`) + ", url(https://wger.de/static/images/muscles/muscular_system_front.svg)"}
+                                                    } src={`https://wger.de/static/images/muscles/main/muscle-${e.muscles[0]}.svg`} />
+                    <img class="musclesBack" style={{backgroundImage: back.map((muscle) => `url(https://wger.de/static/images/muscles/main/muscle-${muscle}.svg)`) + ", url(https://wger.de/static/images/muscles/muscular_system_back.svg)"}
+                                                    } src={`https://wger.de/static/images/muscles/main/muscle-${e.muscles[0]}.svg`} />
                 </div>
             </Modal.Body>
             <Modal.Footer>
@@ -119,26 +135,19 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
         axios.post("/exercises", exercise)
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
-        //return handleAddExercise(exercise);
+        return handleAddExercise(exercise);
     };
-
-    const handleGetExercises = (category) => {
-        axios.get(`https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=${category}`)
-            .then((res) => setExercises(res.data.results))
-            //.then(() => setLoading(false))
-            .catch((error) => console.log(error))
-    }
 
     return (
         <>
         <div id="selectExerciseCategory">
-            <ExxCategory className="category" title={"Arms"} category={8} user={user}/>
-            <ExxCategory className="category" title={"Legs"} category={9} user={user}/>
-            <ExxCategory className="category" title={"Abs"} category={10} user={user}/>
-            <ExxCategory className="category" title={"Chest"} category={11} user={user}/>
-            <ExxCategory className="category" title={"Back"} category={12} user={user}/>
-            <ExxCategory className="category" title={"Shoulders"} category={13} user={user}/>
-            <ExxCategory className="category" title={"Calves"} category={14} user={user}/>
+            <ExxCategory className="category" title={"Arms"} category={8} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory className="category" title={"Legs"} category={9} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory className="category" title={"Abs"} category={10} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory className="category" title={"Chest"} category={11} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory className="category" title={"Back"} category={12} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory className="category" title={"Shoulders"} category={13} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory className="category" title={"Calves"} category={14} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
         </div>
 
         <div id="form">

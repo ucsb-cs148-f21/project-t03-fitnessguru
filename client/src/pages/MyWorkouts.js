@@ -15,9 +15,6 @@ export default function MyWorkouts() {
   const [workouts, setWorkouts] = useState([]);
   const [showAddWorkout, setShowAddWorkout] = useState(true);
 
-  console.log("USER");
-  console.log(user.id);
-
   const closeWorkoutModal = () => {
     $('#createWorkout').hide();
     
@@ -48,7 +45,6 @@ export default function MyWorkouts() {
               <CreateWorkout closeModal={closeWorkoutModal} splitID={null} user={user}/>
           </div> <br/>
           <h2>My Workouts</h2>
-          console.log(workouts)
           <ListWorkouts workouts={workouts} />
       </Container>
     </Layout>
