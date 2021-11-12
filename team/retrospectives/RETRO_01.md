@@ -62,7 +62,7 @@
     -   Come prepared. Write out the prompts for the retro before the meeting, and follow your pre-made schedule. Getting ideas from retromat.org was helpful.
 
 ## Retro Outcome Assessment
--   w
--   
--  
--   
+* Our retro 1 experiment was to communicate more, both in and out of class.
+* Amount of issues done before the deadline, communication with teamates and TAs.
+* We were able to get several issues done and communication amongst group members and TAs increased. We also communicated more via text and slack during this sprint, and met through a zoom meeting outside of class.
+* Based on the outcome, the team will continue to meet more outside of class and communicate better going forward. The team most definitely benefited from this change in procedures.
