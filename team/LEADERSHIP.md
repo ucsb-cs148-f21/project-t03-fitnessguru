@@ -16,6 +16,8 @@ Wed 10/13 | Michael Curtis | Led first Retro
 
 Fri 10/29 | Martin Cabello | Led second Retro
 
+Mon 11/8  | Kevin Weng | Led scrum meeting
+
 # Roles to Assign:
 
 * Initial Product Owner: Hima Kumar
