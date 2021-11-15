@@ -101,3 +101,6 @@ npm run dev
 ```
 
 The frontend should run on localhost:3000, and the backend should run on localhost:5000.
+
+# Heroku Deployment
+
