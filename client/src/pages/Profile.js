@@ -1,6 +1,6 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
-
+import Button from "react-bootstrap/Button";
 import getUser from "../utils/get-user";
 import Layout from "../components/Layout";
 import ProfileComponent from "../components/Profile";
