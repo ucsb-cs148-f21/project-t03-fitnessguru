@@ -62,8 +62,7 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
 
     const handleAddExx = () => {
         exercise.name = e.name;
-        exercise.notes = e.description;
-        exercise.workout = workoutID;
+        exercise.description = e.description;
         exercise.googleId = user.id;
         axios.post("/exercises", exercise)
             .then((res) => console.log(res))
