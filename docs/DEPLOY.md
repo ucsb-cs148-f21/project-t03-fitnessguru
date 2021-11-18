@@ -104,3 +104,26 @@ The frontend should run on localhost:3000, and the backend should run on localho
 
 # Heroku Deployment
 
+To deploy the app on Heroku, please visit this link: https://www.heroku.com/ and follow these steps after signing in or creating an account:
+
+* Create new app
+* Go to Settings
+* Under Config Vars, click Reveal Config Vars
+* Add 2 Config Vars:
+1) KEY: MONGO_URI
+VALUE: \<insert MONGO_URI here>
+2) KEY: REACT_APP_AUTH_CLIENT_ID
+VALUE: \<insert CLIENT_ID here>
+
+* Click Open app and copy the URL of the app
+* Go to this link: https://console.cloud.google.com/apis/credentials and find the Client ID for your app
+* Add the URL to Authorized JavaScript origins and Authorized redirect URIs for your Client ID
+* Click Save
+
+* Go back to the app on Heroku
+* Go to Deploy
+* Under Deployment method, click GitHub
+* Connect to GitHub
+* Under Manual deploy, Choose a branch to deploy
+* Click Deploy Branch
+* When the deployment is finished, click Open app to view your deployed app
