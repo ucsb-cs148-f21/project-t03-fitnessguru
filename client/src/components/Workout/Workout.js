@@ -10,23 +10,7 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal"
 
 
-$('body').on('click', '[data-editable]', function(){
-  
-    var $el = $(this);
-                
-    var $input = $('<input/>').val( $el.text() );
-    $el.replaceWith( $input );
-    
-    var save = function(){
-      var $p = $('<p data-editable />').text( $input.val() );
-      $input.replaceWith( $p );
-    };
-
-    $input.one('blur', save).focus();
-    
-});
-
-const Workout = ({workouts, setWorkouts, w, user}) => {
+const Workout = ({ inSplit, workouts, setWorkouts, w, user}) => {
 
     const [exercises, setExercises] = useState(w.exercises);
     const [showCreateExercise, setShowCreateExercise] = useState(false);
@@ -178,7 +162,7 @@ const Workout = ({workouts, setWorkouts, w, user}) => {
           </div>
           <div id="exerciseList">
             {exercises.map((item)=>{
-                return <Exercise removeExercise={removeExercise} editExercises={editExercises} e={item} />
+                return <Exercise inSplit={inSplit} removeExercise={removeExercise} editExercises={editExercises} e={item} />
             })}
           </div>
             

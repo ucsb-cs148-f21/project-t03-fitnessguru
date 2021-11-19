@@ -7,6 +7,23 @@ import Button from "react-bootstrap/Button";
 import ReactHtmlParser from 'react-html-parser';
 import axios from "axios";
 
+
+const ExerciseModalNoEdit = ({ show, handleClose, e}) => {
+    return(
+      
+    <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title id="exerciseTitle">{e.name}</Modal.Title>
+        </Modal.Header>
+    <Modal.Body id="exerciseDesc">{ReactHtmlParser(e.notes)}</Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>Close</Button>
+        </Modal.Footer>
+      </Modal>
+      
+    )
+}
+
 const ExerciseModal = ({ editExercises, show, handleClose, e}) => {
     const [update, setUpdate] = useState(false);
 
@@ -23,7 +40,8 @@ const ExerciseModal = ({ editExercises, show, handleClose, e}) => {
 
     async function updateWorkout() {
     
-        let res = await axios.get("/workouts/" + e.googleId + '/' + e.workout);
+        let res = await axios.get("/workouts/" + e.googleId + '/' + e.workout)
+            .catch((err) => console.log(err))
         let workout = res.data[0];
         let exerciseIndex = workout.exercises.findIndex((exx) => exx._id == e._id);
         workout.exercises[exerciseIndex].name = document.getElementById("updateTitle").value;
@@ -64,7 +82,7 @@ const ExerciseModal = ({ editExercises, show, handleClose, e}) => {
     )
 }
 // Component takes in an exercise object e and displays it.
-const Exercise = ({ removeExercise, editExercises, e }) => {
+const Exercise = ({ inSplit, removeExercise, editExercises, e }) => {
 
     const [show, setShow] = useState(false);
 
@@ -88,10 +106,12 @@ const Exercise = ({ removeExercise, editExercises, e }) => {
               <button class="btn btn-danger btn-block" className="deleteExercise" onClick={handleDelete}>x</button>
             </Card.Body>
         </button>
-        <ExerciseModal id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>
+        {!inSplit && <ExerciseModal id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>}
+        {inSplit && <ExerciseModalNoEdit id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>}
         </div>
     );
 };
+
 
 export default Exercise;
 

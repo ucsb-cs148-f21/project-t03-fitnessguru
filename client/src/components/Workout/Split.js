@@ -19,7 +19,7 @@ function MyVerticallyCenteredModal(props) {
             centered
         >
             
-               <Workout workouts={workouts} setWorkouts={setWorkouts} id="displayedWorkout" w={props.w} user={props.user} />
+        <Workout inSplit={1} workouts={workouts} setWorkouts={setWorkouts} id="displayedWorkout" w={props.w} user={props.user} />
         
             
         </Modal>
@@ -49,9 +49,10 @@ const Split = ({ split, user }) => {
 
     return (
         <div className="splitItem">
-            <Card id="splitCard" style={{ width: "18rem" }}>
+            <Card id="splitCard" style={{ width: "20rem" }}>
                 <Card.Header id="splitName">
                     <div className="card-top">
+                        <div id="top">
                         <div>
                             <div id="title">{split.name}</div>
                         </div>
@@ -68,21 +69,23 @@ const Split = ({ split, user }) => {
                                 Update
                             </button>
                         </div>
-
+                        
+                        <div>
                         <form
                             action={"/splits/delete/" + split._id}
                             method="POST"
                             class="mb-4"
                         >
                             <input
-                                id="delete"
+                                id="deleteSplit"
                                 type="submit"
                                 value="Delete"
                                 class="btn btn-danger"
                             />
                         </form>
+                        </div>
                     </div>
-
+                </div>
                     <div id="notes">{split.notes}</div>
 
                     <div
@@ -173,6 +176,7 @@ const Split = ({ split, user }) => {
             </Card>
 
             <MyVerticallyCenteredModal
+                id="workoutModal"
                 w={selectedWorkout}
                 show={modalShow}
                 split={split}
