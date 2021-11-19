@@ -143,10 +143,11 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
             <ExxCategory className="category" title={"Back"} category={12} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
             <ExxCategory className="category" title={"Shoulders"} category={13} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
             <ExxCategory className="category" title={"Calves"} category={14} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            {/*<Button class="btn btn-success" onClick={() => setCustom(true)}>Custom</Button>*/}
         </div>
 
         <div id="form">
-            <Button onClick={() => setCustom(true)}>Custom</Button>
+            <br/>
             {custom && <><Form className="formBodyExercise">
                 <Form.Group
                     className="mb-3"

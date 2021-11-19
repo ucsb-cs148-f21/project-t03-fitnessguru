@@ -21,7 +21,7 @@ export default function Exercise() {
                 data-toggle="modal"
                 data-target="#addExercise"
             >
-                Add Exercise
+                Custom
             </button>
             <br />
             <div

@@ -7,6 +7,7 @@ import Layout from "../components/Layout";
 import Exercise from "../components/Exercise";
 import CreateExercise from "../components/Workout/CreateExercise";
 import Dropdown from "react-bootstrap/Dropdown";
+import Button from "react-bootstrap/Button";
 import axios from "axios";
 import "./MyExercises.css";
 
@@ -37,48 +38,13 @@ const ExerciseCatDropDown = ({exercises, title}) => {
 
 export default function MyExercises() {
   const user = getUser();
-  const [arms,setArms] = useState();
-  const [legs, setLegs] = useState();
-  const [abs, setAbs] = useState();
-  const [chest,setChest] = useState();
-  const [back, setBack] = useState();
-  const [shoulders,setShoulders] = useState();
-  const [calves, setCalves] = useState();
-  const [loading, setLoading] = useState(true);
-/*
-  axios.get("https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=8")
-      .then((res) => setArms(res.data.results))
-      .then(() => setLoading(false))
-      .catch((error) => console.log(error))
+  const [show, setShow] = useState(false);
 
-  axios.get("https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=9")
-      .then((res) => setLegs(res.data.results))
-      .catch((error) => console.log(error))
-
-  axios.get("https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=10")
-      .then((res) => setAbs(res.data.results))
-      .catch((error) => console.log(error))
-
-  axios.get("https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=11")
-      .then((res) => setChest(res.data.results))
-      .catch((error) => console.log(error))
-
-  axios.get("https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=12")
-      .then((res) => setBack(res.data.results))
-      .catch((error) => console.log(error))
-
-  axios.get("https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=13")
-      .then((res) => setShoulders(res.data.results))
-      .catch((error) => console.log(error))
-
-  axios.get("https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=14")
-      .then((res) => setCalves(res.data.results))
-      .catch((error) => console.log(error))
-*/
   return (
     <Layout user={user}>
       <Container>
-        <CreateExercise user={user}/>
+        {!show && <Button onClick={() => setShow(true)}>Add Exercise</Button>}
+        {show && <CreateExercise user={user}/>}
         <Exercise />    
         
       </Container>
