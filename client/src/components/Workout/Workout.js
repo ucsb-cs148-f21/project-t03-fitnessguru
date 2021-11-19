@@ -46,6 +46,12 @@ const Workout = ({workouts, setWorkouts, w, user}) => {
         axios.post("/workouts/put/" + w._id, {exercises: w.exercises})
             .then(res => console.log(res))
             .catch(err => console.log(err))
+
+        if(w.split){
+            axios.post("/splits/put/" + w.split, {workouts: newWorkouts})
+                .then(res => console.log(res))
+                .catch(err => console.log(err))
+        }
     }
 
     const removeExercise = (exx) => {
@@ -60,9 +66,6 @@ const Workout = ({workouts, setWorkouts, w, user}) => {
             es.splice(exxIndex, 1);
         }
         editExercises(es);
-        
-
-        return(1);
     }
 
     const handleAddExercise = (exercise) => {

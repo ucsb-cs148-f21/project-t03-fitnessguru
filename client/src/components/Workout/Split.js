@@ -6,11 +6,10 @@ import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 import Modal from "react-bootstrap/Modal";
 import Exercise from "./Exercise";
+import Workout from "./Workout";
 
 function MyVerticallyCenteredModal(props) {
-    const handleUpdateWorkout = () => {
-
-    }
+    const [workouts, setWorkouts] = useState(props.split.workouts)
 
     return (
         <Modal
@@ -19,19 +18,10 @@ function MyVerticallyCenteredModal(props) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <Modal.Header closeButton>
-               <input type="text" defaultValue={props.w.name}/>
-               
-            </Modal.Header>
-            <Modal.Body className="workoutGrid">
-                {props.w.exercises.map((item) => {
-                    return <Exercise e={item} />;
-                })}
-            </Modal.Body>
-            <Modal.Footer>
-                <Button id="update" onClick={handleUpdateWorkout}>Update</Button>
-                <Button onClick={props.onHide}>Close</Button>
-            </Modal.Footer>
+            
+               <Workout workouts={workouts} setWorkouts={setWorkouts} id="displayedWorkout" w={props.w} user={props.user} />
+        
+            
         </Modal>
     );
 }
@@ -185,7 +175,9 @@ const Split = ({ split, user }) => {
             <MyVerticallyCenteredModal
                 w={selectedWorkout}
                 show={modalShow}
+                split={split}
                 onHide={() => setModalShow(false)}
+                user={user}
             />
         </div>
     );
