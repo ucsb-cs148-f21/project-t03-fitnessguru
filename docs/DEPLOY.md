@@ -1,5 +1,7 @@
 # Installation and Deployment
 
+Check out our team's current Heroku deployment here: https://fitness-guru-main.herokuapp.com/
+
 ## Deployment Video
 
 Check out the deployment video here:
@@ -118,6 +120,8 @@ To deploy the app on Heroku, please visit this link: https://www.heroku.com/ and
 VALUE: \<insert MONGO_URI here>
 2) KEY: REACT_APP_AUTH_CLIENT_ID
 VALUE: \<insert CLIENT_ID here>
+
+Note that you should create a new CLIENT_ID for the Heroku deployment, so revisit the earlier instructions.
 
 * Click Open app and copy the URL of the app
 * Go to this link: https://console.cloud.google.com/apis/credentials and find the Client ID for your app
