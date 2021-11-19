@@ -3,6 +3,10 @@
 ## Overview
 [FitnessGuru Design Diagram.pdf](https://github.com/ucsb-cs148-f21/project-t03-fitnessguru/files/7529966/FitnessGuru.Design.Diagram.pdf)
 
+## User Flow
+[User Flow.pdf](https://github.com/ucsb-cs148-f21/project-t03-fitnessguru/files/7572380/User.Flow.pdf)
+
+
 ## Specifics
 - Pages: Home, Profile, MyExercises, MyWorkouts, MySplits, MyWeights, Progress
 
