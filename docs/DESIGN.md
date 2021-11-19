@@ -10,7 +10,7 @@
 
 - Creating pages for users to create lists of exercises, workouts, and splits (https://github.com/ucsb-cs148-f21/project-t03-fitnessguru/blob/main/team/sprint02/sprint02.md)
 - Allow for users to select from pre-made exercises to add to their exercise list (https://github.com/ucsb-cs148-f21/project-t03-fitnessguru/blob/main/team/sprint03/sprint03.md)
-- Allow for users to record their weights and reps for specific exercises, and check their progress by being able to view charts that display their logged data (https://github.com/ucsb-cs148-f21/project-t03-fitnessguru/blob/main/team/sprint03/sprint03.md)
+- Allow for users to record their weights and reps for specific exercises and check their progress by being able to view charts that display their logged data (https://github.com/ucsb-cs148-f21/project-t03-fitnessguru/blob/main/team/sprint03/sprint03.md)
 - 
 ## Specifics
 - Pages: Home, Profile, MyExercises, MyWorkouts, MySplits, MyWeights, Progress
