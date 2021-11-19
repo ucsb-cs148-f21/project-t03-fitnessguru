@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import getUser from "../utils/get-user";
 import "./contai.css";
+import {Button} from "react-bootstrap";
 export default function Exercise() {
     const [profile, setProfile] = useState({});
 
@@ -20,7 +21,8 @@ export default function Exercise() {
                     class="btn btn-primary btn-block"
                     data-toggle="modal"
                     data-target="#updateProfile"
-                    className="bt2"
+                    class = "btn btn-outline-info"
+                    className = "bt2"
                 >
                     Update Profile
                 </button>
@@ -267,40 +269,44 @@ export default function Exercise() {
                                 </div>
                             </div>
                             <br />
-                            <ul className="inf">
-                                <li>
+                            <div className = "inf">
+                                <div class = "card mt-3">
+                            <ul class = "list-group list-group-flush">
+                                <li class = "list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                     {" "}
-                                    <b> Name: </b> {user.fullName}{" "}
+                                    <h6 class = "mb-0"> Name: </h6> <span class = "text-secondary">{user.fullName}{" "} </span>
                                 </li>
                                 <br />
-                                <li className="item">
+                                <li  class = "list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                     {" "}
-                                    <b> Date of Birth: </b>{" "}
-                                    {profile.dateOfBirth}{" "}
+                                    <h6 class = "mb-0"> Date of Birth: </h6>{" "}
+                                    <span class = "text-secondary">{profile.dateOfBirth}{" "} </span>
                                 </li>
                                 <br />
-                                <li className="item">
+                                <li  class = "list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                     {" "}
-                                    <b> Height: </b> {profile.heightFeet} Feet{" "}
-                                    {profile.heightInches} Inches{" "}
+                                    <h6 class = "mb-0"> Height: </h6> <span class = "text-secondary">{profile.heightFeet} Feet{" "}
+                                    {profile.heightInches} Inches{" "} </span>
                                 </li>
                                 <br />
-                                <li className="item">
+                                <li class = "list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                     {" "}
-                                    <b> Weight: </b> {profile.weight} Pounds
+                                    <h6 class = "mb-0"> Weight: </h6> <span class = "text-secondary"> {profile.weight} Pounds </span>
                                 </li>
                                 <br />
-                                <li className="item">
+                                <li class = "list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                     {" "}
-                                    <b> Notes: </b> {profile.notes}{" "}
+                                    <h6 class = "mb-0"> Notes: </h6> <span class = "text-secondary"> {profile.notes}{" "} </span>
                                 </li>
                                 <br />
-                                <li className="item">
+                                <li class = "list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                     {" "}
-                                    <b> Joined: </b>{" "}
-                                    {profile.createdAt.split("T").at(0)}{" "}
+                                    <h6 class = "mb-0"> Joined: </h6>{" "}
+                                    <span class = "text-secondary"> {profile.createdAt.split("T").at(0)}{" "} </span>
                                 </li>
                             </ul>
+                            </div>
+                        </div>
                         </div>
                     ))}
                 </div>
