@@ -4,6 +4,10 @@
 
 Check out the deployment video here:
 
+https://youtu.be/-PoU0Acx9YU
+
+At 8:42, skip to 10:44 where the Heroku build completes.
+
 ## Prerequisites
 
 -   Computer with Internet Access
