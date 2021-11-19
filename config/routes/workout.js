@@ -8,6 +8,11 @@ router.get("/:googleId", async (req, res) => {
     res.send(workouts);
 });
 
+router.get("/:googleId/:id", async (req, res) => {
+  const workouts = await Workout.find({ googleId: req.params.googleId, _id: req.params.id });
+  res.send(workouts);
+});
+
 // Post
 router.post("/", async (req, res) => {
     result = await Workout.create(req.body);

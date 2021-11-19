@@ -5,46 +5,95 @@ import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import ReactHtmlParser from 'react-html-parser';
+import axios from "axios";
 
-const ExerciseModal = ({show, handleOpen, handleClose, e}) => {
+const ExerciseModal = ({ editExercises, show, handleClose, e}) => {
+    const [update, setUpdate] = useState(false);
+
+    const handleEditExercise = () => {
+      setUpdate(true);
+
+      let title = document.querySelector('#exerciseTitle');
+      title.outerHTML = `<textarea id="updateTitle">` + title.innerHTML + '</textarea>';
+      
+      let desc = document.querySelector('#exerciseDesc');
+      console.log(desc.innerHTML);
+      desc.outerHTML = `<textarea id="updateDesc"}>` + desc.innerHTML+ '</textarea>';
+    }
+
+    async function updateWorkout() {
+    
+        let res = await axios.get("/workouts/" + e.googleId + '/' + e.workout);
+        let workout = res.data[0];
+        let exerciseIndex = workout.exercises.findIndex((exx) => exx._id == e._id);
+        workout.exercises[exerciseIndex].name = document.getElementById("updateTitle").value;
+        workout.exercises[exerciseIndex].notes = document.getElementById("updateDesc").value;
+        editExercises(workout.exercises);
+        axios.post("/workouts/put/" + e.workout, {exercises: workout.exercises})
+            .then(res => console.log(res))
+            .catch(err => console.log(err))
+    }
+
+    const handleSaveEdits = () => {
+        if(e.workout){
+            updateWorkout();
+        }
+      axios.post("/exercises/put/" + e._id, {name: document.getElementById("updateTitle").value, notes: document.getElementById("updateDesc").value}) 
+        .then(res => console.log(res))
+        .catch(err => console.log("/exercises/put/" + e._id + err))
+    
+        setUpdate(false);
+      handleClose();
+    }
+
+    
     return(
+      
     <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>{e.name}</Modal.Title>
+          <Modal.Title id="exerciseTitle">{e.name}</Modal.Title>
         </Modal.Header>
-        <Modal.Body>{ReactHtmlParser(e.description)}</Modal.Body>
+    <Modal.Body id="exerciseDesc">{ReactHtmlParser(e.notes)}</Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
+          {!update && <Button variant="primary" onClick={handleEditExercise}>Edit</Button>}
+          {update && <Button variant="primary" onClick={handleSaveEdits}>Save</Button>}
+          <Button variant="secondary" onClick={handleClose}>Close</Button>
         </Modal.Footer>
       </Modal>
+      
     )
 }
 // Component takes in an exercise object e and displays it.
-const Exercise = ({ e }) => {
+const Exercise = ({ removeExercise, editExercises, e }) => {
 
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
-    const handleOpen = () => setShow(true);
+
+    const handleOpen = (event) => {
+      event.preventDefault();
+      
+      setShow(true);
+    }
+
+    const handleDelete = () => {
+        removeExercise(e);
+    }
 
     return (
-        <>
+        <div id="exercise">
         <button className="exerciseBody" onClick={handleOpen}>
             <Card.Body>
-            <Card.Title className="exerciseName">{e.name}</Card.Title>
-            {/*<Card.Subtitle style={{ color: "#80D6F0" }} className="setsReps">
-                {e.sets} sets x {e.reps} reps of {e.weight}lbs
-    </Card.Subtitle>*/}
-        </Card.Body>
+              <Card.Title className="exerciseName">{e.name}</Card.Title>
+              <button class="btn btn-danger btn-block" className="deleteExercise" onClick={handleDelete}>x</button>
+            </Card.Body>
         </button>
-        <ExerciseModal show={show} handleOpen={handleOpen} handleClose={handleClose} e={e}/>
-        </>
+        <ExerciseModal id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>
+        </div>
     );
 };
 
 export default Exercise;
+
+
+

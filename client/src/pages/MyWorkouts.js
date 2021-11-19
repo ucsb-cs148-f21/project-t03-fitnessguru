@@ -29,7 +29,7 @@ export default function MyWorkouts() {
     fetch(`/workouts/${user.id}`)
     .then(res => res.json())
     .then(workouts => setWorkouts(workouts))
-    .catch(error => console.log("FUCK"))
+    .catch(error => console.log(error))
   }, [user.id])
 
   console.log(workouts);
@@ -45,7 +45,7 @@ export default function MyWorkouts() {
               <CreateWorkout closeModal={closeWorkoutModal} splitID={null} user={user}/>
           </div> <br/>
           <h2>My Workouts</h2>
-          <ListWorkouts workouts={workouts} />
+          <ListWorkouts user={user} setWorkouts={setWorkouts} workouts={workouts} />
       </Container>
     </Layout>
   );

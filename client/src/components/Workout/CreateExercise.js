@@ -6,12 +6,16 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import DropdownButton from "react-bootstrap/DropdownButton";
-import Dropdown from "react-bootstrap/Dropdown";
 import axios from "axios";
-import Exercise from "./Exercise";
 import ReactHtmlParser from 'react-html-parser';
 import "./CreateExercise.css";
 
+
+function objectID() {
+    const ObjectId = (m = Math, d = Date, h = 16, s = s => m.floor(s).toString(h)) =>
+    s(d.now() / 1000) + ' '.repeat(h).replace(/./g, () => s(m.random() * h));
+    return(ObjectId);
+}
 
 const ExxCategory = ({title, category, user, workoutID, handleAddExercise}) => {
     const [exercises, setExercises] = useState();
@@ -35,10 +39,10 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
 
     let exercise = {};
     const [show, setShow] = useState(false);
+    const [exxID, setExxID] = useState(objectID())
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    const [muscles, setMuscles] = useState();
     let front = [];
     let back = [];
   
@@ -56,21 +60,21 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
         
     }
 
-    console.log("AHH");
-    console.log(front);
-    console.log(back);
-
     const handleAddExx = () => {
         exercise.name = e.name;
         exercise.notes = e.description;
         exercise.workout = workoutID;
         exercise.googleId = user.id;
+        exercise._id = exxID;
+        console.log("NEW EXERCISE: ");
+        console.log(exercise)
+        console.log(exercise._id);
         axios.post("/exercises", exercise)
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
 
         if(handleAddExercise)
-            handleAddExercise(e)
+            handleAddExercise(exercise)
         handleClose();
     }
 
@@ -106,27 +110,16 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
   );
 
 }
-function objectID() {
-    const ObjectId = (
-        m = Math,
-        d = Date,
-        h = 16,
-        s = (s) => m.floor(s).toString(h),
-    ) =>
-        s(d.now() / 1000) +
-        " ".repeat(h).replace(/./g, () => s(m.random() * h));
-    return ObjectId;
-}
 // component takes in handler function that handles where to add the exercise to
 const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
     let exercise = {};
-    const [exercises, setExercises] = useState();
     const [custom, setCustom] = useState(false);
+    const [exxID, setExxID] = useState(objectID())
 
     const handleCreateExerciseObject = () => {
         setCustom(false);
         exercise.workout = workoutID;
-        exercise._id = objectID();
+        exercise._id = exxID;
         exercise.googleID = user.id;
         exercise.name = document.getElementById("exerciseName").value;
         exercise.sets = document.getElementById("sets").value;

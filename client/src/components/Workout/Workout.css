@@ -9,6 +9,10 @@
     height: auto;
 }
 
+.modal-dialog{
+  color: black;
+}
+
 
 #workoutHead {
   display: grid;
@@ -18,4 +22,19 @@
 .workoutName {
   font-size: 28px;
   font-weight: bold;
+}
+
+#delete {
+  position: relative;
+  top: -37px;
+}
+
+#exerciseList {
+  margin-top: -40px;
+}
+
+#addExerciseButton {
+  position: relative;
+  bottom: 50px;
+  left: 60px;
 }
