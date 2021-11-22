@@ -3,7 +3,7 @@ import Layout from "../components/Layout";
 import getUser from "../utils/get-user";
 import Container from "react-bootstrap/Container";
 import CreateSplit from "../components/Workout/CreateSplit";
-import ListSplits from "../components/Workout/ListSplits";
+import ListWorkouts from "../components/Workout/ListWorkouts";
 
 const WorkoutPage = () => {
     const user = getUser();

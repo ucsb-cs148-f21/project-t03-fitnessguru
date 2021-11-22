@@ -1,22 +1,17 @@
 import React from "react";
+import {useState, useEffect} from "react";
 import Workout from "./Workout";
 import "./ListWorkouts.css";
 
-const WorkoutList = ({ workouts }) => {
-    return (
-        <div className="workoutList">
-            <div className="workouts">
-                {workouts.map((w) => {
-                    return <Workout className="w" w={w} />;
-                })}
-            </div>
-        </div>
-    );
-};
+const ListWorkouts = ({ setWorkouts, workouts, user }) => {
+  return (
+    <div id="workoutList">
+      {workouts.map((workout=>{
+        return <Workout user={user} workouts={workouts} setWorkouts={setWorkouts} className="workout" w={workout} />
+      }))}
+    </div>
+  )
 
-const ListWorkouts = ({ workouts }) => {
-    const isEmpty = workouts.length < 1;
-    return <>{!isEmpty && <WorkoutList workouts={workouts} />}</>;
 };
 
 export default ListWorkouts;

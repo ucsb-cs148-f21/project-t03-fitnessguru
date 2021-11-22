@@ -103,3 +103,4 @@ const CreateWorkout = ({closeModal,splitID, handleAddWorkout, user}) => {
   }
 
   export default CreateWorkout;
+  

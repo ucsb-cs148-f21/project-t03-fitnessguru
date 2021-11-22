@@ -6,8 +6,11 @@ import Button from "react-bootstrap/Button";
 import ListGroup from "react-bootstrap/ListGroup";
 import Modal from "react-bootstrap/Modal";
 import Exercise from "./Exercise";
+import Workout from "./Workout";
 
 function MyVerticallyCenteredModal(props) {
+    const [workouts, setWorkouts] = useState(props.split.workouts)
+
     return (
         <Modal
             {...props}
@@ -15,19 +18,10 @@ function MyVerticallyCenteredModal(props) {
             aria-labelledby="contained-modal-title-vcenter"
             centered
         >
-            <Modal.Header closeButton>
-                <Modal.Title id="contained-modal-title-vcenter">
-                    {props.w.name}
-                </Modal.Title>
-            </Modal.Header>
-            <Modal.Body className="workoutGrid">
-                {props.w.exercises.map((item) => {
-                    return <Exercise e={item} />;
-                })}
-            </Modal.Body>
-            <Modal.Footer>
-                <Button onClick={props.onHide}>Close</Button>
-            </Modal.Footer>
+            
+        <Workout inSplit={1} workouts={workouts} setWorkouts={setWorkouts} id="displayedWorkout" w={props.w} user={props.user} />
+        
+            
         </Modal>
     );
 }
@@ -55,35 +49,48 @@ const Split = ({ split, user }) => {
 
     return (
         <div className="splitItem">
-            <Card id="splitCard" style={{ width: "18rem" }}>
+            <Card id="splitCard" style={{ width: "20rem" }}>
                 <Card.Header id="splitName">
                     <div className="card-top">
+                        <div id="top">
                         <div>
                             <div id="title">{split.name}</div>
                         </div>
 
+                        <div>
+                            <button
+                                type="button"
+                                class="btn btn-primary btn-block"
+                                data-toggle="modal"
+                                data-target={
+                                    "#updateSplit" + split._id
+                                }
+                            >
+                                Update
+                            </button>
+                        </div>
+                        
+                        <div>
                         <form
                             action={"/splits/delete/" + split._id}
                             method="POST"
                             class="mb-4"
                         >
                             <input
-                                id="delete"
+                                id="deleteSplit"
                                 type="submit"
                                 value="Delete"
                                 class="btn btn-danger"
                             />
                         </form>
-                        {/*}
-                  <button id="update" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#updateSplit">
-                    Update
-    </button>*/}
+                        </div>
                     </div>
+                </div>
                     <div id="notes">{split.notes}</div>
 
                     <div
                         class="modal fade"
-                        id="updateSplit"
+                        id={"updateSplit" + split._id}
                         tabindex="-1"
                         role="dialog"
                         aria-labelledby="exampleModalLabel"
@@ -96,7 +103,7 @@ const Split = ({ split, user }) => {
                                         class="modal-title"
                                         id="exampleModalLabel"
                                     >
-                                        Update Split
+                                        Update {split.name}
                                     </h5>
                                     <button
                                         type="button"
@@ -113,6 +120,15 @@ const Split = ({ split, user }) => {
                                     class="mb-4"
                                 >
                                     <div class="modal-body">
+                                        <div class="form-group">
+                                            <label for="notes">Name</label>
+                                            <input
+                                                type="text"
+                                                name="name"
+                                                defaultValue={split.name}
+                                                class="form-control"
+                                            />
+                                        </div>
                                         <br />
                                         <div class="form-group">
                                             <label for="notes">Notes</label>
@@ -135,7 +151,7 @@ const Split = ({ split, user }) => {
                                         </button>
                                         <input
                                             type="submit"
-                                            value="Update Exercise"
+                                            value="Update Split"
                                             class="btn btn-primary btn-block"
                                         />
                                     </div>
@@ -160,9 +176,12 @@ const Split = ({ split, user }) => {
             </Card>
 
             <MyVerticallyCenteredModal
+                id="workoutModal"
                 w={selectedWorkout}
                 show={modalShow}
+                split={split}
                 onHide={() => setModalShow(false)}
+                user={user}
             />
         </div>
     );
