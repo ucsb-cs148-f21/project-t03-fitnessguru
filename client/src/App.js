@@ -12,8 +12,8 @@ import MyExercises from "./pages/MyExercises";
 import MySplits from "./pages/MySplits";
 import MyWeights from "./pages/MyWeights";
 import ProgressPage from "./pages/ProgressPage";
-
 import WorkoutPage from "./pages/WorkoutPage";
+import SocialPage from "./pages/SocialPage";
 
 export default function App() {
     const [isSignedIn, setIsSignedIn] = useState(null);
@@ -81,6 +81,11 @@ export default function App() {
                         exact
                         path="/progress"
                         component={ProgressPage}
+                    />
+                    <PrivateRoute
+                        exact
+                        path="/social"
+                        component={SocialPage}
                     />
                     <Route path="/" component={PageNotFound} />
                 </Switch>
