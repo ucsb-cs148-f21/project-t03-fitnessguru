@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import getUser from "../utils/get-user";
+import compare from "../utils/compare";
 import { Table } from "reactstrap";
 import ReactHtmlParser from 'react-html-parser';
 
@@ -7,18 +8,6 @@ export default function Exercise() {
     const [exercises, setExercises] = useState([]);
 
     const user = getUser();
-
-    function compare(a, b){
-        const aName = a.name.toUpperCase()
-        const bName = b.name.toUpperCase()
-        if(aName < bName){
-            return -1
-        }else if(aName > bName){
-            return 1
-        }else{
-            return 0
-        }
-    }
 
     useEffect(() => {
         fetch(`/exercises/${user.id}`)

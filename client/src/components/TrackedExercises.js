@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import getUser from "../utils/get-user";
 import Repetitions from "./Repetitions";
+import compare from "../utils/compare"
 
 export default function Weights() {
     const [exercises, setExercises] = useState([]);
@@ -18,6 +19,8 @@ export default function Weights() {
             .then((res) => res.json())
             .then((exercises) => setExercises(exercises));
     }, [user.id]);
+
+    exercises.sort(compare)
 
     return (
         <div>

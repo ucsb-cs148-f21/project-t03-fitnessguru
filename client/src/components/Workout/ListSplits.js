@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import Split from "./Split";
 import "./ListSplits.css";
 import { SplitButton } from "react-bootstrap";
+import compare from "../../utils/compare"
 
 export default function ListSplits({ user }) {
     const [splits, setSplits] = useState([]);
@@ -12,18 +13,6 @@ export default function ListSplits({ user }) {
             .then((res) => res.json())
             .then((splits) => setSplits(splits));
     }, [user.id]);
-
-    function compare(a, b){
-        const aName = a.name.toUpperCase()
-        const bName = b.name.toUpperCase()
-        if(aName < bName){
-            return -1
-        }else if(aName > bName){
-            return 1
-        }else{
-            return 0
-        }
-    }
 
     splits.sort(compare)
 
