@@ -6,8 +6,7 @@ import { DropdownButton, Dropdown } from 'react-bootstrap';
 
 export default function Weights() {
     const [trackedExercises, setTrackedExercises] = useState([]);
-    const [exercises, setExercises] = useState([]);
-    const [selectedExercise, setSelectedExercise] = useState('')
+    let [exercises, setExercises] = useState([]);
 
     const user = getUser();
 
@@ -28,6 +27,14 @@ export default function Weights() {
 
     exercises.sort(compare)
     trackedExercises.sort(compare)
+    exercises = exercises.filter((exercise) => {
+        for(let i = 0; i < trackedExercises.length; i++){
+            if(trackedExercises[i].name === exercise.name){
+                return false
+            }
+        }
+        return true
+    })
 
     return (
         <div>
