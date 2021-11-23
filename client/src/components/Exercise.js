@@ -122,10 +122,6 @@ export default function Exercise() {
                     {exercises.map((exercise) => (
                         <tr style={{paddingBottom:'0px'}}>
                             <td className = "tableentry">{exercise.name}</td>
-                            <td>{exercise.sets}</td>
-                            <td>{exercise.repetitions}</td>
-                            <td>{exercise.weight}</td>
-                            <td>{exercise.name}</td>
                             <td>{ReactHtmlParser(exercise.description)}</td>
                             <td>{exercise.notes}</td>
                             <td>
