@@ -30,6 +30,10 @@ const ExerciseSchema = new mongoose.Schema({
         type: String,
         require: false,
     },
+    description: {
+        type: String,
+        require: false,
+    }
 });
 
 module.exports = mongoose.model("Exercise", ExerciseSchema);

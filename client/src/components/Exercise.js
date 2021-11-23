@@ -9,7 +9,6 @@ export default function Exercise() {
     const [exercises, setExercises] = useState([]);
 
     const user = getUser();
-
     useEffect(() => {
         fetch(`/exercises/${user.id}`)
             .then((res) => res.json())
@@ -123,7 +122,7 @@ export default function Exercise() {
                         <tr style={{paddingBottom:'0px'}}>
                             <td className = "tableentry">{exercise.name}</td>
                             <td>{ReactHtmlParser(exercise.description)}</td>
-                            <td>{exercise.notes}</td>
+                            <td>{ReactHtmlParser(exercise.notes)}</td>
                             <td>
                                 <div>
                                     <button
