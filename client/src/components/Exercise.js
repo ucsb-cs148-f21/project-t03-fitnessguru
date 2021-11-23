@@ -125,7 +125,6 @@ export default function Exercise() {
                             <td>{exercise.sets}</td>
                             <td>{exercise.repetitions}</td>
                             <td>{exercise.weight}</td>
-                        <tr>
                             <td>{exercise.name}</td>
                             <td>{ReactHtmlParser(exercise.description)}</td>
                             <td>{exercise.notes}</td>
