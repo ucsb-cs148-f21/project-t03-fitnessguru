@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import getUser from "../utils/get-user";
+import compare from "../utils/compare";
 import { Table } from "reactstrap";
 import "./contai.css";
+import ReactHtmlParser from 'react-html-parser';
 
 export default function Exercise() {
     const [exercises, setExercises] = useState([]);
@@ -14,6 +16,8 @@ export default function Exercise() {
             .then((exercises) => setExercises(exercises));
     }, [user.id]);
 
+    exercises.sort(compare)
+
     return (
         <div>
             <button
@@ -22,7 +26,7 @@ export default function Exercise() {
                 data-toggle="modal"
                 data-target="#addExercise"
             >
-                Custom
+                Add Custom Exercise
             </button>
             <br />
             <div
@@ -37,7 +41,7 @@ export default function Exercise() {
                     <div class="modal-content">
                         <div class="modal-header">
                             <h5 class="modal-title" id="exampleModalLabel">
-                                Add Exercise
+                                Add Custom Exercise
                             </h5>
                             <button
                                 type="button"
@@ -68,28 +72,10 @@ export default function Exercise() {
                                 </div>
                                 <br />
                                 <div class="form-group">
-                                    <label for="sets">Sets</label>
+                                    <label for="description">Description</label>
                                     <input
-                                        type="number"
-                                        name="sets"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <br />
-                                <div class="form-group">
-                                    <label for="repetitions">Repetitions</label>
-                                    <input
-                                        type="number"
-                                        name="repetitions"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <br />
-                                <div class="form-group">
-                                    <label for="weight">Weight</label>
-                                    <input
-                                        type="number"
-                                        name="weight"
+                                        type="text"
+                                        name="description"
                                         class="form-control"
                                     />
                                 </div>
@@ -114,7 +100,7 @@ export default function Exercise() {
                                 </button>
                                 <input
                                     type="submit"
-                                    value="Save Exercise"
+                                    value="Save Custom Exercise"
                                     class="btn btn-primary btn-block"
                                 />
                             </div>
@@ -127,9 +113,7 @@ export default function Exercise() {
                 <thead>
                     <tr>
                         <th>Exercise</th>
-                        <th>Sets</th>
-                        <th>Repetitions</th>
-                        <th>Weights</th>
+                        <th>Description</th>
                         <th>Notes</th>
                         <th></th>
                     </tr>
@@ -141,6 +125,9 @@ export default function Exercise() {
                             <td>{exercise.sets}</td>
                             <td>{exercise.repetitions}</td>
                             <td>{exercise.weight}</td>
+                        <tr>
+                            <td>{exercise.name}</td>
+                            <td>{ReactHtmlParser(exercise.description)}</td>
                             <td>{exercise.notes}</td>
                             <td>
                                 <div>
@@ -196,42 +183,14 @@ export default function Exercise() {
                                                 <div class="modal-body">
                                                     <br />
                                                     <div class="form-group">
-                                                        <label for="sets">
-                                                            Sets
+                                                        <label for="description">
+                                                            Description
                                                         </label>
                                                         <input
-                                                            type="number"
-                                                            name="sets"
+                                                            type="text"
+                                                            name="description"
                                                             defaultValue={
-                                                                exercise.sets
-                                                            }
-                                                            class="form-control"
-                                                        />
-                                                    </div>
-                                                    <br />
-                                                    <div class="form-group">
-                                                        <label for="repetitions">
-                                                            Repetitions
-                                                        </label>
-                                                        <input
-                                                            type="number"
-                                                            name="repetitions"
-                                                            defaultValue={
-                                                                exercise.repetitions
-                                                            }
-                                                            class="form-control"
-                                                        />
-                                                    </div>
-                                                    <br />
-                                                    <div class="form-group">
-                                                        <label for="weight">
-                                                            Weight
-                                                        </label>
-                                                        <input
-                                                            type="number"
-                                                            name="weight"
-                                                            defaultValue={
-                                                                exercise.weight
+                                                                exercise.description
                                                             }
                                                             class="form-control"
                                                         />

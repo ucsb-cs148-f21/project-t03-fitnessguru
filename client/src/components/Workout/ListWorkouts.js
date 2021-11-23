@@ -2,8 +2,12 @@ import React from "react";
 import {useState, useEffect} from "react";
 import Workout from "./Workout";
 import "./ListWorkouts.css";
+import compare from "../../utils/compare"
 
 const ListWorkouts = ({ setWorkouts, workouts, user }) => {
+
+  workouts.sort(compare)
+
   return (
     <div id="workoutList">
       {workouts.map((workout=>{
