@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import getUser from "../utils/get-user";
 import Repetitions from "./Repetitions";
 import compare from "../utils/compare"
+import { DropdownButton, Dropdown } from 'react-bootstrap';
 
 export default function Weights() {
-    const [exercises, setExercises] = useState([]);
+    const [trackedExercises, setTrackedExercises] = useState([]);
+    let [exercises, setExercises] = useState([]);
 
     const user = getUser();
 
@@ -17,41 +19,69 @@ export default function Weights() {
     useEffect(() => {
         fetch(`/trackedexercises/${user.id}`)
             .then((res) => res.json())
+            .then((trackedExercises) => setTrackedExercises(trackedExercises));
+        fetch(`/exercises/${user.id}`)
+            .then((res) => res.json())
             .then((exercises) => setExercises(exercises));
     }, [user.id]);
 
     exercises.sort(compare)
+    trackedExercises.sort(compare)
+    exercises = exercises.filter((exercise) => {
+        for(let i = 0; i < trackedExercises.length; i++){
+            if(trackedExercises[i].name === exercise.name){
+                return false
+            }
+        }
+        return true
+    })
 
     return (
         <div>
-            <button
-                type="button"
-                class="btn btn-primary btn-block"
-                data-toggle="modal"
-                data-target="#addExercise"
-            >
-                Add Exercise to Track
-            </button>
+            <DropdownButton id="dropdown-basic-button" title="Add an Exercise to Track" menuVariant = 'light'>
+              {exercises.map(exercise =>
+                <Dropdown.Item onClick = {() => {
+                  fetch("/trackedexercises", {
+                    method: 'POST',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        googleId: user.id,
+                        name: exercise.name,
+                    })
+                  })
+                  .then(() => {
+                    fetch(`/trackedexercises/${user.id}`)
+                    .then((res) => res.json())
+                    .then((trackedExercises) => setTrackedExercises(trackedExercises));
+                  })
+                }}> 
+                  {exercise.name}
+                </Dropdown.Item>
+              )}
+            </DropdownButton>
             <br />
             <br />
-            {exercises.map((exercise) => (
+            {trackedExercises.map((trackedExercise) => (
                 <div>
-                    <p>{exercise.name}</p>
+                    <p>{trackedExercise.name}</p>
                     <button
                         type="button"
                         class="btn btn-primary btn-block"
                         data-toggle="modal"
-                        data-target={"#addRepetitions" + exercise._id}
+                        data-target={"#addRepetitions" + trackedExercise._id}
                     >
                         Add Repetition to Exercise
                     </button>
                     <br />
                     <br />
-                    <Repetitions exercise_id={exercise._id} date={today} />
+                    <Repetitions exercise_id={trackedExercise._id} date={today} />
                         
                     <div
                         class="modal fade"
-                        id={"addRepetitions" + exercise._id}
+                        id={"addRepetitions" + trackedExercise._id}
                         tabindex="-1"
                         role="dialog"
                         aria-labelledby="exampleModalLabel"
@@ -86,7 +116,7 @@ export default function Weights() {
                                             <input
                                                 type="hidden"
                                                 name="weights"
-                                                value={exercise._id}
+                                                value={trackedExercise._id}
                                                 class="form-control"
                                             />
                                         </div>
@@ -112,68 +142,6 @@ export default function Weights() {
                     </div>
                 </div>
             ))}
-
-            <div
-                class="modal fade"
-                id="addExercise"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
-            >
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                Add Exercise
-                            </h5>
-                            <button
-                                type="button"
-                                class="close"
-                                data-dismiss="modal"
-                                aria-label="Close"
-                            >
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <form action="/trackedexercises" method="POST" class="mb-4">
-                            <div class="modal-body">
-                                <div class="form-group">
-                                    <input
-                                        type="hidden"
-                                        name="googleId"
-                                        value={user.id}
-                                        class="form-control"
-                                    />
-                                </div>
-                                <div class="form-group">
-                                    <label for="exercise">Exercise</label>
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        class="form-control"
-                                    />
-                                </div>
-                                <br />
-                            </div>
-                            <div class="modal-footer">
-                                <button
-                                    type="button"
-                                    class="btn btn-secondary"
-                                    data-dismiss="modal"
-                                >
-                                    Close
-                                </button>
-                                <input
-                                    type="submit"
-                                    value="Add Exercise"
-                                    class="btn btn-primary btn-block"
-                                />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
             <br />
         </div>
     );
