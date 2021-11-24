@@ -62,7 +62,7 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
 
     const handleAddExx = () => {
         exercise.name = e.name;
-        exercise.notes = e.description;
+        exercise.description = e.description;
         exercise.workout = workoutID;
         exercise.googleId = user.id;
         exercise._id = exxID;
@@ -125,7 +125,7 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
         exercise.sets = document.getElementById("sets").value;
         exercise.repetitions = document.getElementById("reps").value;
         exercise.weight = document.getElementById("weight").value;
-        exercise.notes = document.getElementById("exerciseNotes").value;
+        exercise.description = document.getElementById("exerciseNotes").value;
         axios.post("/exercises", exercise)
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
