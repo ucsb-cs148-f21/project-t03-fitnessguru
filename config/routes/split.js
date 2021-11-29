@@ -27,4 +27,14 @@ router.post("/delete/:id", async (req, res) => {
     res.redirect("back");
 });
 
+router.post("/public/:id", async (req, res) => {
+    const split = await Split.findOneAndUpdate({ _id: req.params.id }, {
+        $set:
+        {
+            public: !split.public
+        }
+    });
+    res.redirect("back");
+});
+
 module.exports = router;

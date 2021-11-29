@@ -17,6 +17,11 @@ const SplitSchema = new mongoose.Schema({
         type: String,
         require: false,
     },
+    public: {
+        type: Boolean,
+        require: false,
+        default: "false",
+    },
 });
 
 module.exports = mongoose.model("Split", SplitSchema);
