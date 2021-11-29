@@ -7,7 +7,9 @@ export default function Layout(props) {
     return (
         <div>
             <NavBar user={user} />
+            <div style={{minHeight: '150px', marginBottom: '100px', clear: 'both'}}>
             {props.children}
+            </div>
             <Footer />
         </div>
     );

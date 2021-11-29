@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import getUser from "../utils/get-user";
 import compare from "../utils/compare";
 import { Table } from "reactstrap";
+import "./contai.css";
 import ReactHtmlParser from 'react-html-parser';
 
 export default function Exercise() {
     const [exercises, setExercises] = useState([]);
 
     const user = getUser();
-
     useEffect(() => {
         fetch(`/exercises/${user.id}`)
             .then((res) => res.json())
@@ -108,7 +108,7 @@ export default function Exercise() {
                 </div>
             </div>
             <br />
-            <Table bordered>
+            <table class = "table table-hover table-bordered table-morecondensed" style={{height: "auto"}}>
                 <thead>
                     <tr>
                         <th>Exercise</th>
@@ -119,16 +119,17 @@ export default function Exercise() {
                 </thead>
                 <tbody>
                     {exercises.map((exercise) => (
-                        <tr>
-                            <td>{exercise.name}</td>
+                        <tr style={{paddingBottom:'0px'}}>
+                            <td className = "tableentry">{exercise.name}</td>
                             <td>{ReactHtmlParser(exercise.description)}</td>
-                            <td>{exercise.notes}</td>
+                            <td>{ReactHtmlParser(exercise.notes)}</td>
                             <td>
                                 <div>
                                     <button
                                         type="button"
                                         class="btn btn-primary btn-block"
                                         data-toggle="modal"
+                                        style={{marginBottom: '0px'}}
                                         data-target={
                                             "#updateExercise" + exercise._id
                                         }
@@ -232,13 +233,14 @@ export default function Exercise() {
                                         type="submit"
                                         value="Delete"
                                         class="btn btn-primary btn-block"
+                                        style = {{marginTop:'0px',marginBottom:'0px'}}
                                     />
                                 </form>
                             </td>
                         </tr>
                     ))}
                 </tbody>
-            </Table>
+            </table>
         </div>
     );
 }

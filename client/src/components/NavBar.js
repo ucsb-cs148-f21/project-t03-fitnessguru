@@ -3,6 +3,7 @@ import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
 import Nav from "react-bootstrap/Nav";
 import NavDropdown from "react-bootstrap/NavDropdown";
+import dumbbell from './img/dumbbell.png';
 
 export default function NavBar(props) {
     const user = props.user;
@@ -10,7 +11,7 @@ export default function NavBar(props) {
     return (
         <Navbar className="color-nav" expand="lg">
             <Container>
-                <Navbar.Brand href="/">Fitness Guru</Navbar.Brand>
+                <Navbar.Brand href="/"><img src= {dumbbell} width="30" height="30" class="d-inline-block align-top" style={{marginRight: '5px'}} alt=""></img>Fitness Guru</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="mr-auto">
