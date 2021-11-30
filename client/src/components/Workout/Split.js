@@ -91,7 +91,11 @@ const Split = ({ split, user }) => {
                                 class="btn btn-danger"
                             />
                         </form>
-                        <form
+                        {
+                            split.public === "COPIED" ?
+                            ""
+                            :
+                            <form
                             action={"/splits/public/" + split._id}
                             method="POST"
                             class="mb-4"
@@ -103,6 +107,7 @@ const Split = ({ split, user }) => {
                                 class="btn btn-primary btn-block"
                             />
                         </form>
+                        }
                         </div>
                     </div>
                 </div>
