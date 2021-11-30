@@ -18,7 +18,7 @@ const SplitSchema = new mongoose.Schema({
         require: false,
     },
     public: {
-        type: Boolean,
+        type: String,
         require: false,
         default: "false",
     },

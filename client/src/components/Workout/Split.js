@@ -54,7 +54,12 @@ const Split = ({ split, user }) => {
                     <div className="card-top">
                         <div id="top">
                         <div>
-                            <div id="title">{split.name}</div>
+                            <div id="title">
+                                {
+                                split.public === "true" ?
+                                split.name + " (Public)" :
+                                split.name + " (Private)"
+                                }</div>
                         </div>
 
                         <div>
