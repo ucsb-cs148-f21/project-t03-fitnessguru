@@ -58,8 +58,11 @@ const Split = ({ split, user }) => {
                                 {
                                 split.public === "true" ?
                                 split.name + " (Public)" :
+                                split.public === "COPIED" ?
+                                split.name + " (Copied)" :
                                 split.name + " (Private)"
-                                }</div>
+                                }
+                            </div>
                         </div>
 
                         <div>

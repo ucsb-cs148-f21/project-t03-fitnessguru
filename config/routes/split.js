@@ -35,7 +35,9 @@ router.post("/delete/:id", async (req, res) => {
 
 router.post("/public/:id", async (req, res) => {
     const split = await Split.findOne({ _id: req.params.id })
-    if(split.public != "true"){
+    if(split.public === "COPIED"){
+        res.redirect("back");
+    }else if(split.public != "true"){
         await Split.findOneAndUpdate({ _id: req.params.id }, {
             $set:
             {
@@ -61,8 +63,7 @@ router.post("/public/:googleId/split/:id", async (req, res) =>{
     newSplit.name = split.name
     newSplit.workouts = split.workouts
     newSplit.notes = split.notes
-    newSplit.public = split.public
-    console.log(newSplit)
+    newSplit.public = "COPIED"
     Split.create(newSplit)
     res.redirect("back")
 })
