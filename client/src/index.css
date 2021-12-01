@@ -28,3 +28,18 @@ code {
     padding: 1rem;
     background-color: lightskyblue;
 }
+
+h4{
+    color: rgba(20, 149, 235, 0.884);
+    padding: 0.5rem;
+    font-size:xx-large;
+}
+
+.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .flex-container > div {
+    background-color: #f1f1f100;
+  }

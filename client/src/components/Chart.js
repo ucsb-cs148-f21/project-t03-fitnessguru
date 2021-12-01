@@ -12,15 +12,16 @@ function Chart(props){
           width={40}
 	        height={20}
           options={{
-            pointRadius: 5,
+            pointRadius: 6,
             pointBackgroundColor: 'Red',
+            pointBorderColor: 'Gray',
             borderColor: 'Gray',
             plugins:{
               title: {
                 display: true,
                 text:'Weight Changes for '+ props.exercise + ", " + props.repetitions + ' Repetitions',
                 color: 'rgba(54, 162, 235, 0.6)', 
-                font: { size: 25, weight:'900'}
+                font: { size: 30, weight:'900'}
               },
               legend:{
                 display:props.displayLegend,
@@ -33,12 +34,13 @@ function Chart(props){
                   display: true,
                   text: 'Weight (lb)',
                   color: 'rgba(54, 162, 235, 0.6)', 
-                  font: { size: 20, weight:'900'}
+                  font: { size: 25, weight:'900'}
                 },
                 ticks: {
                   callback: function(value, index, values) {
                     return value + ' lb';
-                  }
+                  },
+                  font: {size: 15}
                 }
               },
               x: {
@@ -46,7 +48,10 @@ function Chart(props){
                   display: true,
                   text: 'Time',
                   color: 'rgba(54, 162, 235, 0.6)',               
-                  font: { size: 20, weight:'900'}
+                  font: { size: 25, weight:'900'}
+                },
+                ticks: {
+                  font: {size: 16}
                 }
               }
             }
