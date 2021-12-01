@@ -116,6 +116,43 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
     const [custom, setCustom] = useState(false);
     const [exxID, setExxID] = useState(objectID())
 
+    let arms, legs, chest, back, calves, abs, shoulders;
+
+    for(let i = 8; i < 15; i++){
+        let result;
+        axios.get(`https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=${i}`)
+            .then((res) => result = (res.data.results))
+            .catch((error) => console.log(error))
+
+        switch(i){
+            case 8:
+                arms = result;
+                break;
+            case 9:
+                legs = result;
+                break;
+            case 10:
+                abs = result;
+                break;
+            case 11:
+                chest = result;
+                break;
+            case 12:
+                back = result;
+                break;
+            case 13:
+                shoulders = result;
+                break;
+            case 14:
+                calves = result;
+                break;
+        }
+    }
+
+    console.log("CALVES");
+    console.log(calves);
+    
+
     const handleCreateExerciseObject = () => {
         setCustom(false);
         exercise.workout = workoutID;

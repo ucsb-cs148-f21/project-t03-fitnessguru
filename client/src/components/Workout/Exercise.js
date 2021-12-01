@@ -71,7 +71,7 @@ const ExerciseModal = ({ editExercises, show, handleClose, e}) => {
         <Modal.Header closeButton>
           <Modal.Title id="exerciseTitle">{e.name}</Modal.Title>
         </Modal.Header>
-    <Modal.Body id="exerciseDesc">{ReactHtmlParser(e.notes)}</Modal.Body>
+    <Modal.Body id="exerciseDesc">{ReactHtmlParser(e.description)}</Modal.Body>
         <Modal.Footer>
           {!update && <Button variant="primary" onClick={handleEditExercise}>Edit</Button>}
           {update && <Button variant="primary" onClick={handleSaveEdits}>Save</Button>}
