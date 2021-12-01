@@ -28,6 +28,9 @@ export default function NavBar(props) {
                             <Nav.Link href="/mysplits">My Splits</Nav.Link>
                         )}
                         {user && (
+                            <Nav.Link href="/publicsplits">Public Splits</Nav.Link>
+                        )}
+                        {user && (
                             <Nav.Link href="/myweights">My Weights</Nav.Link>
                         )}
                         {user && (

@@ -12,7 +12,7 @@ import MyExercises from "./pages/MyExercises";
 import MySplits from "./pages/MySplits";
 import MyWeights from "./pages/MyWeights";
 import ProgressPage from "./pages/ProgressPage";
-
+import PublicSplits from "./pages/PublicSplits";
 import WorkoutPage from "./pages/WorkoutPage";
 
 export default function App() {
@@ -67,6 +67,7 @@ export default function App() {
                         component={MyWorkouts}
                     />
                     <PrivateRoute exact path="/mysplits" component={MySplits} />
+                    <PrivateRoute exact path="/publicsplits" component={PublicSplits} />
                     <PrivateRoute
                         exact
                         path="/myweights"

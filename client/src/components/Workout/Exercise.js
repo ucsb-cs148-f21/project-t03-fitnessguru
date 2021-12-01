@@ -6,7 +6,7 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import ReactHtmlParser from 'react-html-parser';
 import axios from "axios";
-
+import getUser from "../../utils/get-user"
 
 const ExerciseModalNoEdit = ({ show, handleClose, e}) => {
     return(
@@ -84,6 +84,8 @@ const ExerciseModal = ({ editExercises, show, handleClose, e}) => {
 // Component takes in an exercise object e and displays it.
 const Exercise = ({ inSplit, removeExercise, editExercises, e }) => {
 
+    const actualUser = getUser()
+
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -103,7 +105,13 @@ const Exercise = ({ inSplit, removeExercise, editExercises, e }) => {
         <button className="exerciseBody" onClick={handleOpen}>
             <Card.Body>
               <Card.Title className="exerciseName">{e.name}</Card.Title>
-              <button class="btn btn-danger btn-block" className="deleteExercise" onClick={handleDelete}>x</button>
+              {
+                e.googleId === actualUser.id ?
+                <button class="btn btn-danger btn-block" className="deleteExercise" onClick={handleDelete}>x</button>
+                :
+                <div>
+                </div>
+              }
             </Card.Body>
         </button>
         {!inSplit && <ExerciseModal id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>}
