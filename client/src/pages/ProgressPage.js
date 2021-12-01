@@ -60,6 +60,12 @@ function getChartData(repetitions){
   }
     return (
       <Layout user={user}>
+      <div class="flex-container">
+      
+      <div>
+
+      </div>
+
         <Container>
             <h2>Check Your Progress</h2>
             <br />
@@ -75,7 +81,7 @@ function getChartData(repetitions){
               )}
             </DropdownButton>
             <br />
-            <h3>{selectedExercise}</h3>
+            <h4>{selectedExercise}</h4>
             <br />
             <DropdownButton id="dropdown-basic-button" title="Select Repetitions" menuVariant = 'light'>
               {repetitions.map(repetitions =>
@@ -88,12 +94,19 @@ function getChartData(repetitions){
               )}
             </DropdownButton>
             <br />
-            <h3>{selectedRepetitions}</h3>
+            <h4>{selectedRepetitions}</h4>
             <br /> 
             
             {(selectedExercise != "") ? <Chart chartData={chartData} exercise = {selectedExercise} repetitions = {selectedRepetitions}/> : ""}
             
         </Container>
+
+  </div>
+
+  <div>
+
+  </div>
+
       </Layout>  
     );
 }
