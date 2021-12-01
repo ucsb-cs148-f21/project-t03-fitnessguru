@@ -54,7 +54,15 @@ const Split = ({ split, user }) => {
                     <div className="card-top">
                         <div id="top">
                         <div>
-                            <div id="title">{split.name}</div>
+                            <div id="title">
+                                {
+                                split.public === "true" ?
+                                split.name + " (Public)" :
+                                split.public === "COPIED" ?
+                                split.name + " (Copied)" :
+                                split.name + " (Private)"
+                                }
+                            </div>
                         </div>
 
                         <div>
@@ -83,6 +91,23 @@ const Split = ({ split, user }) => {
                                 class="btn btn-danger"
                             />
                         </form>
+                        {
+                            split.public === "COPIED" ?
+                            ""
+                            :
+                            <form
+                            action={"/splits/public/" + split._id}
+                            method="POST"
+                            class="mb-4"
+                        >
+                            <input
+                                id="publicSplit"
+                                type="submit"
+                                value="Public"
+                                class="btn btn-primary btn-block"
+                            />
+                        </form>
+                        }
                         </div>
                     </div>
                 </div>

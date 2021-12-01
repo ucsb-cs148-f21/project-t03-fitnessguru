@@ -8,10 +8,12 @@ import CreateExercise from "./CreateExercise";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal"
+import getUser from "../../utils/get-user"
 
 
 const Workout = ({ inSplit, workouts, setWorkouts, w, user}) => {
 
+    const actualUser = getUser()
     const [exercises, setExercises] = useState(w.exercises);
     const [showCreateExercise, setShowCreateExercise] = useState(false);
 
@@ -128,37 +130,42 @@ const Workout = ({ inSplit, workouts, setWorkouts, w, user}) => {
                     </div>
                 </div>
             </div>
-
-            <div id="buttons">
-                <button
-                    id="updateButton"
-                    type="button"
-                    class="btn btn-primary btn-block"
-                    data-toggle="modal"
-                    data-target={
-                        "#updateWorkout" + w._id
-                    }
-                >
-                    U
-                </button>
-                <form action={"/workouts/delete/" + w._id} method="POST" class="mb-4">
-                    <input id="delete" type="submit" value="D" class="btn btn-danger"/>
-                </form>
-            </div>
-            <Button id="addExerciseButton" class="warning" onClick={() => setShowCreateExercise(true)}>+</Button>
-            <Modal show={showCreateExercise} onHide={() => setShowCreateExercise(false)}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Exercise</Modal.Title>
-                </Modal.Header>
-                <Modal.Body><CreateExercise workoutID={w._id} handleAddExercise={handleAddExercise} user={user} /></Modal.Body>
-                    <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowCreateExercise(false)}>
-                        Close
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-            
-            
+            {
+                w.googleId === actualUser.id ?
+                <div>
+                    <div id="buttons">
+                        <button
+                            id="updateButton"
+                            type="button"
+                            class="btn btn-primary btn-block"
+                            data-toggle="modal"
+                            data-target={
+                                "#updateWorkout" + w._id
+                            }
+                        >
+                            U
+                        </button>
+                        <form action={"/workouts/delete/" + w._id} method="POST" class="mb-4">
+                            <input id="delete" type="submit" value="D" class="btn btn-danger"/>
+                        </form>
+                    </div>
+                    <Button id="addExerciseButton" class="warning" onClick={() => setShowCreateExercise(true)}>+</Button>
+                    <Modal show={showCreateExercise} onHide={() => setShowCreateExercise(false)}>
+                        <Modal.Header closeButton>
+                            <Modal.Title>Add Exercise</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body><CreateExercise workoutID={w._id} handleAddExercise={handleAddExercise} user={user} /></Modal.Body>
+                            <Modal.Footer>
+                            <Button variant="secondary" onClick={() => setShowCreateExercise(false)}>
+                                Close
+                            </Button>
+                        </Modal.Footer>
+                    </Modal>
+                </div>
+                :
+                <div>
+                </div>
+            }
           </div>
           <div id="exerciseList">
             {exercises.map((item)=>{
