@@ -15,7 +15,7 @@ const ExerciseModalNoEdit = ({ show, handleClose, e}) => {
         <Modal.Header closeButton>
           <Modal.Title id="exerciseTitle">{e.name}</Modal.Title>
         </Modal.Header>
-    <Modal.Body id="exerciseDesc">{ReactHtmlParser(e.notes)}</Modal.Body>
+    <Modal.Body id="exerciseDesc">{ReactHtmlParser(e.description)}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Close</Button>
         </Modal.Footer>
@@ -107,7 +107,6 @@ const Exercise = ({ setAddingExercises, addingExercises, inSplit, removeExercise
 
     const handleOpen = (event) => {
       event.preventDefault();
-      
       setShow(true);
     }
 

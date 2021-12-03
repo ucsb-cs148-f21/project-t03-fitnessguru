@@ -1,5 +1,5 @@
 import React from "react";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import $ from "jquery";
 import 'bootstrap';
 import Form from "react-bootstrap/Form";
@@ -17,7 +17,7 @@ function objectID() {
     return(ObjectId);
 }
 
-const ExxCategory = ({title, category, user, workoutID, handleAddExercise}) => {
+const ExxCategory = ({categories, title, category, user, workoutID, handleAddExercise}) => {
 
     const [exercises, setExercises] = useState();
     const [loading, setLoading] = useState(true);
@@ -36,10 +36,22 @@ const ExxCategory = ({title, category, user, workoutID, handleAddExercise}) => {
             handleAddExercise(exercise);
     };
     
-    axios.get(`https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=${category}`)
-            .then((res) => setExercises(res.data.results))
-            .then(() => setLoading(false))
-            .catch((error) => console.log(error))
+    useEffect(() => {
+        if(categories){
+            setExercises(categories[category-8]);
+            setLoading(false);
+        }
+        if(!exercises){
+            axios.get(`https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=${category}`)
+                    .then((res) => setExercises(res.data.results))
+                    .then(() => setLoading(false))
+                    .catch((error) => console.log(error))
+        }
+    }, [])
+
+    
+    console.log("EXX");
+    console.log(exercises);
 
     return(
     <div className="dropdown">
@@ -85,13 +97,12 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
         exercise.workout = workoutID;
         exercise.googleId = user.id;
         exercise._id = exxID;
-        console.log("NEW EXERCISE: ");
-        console.log(exercise)
         console.log(exercise._id);
         axios.post("/exercises", exercise)
-            .then((res) => console.log(res))
+            .then((res) => console.log(res.data))
             .catch((err) => console.log(err))
 
+        window.location.reload()
         if(handleAddExercise)
             handleAddExercise(exercise)
         handleClose();
@@ -130,43 +141,13 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
 
 }
 // component takes in handler function that handles where to add the exercise to
-const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
+const CreateExercise = ({ categories, workoutID, handleAddExercise, user }) => {
     let exercise = {};
     const [custom, setCustom] = useState(false);
     const [exxID, setExxID] = useState(objectID())
 
-    
-    const cacheTime = 10000;
-
-    const cache = {
-
-    }
-
-    let cacheTimer = 0;
-
-    const getCacheTimer = time => {
-        const now = new Date().getTime();
-        if(cacheTimer < now + time) {
-            cacheTimer = now + time;
-        }
-        return cacheTimer;
-    }
-
-    const fetchWithCache = async (category,time) => {
-        const now = new Date().getTime();
-        if(!cache[category] || cache[category].cacheTimer < now){
-            cache[category] = await fetchExerciseCategory(category);
-            cache[category].cacheTimer = getCacheTimer(time);
-        }
-        return cache[category];
-    }
-
-    const fetchExerciseCategory = async category => {
-        let categoryData = await fetch(`https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=${category}`)
-            .then(data => data.json())
-            .then(myJson => (categoryData = myJson));
-        return categoryData;
-    }
+    console.log("BLAH");
+    console.log(categories);
     
 
     const handleCreateExerciseObject = () => {
@@ -180,6 +161,7 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
         axios.post("/exercises", exercise)
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
+        window.location.reload();
         if(handleAddExercise)
             handleAddExercise(exercise);
     };
@@ -187,13 +169,13 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
     return (
         <>
         <div id="selectExerciseCategory">
-            <ExxCategory className="category" title={"Arms"} category={8} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            <ExxCategory className="category" title={"Legs"} category={9} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            <ExxCategory className="category" title={"Abs"} category={10} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            <ExxCategory className="category" title={"Chest"} category={11} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            <ExxCategory className="category" title={"Back"} category={12} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            <ExxCategory className="category" title={"Shoulders"} category={13} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            <ExxCategory className="category" title={"Calves"} category={14} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory categories={categories} className="category" title={"Arms"} category={8} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory categories={categories} className="category" title={"Legs"} category={9} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory categories={categories} className="category" title={"Abs"} category={10} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory categories={categories} className="category" title={"Chest"} category={11} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory categories={categories} className="category" title={"Back"} category={12} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory categories={categories} className="category" title={"Shoulders"} category={13} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory categories={categories} className="category" title={"Calves"} category={14} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
             <Button class="btn btn-success" onClick={() => setCustom(true)}>Custom</Button>
         </div>
 

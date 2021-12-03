@@ -48,7 +48,10 @@ input {
     z-index: 2;
 }
 
+.mb-3{
+    position: relative;
+}
 .formInput {
     position: absolute;
-    left: 340px;
+    left: 140px;
 }
