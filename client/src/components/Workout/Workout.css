@@ -1,11 +1,13 @@
 .workoutBody {
     border-radius: 25px;
-    background-color: black;
-    color: white;
+    border: solid black;
+    border-width: medium;
+    background-image: linear-gradient(#DCEFF5, #99CAF7);
+    color: black;
     padding: 5px;
     margin: 2px;
     margin-right: 10px;
-    width: 250px;
+    width: 400px;
     height: auto;
 }
 
@@ -16,25 +18,56 @@
 
 #workoutHead {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(1, 1fr);
+  padding-bottom: 40px;
 }
 
 .workoutName {
   font-size: 28px;
   font-weight: bold;
+  text-align: center;
 }
 
-#delete {
-  position: relative;
-  top: -37px;
-}
 
 #exerciseList {
   margin-top: -40px;
 }
 
-#addExerciseButton {
+.exerciseModal {
+  overflow-x: scroll;
+}
+
+#buttons {
+  margin-top: -10px;
+  margin-bottom: 20px;
+  margin-left: 50px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+#delete {
+  border-radius: 15%;
   position: relative;
-  bottom: 50px;
-  left: 60px;
+  left: -46px;
+  width: 50px;
+}
+
+#delete:hover{
+  background-color: #F06362;
+}
+
+#addExerciseButton{
+  border-radius: 15%;
+}
+#addExerciseButton:hover{
+  background-color: #99CAF7;
+}
+
+#updateButton {
+  border-radius: 15%;
+  margin-left: 4px;
+}
+
+#updateButton:hover{
+  background-color: #F0E392;
 }

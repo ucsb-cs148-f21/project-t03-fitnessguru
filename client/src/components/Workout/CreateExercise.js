@@ -102,7 +102,10 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
             .then((res) => console.log(res.data))
             .catch((err) => console.log(err))
 
-        window.location.reload()
+        if(!workoutID){
+            window.location.reload();
+        }
+       
         if(handleAddExercise)
             handleAddExercise(exercise)
         handleClose();
@@ -146,10 +149,6 @@ const CreateExercise = ({ categories, workoutID, handleAddExercise, user }) => {
     const [custom, setCustom] = useState(false);
     const [exxID, setExxID] = useState(objectID())
 
-    console.log("BLAH");
-    console.log(categories);
-    
-
     const handleCreateExerciseObject = () => {
         setCustom(false);
         exercise.workout = workoutID;
@@ -161,7 +160,9 @@ const CreateExercise = ({ categories, workoutID, handleAddExercise, user }) => {
         axios.post("/exercises", exercise)
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
-        window.location.reload();
+        if(!categories){
+            window.location.reload();
+        }
         if(handleAddExercise)
             handleAddExercise(exercise);
     };
