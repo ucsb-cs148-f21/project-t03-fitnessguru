@@ -15,6 +15,11 @@ router.post("/", async (req, res) => {
     res.redirect("back");
 });
 
+router.post("/log/:id", async (req, res) => {
+    console.log(req.body)
+    res.redirect("back");
+})
+
 // Put
 router.post("/put/:id", async (req, res) => {
     await Weight.findOneAndUpdate({ _id: req.params.id }, req.body);
