@@ -1,6 +1,6 @@
 .exerciseBody {
     border-radius: 25px;
-    background: white;
+    background: linear-gradient(to right,#DCEFF5, #99CAF7);
     color: #2C4457;
     margin: 5px 0px 5px 0px;
     width: 250px;
