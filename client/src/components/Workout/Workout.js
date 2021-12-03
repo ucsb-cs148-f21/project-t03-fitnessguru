@@ -62,8 +62,10 @@ const Workout = ({ inSplit, workouts, setWorkouts, w, user}) => {
     }
 
     const handleDelete = () => {
-        axios.post("/workoutsdelete/" + w._id)
+        axios.post("/workouts/delete/" + w._id)
             .catch((err) => console.log(err))
+
+        window.location.reload();
     }
 
     return (
