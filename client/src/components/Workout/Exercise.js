@@ -78,6 +78,11 @@ const ExerciseModal = ({ setAddingExercises, addingExercises, editExercises, sho
       handleClose();
     }
 
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    today = mm + '/' + dd + '/' + yyyy;
     
     return(
       <div>
@@ -136,12 +141,28 @@ const ExerciseModal = ({ setAddingExercises, addingExercises, editExercises, sho
                                             <form
                                                 action={
                                                     "/weight/log/" +
-                                                    e._id
+                                                    e.name
                                                 }
                                                 method="POST"
                                                 class="mb-4"
                                             >
                                                 <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <input
+                                                            type="hidden"
+                                                            name="googleId"
+                                                            value={e.googleId}
+                                                            class="form-control"
+                                                        />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input
+                                                            type="hidden"
+                                                            name="date"
+                                                            value={today}
+                                                            class="form-control"
+                                                        />
+                                                    </div>
                                                     <br />
                                                     <div class="form-group">
                                                         <label for="Repetitions">

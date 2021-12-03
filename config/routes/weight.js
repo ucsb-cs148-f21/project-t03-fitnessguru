@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 
+const TrackedExercises = require("../../models/TrackedExercises");
+const Repetitions = require("../../models/Repetitions");
 const Weight = require("../../models/Weight");
 
 // Get
@@ -15,8 +17,26 @@ router.post("/", async (req, res) => {
     res.redirect("back");
 });
 
-router.post("/log/:id", async (req, res) => {
-    console.log(req.body)
+router.post("/log/:name", async (req, res) => {
+    let trackedExercise = await TrackedExercises.findOne({ name: req.params.name, googleId: req.body.googleId })
+    if(trackedExercise === null){
+        const newTrackedExercise = new TrackedExercises
+        newTrackedExercise.googleId = req.body.googleId
+        newTrackedExercise.name = req.params.name
+        trackedExercise = await TrackedExercises.create(newTrackedExercise)
+    }
+    let repetition = await Repetitions.findOne({ weights: trackedExercise._id, repetitions: req.body.Repetitions })
+    if(repetition === null){
+        const newRepetition = new Repetitions
+        newRepetition.weights = trackedExercise._id
+        newRepetition.repetitions = req.body.Repetitions
+        repetition = await Repetitions.create(newRepetition)
+    }
+    const weight = new Weight
+    weight.repetitions = repetition._id
+    weight.weight = req.body.Weight
+    weight.date = req.body.date
+    await Weight.create(weight)
     res.redirect("back");
 })
 
