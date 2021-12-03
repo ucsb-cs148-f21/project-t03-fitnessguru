@@ -46,6 +46,11 @@ const CreateWorkout = ({closeModal,splitID, handleAddWorkout, user}) => {
     }
 
     const handleCreateWorkoutObject = () => {
+        if(!document.getElementById('workoutName').value){
+            document.getElementById('workoutName').style.borderColor = "red";
+            document.getElementById('workoutName').style.borderWidth = "4px";
+            return;
+        }
         workout.name = document.getElementById('workoutName').value;
         workout.exercises = exercises;
         workout._id = workoutID;
@@ -70,12 +75,18 @@ const CreateWorkout = ({closeModal,splitID, handleAddWorkout, user}) => {
         
     }
 
+    const handleRemoveExercise = (exercise) => {
+        const newExercises = exercises.filter((exx) => exx != exercise);
+        setExercises(newExercises);
+        axios.post(`/exercises/delete/${exercise._id}`);
+    }
+
    return (
 
     <Form className="formBodyWorkout">
-        <Button style={{position:'relative', left:'460px', top:'-10px'}}variant="close" id="closeWorkoutModal" type="button" onClick={handleClose}>
+        <Button style={{position:'relative', left:'670px', top:'-10px'}}variant="close" id="closeWorkoutModal" type="button" onClick={handleClose}>
         </Button>
-        <Form.Group className="mb-3" controlId="formBasicExercise">
+        <Form.Group id="workoutNameInput" className="mb-3" controlId="formBasicExercise">
             <Form.Label className="label">Workout Name</Form.Label>
             <input type="text" placeholder="Enter workout" id="workoutName"/>
         </Form.Group>
@@ -88,7 +99,7 @@ const CreateWorkout = ({closeModal,splitID, handleAddWorkout, user}) => {
             </div>
         
             <div className="exerciseList">
-                <ListExercises className="exercises" exercises={exercises}/>
+                <ListExercises setAddingExercises={setExercises} addingExercises={exercises} removeExercise={handleRemoveExercise} className="exercises" exercises={exercises}/>
             </div>
            
           

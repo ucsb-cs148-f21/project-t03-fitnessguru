@@ -9,7 +9,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import axios from "axios";
 import ReactHtmlParser from 'react-html-parser';
 import "./CreateExercise.css";
-
+import Loader from 'react-loader-spinner';
 
 function objectID() {
     const ObjectId = (m = Math, d = Date, h = 16, s = s => m.floor(s).toString(h)) =>
@@ -18,18 +18,37 @@ function objectID() {
 }
 
 const ExxCategory = ({title, category, user, workoutID, handleAddExercise}) => {
+
     const [exercises, setExercises] = useState();
+    const [loading, setLoading] = useState(true);
+
+    const handleCreateExerciseObject = () => {
+        setCustom(false);
+        exercise.workout = workoutID;
+        exercise._id = exxID;
+        exercise.googleID = user.id;
+        exercise.name = document.getElementById("exerciseName").value;
+        exercise.description = document.getElementById("exerciseNotes").value;
+        axios.post("/exercises", exercise)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err))
+        if(handleAddExercise)
+            handleAddExercise(exercise);
+    };
     
     axios.get(`https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=${category}`)
             .then((res) => setExercises(res.data.results))
+            .then(() => setLoading(false))
             .catch((error) => console.log(error))
 
     return(
     <div className="dropdown">
         <DropdownButton id="dropdown-item-button" title={title}>
+            {loading && <Loader id="loadingIcon" type="TailSpin" color="black" height={50} width={50}/>}
+            {!loading && 
             <div id="exercises-dropdown">
                 {exercises && exercises.map(exercise => <Exx e={exercise} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>)}
-            </div>
+            </div>}
         </DropdownButton>
     </div>
     )
@@ -116,53 +135,48 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
     const [custom, setCustom] = useState(false);
     const [exxID, setExxID] = useState(objectID())
 
-    let arms, legs, chest, back, calves, abs, shoulders;
+    
+    const cacheTime = 10000;
 
-    for(let i = 8; i < 15; i++){
-        let result;
-        axios.get(`https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=${i}`)
-            .then((res) => result = (res.data.results))
-            .catch((error) => console.log(error))
+    const cache = {
 
-        switch(i){
-            case 8:
-                arms = result;
-                break;
-            case 9:
-                legs = result;
-                break;
-            case 10:
-                abs = result;
-                break;
-            case 11:
-                chest = result;
-                break;
-            case 12:
-                back = result;
-                break;
-            case 13:
-                shoulders = result;
-                break;
-            case 14:
-                calves = result;
-                break;
-        }
     }
 
-    console.log("CALVES");
-    console.log(calves);
+    let cacheTimer = 0;
+
+    const getCacheTimer = time => {
+        const now = new Date().getTime();
+        if(cacheTimer < now + time) {
+            cacheTimer = now + time;
+        }
+        return cacheTimer;
+    }
+
+    const fetchWithCache = async (category,time) => {
+        const now = new Date().getTime();
+        if(!cache[category] || cache[category].cacheTimer < now){
+            cache[category] = await fetchExerciseCategory(category);
+            cache[category].cacheTimer = getCacheTimer(time);
+        }
+        return cache[category];
+    }
+
+    const fetchExerciseCategory = async category => {
+        let categoryData = await fetch(`https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=${category}`)
+            .then(data => data.json())
+            .then(myJson => (categoryData = myJson));
+        return categoryData;
+    }
     
 
     const handleCreateExerciseObject = () => {
         setCustom(false);
         exercise.workout = workoutID;
         exercise._id = exxID;
-        exercise.googleID = user.id;
+        exercise.googleId = user.id;
         exercise.name = document.getElementById("exerciseName").value;
-        exercise.sets = document.getElementById("sets").value;
-        exercise.repetitions = document.getElementById("reps").value;
-        exercise.weight = document.getElementById("weight").value;
-        exercise.description = document.getElementById("exerciseNotes").value;
+        exercise.description = document.getElementById("exerciseDescription").value;
+        exercise.notes = document.getElementById("exerciseNotes").value;
         axios.post("/exercises", exercise)
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
@@ -180,7 +194,7 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
             <ExxCategory className="category" title={"Back"} category={12} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
             <ExxCategory className="category" title={"Shoulders"} category={13} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
             <ExxCategory className="category" title={"Calves"} category={14} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            {/*<Button class="btn btn-success" onClick={() => setCustom(true)}>Custom</Button>*/}
+            <Button class="btn btn-success" onClick={() => setCustom(true)}>Custom</Button>
         </div>
 
         <div id="form">
@@ -193,6 +207,7 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
                 >
                     <Form.Label>Exercise Name</Form.Label>
                     <input
+                        className="formInput"
                         type="text"
                         placeholder="Enter exercise"
                         id="exerciseName"
@@ -200,24 +215,15 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicSets">
-                    <Form.Label>Sets</Form.Label>
-                    <input type="number" placeholder="sets" id="sets" />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicReps">
-                    <Form.Label>Repetitions</Form.Label>
-                    <input type="number" placeholder="reps" id="reps" />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicWeight">
-                    <Form.Label>Weight</Form.Label>
-                    <input type="number" placeholder="weight" id="weight" />
+                    <Form.Label>Description</Form.Label>
+                    <input type="textarea" className="formInput" placeholder="Description" id="exerciseDescription" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicNotes">
                     <Form.Label>Notes</Form.Label>
                     <input
                         type="textarea"
+                        className="formInput"
                         placeholder="Exercise Notes"
                         id="exerciseNotes"
                     />

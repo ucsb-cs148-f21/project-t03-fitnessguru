@@ -24,7 +24,7 @@ const ExerciseModalNoEdit = ({ show, handleClose, e}) => {
     )
 }
 
-const ExerciseModal = ({ editExercises, show, handleClose, e}) => {
+const ExerciseModal = ({ setAddingExercises, addingExercises, editExercises, show, handleClose, e}) => {
     const [update, setUpdate] = useState(false);
 
     const handleEditExercise = () => {
@@ -45,7 +45,7 @@ const ExerciseModal = ({ editExercises, show, handleClose, e}) => {
         let workout = res.data[0];
         let exerciseIndex = workout.exercises.findIndex((exx) => exx._id == e._id);
         workout.exercises[exerciseIndex].name = document.getElementById("updateTitle").value;
-        workout.exercises[exerciseIndex].notes = document.getElementById("updateDesc").value;
+        workout.exercises[exerciseIndex].description = document.getElementById("updateDesc").value;
         editExercises(workout.exercises);
         axios.post("/workouts/put/" + e.workout, {exercises: workout.exercises})
             .then(res => console.log(res))
@@ -53,8 +53,22 @@ const ExerciseModal = ({ editExercises, show, handleClose, e}) => {
     }
 
     const handleSaveEdits = () => {
-        if(e.workout){
-            updateWorkout();
+        
+        if(addingExercises){
+          console.log("ADDING");
+          console.log(addingExercises);
+          let newAddingExercises = addingExercises;
+          let exerciseIndex = newAddingExercises.findIndex((exx) => exx._id == e._id);
+          console.log("IND");
+          console.log(exerciseIndex);
+          newAddingExercises[exerciseIndex].name = document.getElementById("updateTitle").value;
+          newAddingExercises[exerciseIndex].description = document.getElementById("updateDesc").value;
+          console.log("NEW");
+          console.log(newAddingExercises);
+          setAddingExercises(newAddingExercises);
+        }
+        else{
+          updateWorkout();
         }
       axios.post("/exercises/put/" + e._id, {name: document.getElementById("updateTitle").value, notes: document.getElementById("updateDesc").value}) 
         .then(res => console.log(res))
@@ -81,8 +95,9 @@ const ExerciseModal = ({ editExercises, show, handleClose, e}) => {
       
     )
 }
+
 // Component takes in an exercise object e and displays it.
-const Exercise = ({ inSplit, removeExercise, editExercises, e }) => {
+const Exercise = ({ setAddingExercises, addingExercises, inSplit, removeExercise, editExercises, e }) => {
 
     const actualUser = getUser()
 
@@ -114,7 +129,7 @@ const Exercise = ({ inSplit, removeExercise, editExercises, e }) => {
               }
             </Card.Body>
         </button>
-        {!inSplit && <ExerciseModal id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>}
+        {!inSplit && <ExerciseModal setAddingExercises={setAddingExercises} addingExercises={addingExercises} id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>}
         {inSplit && <ExerciseModalNoEdit id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>}
         </div>
     );
