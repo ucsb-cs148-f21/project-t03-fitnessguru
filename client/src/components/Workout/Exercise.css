@@ -1,15 +1,20 @@
 .exerciseBody {
     border-radius: 25px;
-    background: #468da3;
-    color: white;
+    background: linear-gradient(to right,#DCEFF5, #99CAF7);
+    color: #2C4457;
     margin: 5px 0px 5px 0px;
     width: 250px;
+}
+
+.exerciseBody:hover{
+    background: #99CAF7;
 }
 
 .exerciseStats {
     display: inline;
     padding: 5px;
 }
+
 
 #updateTitle {
     z-index: 1000;
@@ -20,6 +25,21 @@
     height: 250px;
 }
 
-#poo {
-    z-index: 2000;
+#deleteExercise {
+    background: none;
+    border: none;
+    position: relative;
+}
+
+#delExx{
+    border-radius: 100%;
+}
+
+#delExx:hover{
+    background: #F06362;
+}
+
+#exxBody {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
 }

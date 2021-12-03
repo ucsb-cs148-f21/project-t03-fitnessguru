@@ -17,6 +17,7 @@ export default function MyWorkouts() {
 
   const closeWorkoutModal = () => {
     $('#createWorkout').hide();
+    setShowAddWorkout(true);
     
   }
 

@@ -1,5 +1,5 @@
 import React from "react";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import $ from "jquery";
 import 'bootstrap';
 import Form from "react-bootstrap/Form";
@@ -9,7 +9,7 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 import axios from "axios";
 import ReactHtmlParser from 'react-html-parser';
 import "./CreateExercise.css";
-
+import Loader from 'react-loader-spinner';
 
 function objectID() {
     const ObjectId = (m = Math, d = Date, h = 16, s = s => m.floor(s).toString(h)) =>
@@ -17,19 +17,50 @@ function objectID() {
     return(ObjectId);
 }
 
-const ExxCategory = ({title, category, user, workoutID, handleAddExercise}) => {
+const ExxCategory = ({categories, title, category, user, workoutID, handleAddExercise}) => {
+
     const [exercises, setExercises] = useState();
+    const [loading, setLoading] = useState(true);
+
+    const handleCreateExerciseObject = () => {
+        setCustom(false);
+        exercise.workout = workoutID;
+        exercise._id = exxID;
+        exercise.googleID = user.id;
+        exercise.name = document.getElementById("exerciseName").value;
+        exercise.description = document.getElementById("exerciseNotes").value;
+        axios.post("/exercises", exercise)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err))
+        if(handleAddExercise)
+            handleAddExercise(exercise);
+    };
     
-    axios.get(`https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=${category}`)
-            .then((res) => setExercises(res.data.results))
-            .catch((error) => console.log(error))
+    useEffect(() => {
+        if(categories){
+            setExercises(categories[category-8]);
+            setLoading(false);
+        }
+        if(!exercises){
+            axios.get(`https://wger.de/api/v2/exercise/?limit=100&offset=0&language=2&category=${category}`)
+                    .then((res) => setExercises(res.data.results))
+                    .then(() => setLoading(false))
+                    .catch((error) => console.log(error))
+        }
+    }, [])
+
+    
+    console.log("EXX");
+    console.log(exercises);
 
     return(
     <div className="dropdown">
         <DropdownButton id="dropdown-item-button" title={title}>
+            {loading && <Loader id="loadingIcon" type="TailSpin" color="black" height={50} width={50}/>}
+            {!loading && 
             <div id="exercises-dropdown">
                 {exercises && exercises.map(exercise => <Exx e={exercise} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>)}
-            </div>
+            </div>}
         </DropdownButton>
     </div>
     )
@@ -66,13 +97,15 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
         exercise.workout = workoutID;
         exercise.googleId = user.id;
         exercise._id = exxID;
-        console.log("NEW EXERCISE: ");
-        console.log(exercise)
         console.log(exercise._id);
         axios.post("/exercises", exercise)
-            .then((res) => console.log(res))
+            .then((res) => console.log(res.data))
             .catch((err) => console.log(err))
 
+        if(!workoutID){
+            window.location.reload();
+        }
+       
         if(handleAddExercise)
             handleAddExercise(exercise)
         handleClose();
@@ -111,7 +144,7 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
 
 }
 // component takes in handler function that handles where to add the exercise to
-const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
+const CreateExercise = ({ categories, workoutID, handleAddExercise, user }) => {
     let exercise = {};
     const [custom, setCustom] = useState(false);
     const [exxID, setExxID] = useState(objectID())
@@ -120,15 +153,16 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
         setCustom(false);
         exercise.workout = workoutID;
         exercise._id = exxID;
-        exercise.googleID = user.id;
+        exercise.googleId = user.id;
         exercise.name = document.getElementById("exerciseName").value;
-        exercise.sets = document.getElementById("sets").value;
-        exercise.repetitions = document.getElementById("reps").value;
-        exercise.weight = document.getElementById("weight").value;
-        exercise.description = document.getElementById("exerciseNotes").value;
+        exercise.description = document.getElementById("exerciseDescription").value;
+        exercise.notes = document.getElementById("exerciseNotes").value;
         axios.post("/exercises", exercise)
             .then((res) => console.log(res))
             .catch((err) => console.log(err))
+        if(!categories){
+            window.location.reload();
+        }
         if(handleAddExercise)
             handleAddExercise(exercise);
     };
@@ -136,14 +170,14 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
     return (
         <>
         <div id="selectExerciseCategory">
-            <ExxCategory className="category" title={"Arms"} category={8} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            <ExxCategory className="category" title={"Legs"} category={9} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            <ExxCategory className="category" title={"Abs"} category={10} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            <ExxCategory className="category" title={"Chest"} category={11} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            <ExxCategory className="category" title={"Back"} category={12} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            <ExxCategory className="category" title={"Shoulders"} category={13} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            <ExxCategory className="category" title={"Calves"} category={14} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
-            {/*<Button class="btn btn-success" onClick={() => setCustom(true)}>Custom</Button>*/}
+            <ExxCategory categories={categories} className="category" title={"Arms"} category={8} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory categories={categories} className="category" title={"Legs"} category={9} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory categories={categories} className="category" title={"Abs"} category={10} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory categories={categories} className="category" title={"Chest"} category={11} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory categories={categories} className="category" title={"Back"} category={12} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory categories={categories} className="category" title={"Shoulders"} category={13} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <ExxCategory categories={categories} className="category" title={"Calves"} category={14} user={user} workoutID={workoutID} handleAddExercise={handleAddExercise}/>
+            <Button class="btn btn-success" onClick={() => setCustom(true)}>Custom</Button>
         </div>
 
         <div id="form">
@@ -156,6 +190,7 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
                 >
                     <Form.Label>Exercise Name</Form.Label>
                     <input
+                        className="formInput"
                         type="text"
                         placeholder="Enter exercise"
                         id="exerciseName"
@@ -163,24 +198,15 @@ const CreateExercise = ({ workoutID, handleAddExercise, user }) => {
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicSets">
-                    <Form.Label>Sets</Form.Label>
-                    <input type="number" placeholder="sets" id="sets" />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicReps">
-                    <Form.Label>Repetitions</Form.Label>
-                    <input type="number" placeholder="reps" id="reps" />
-                </Form.Group>
-
-                <Form.Group className="mb-3" controlId="formBasicWeight">
-                    <Form.Label>Weight</Form.Label>
-                    <input type="number" placeholder="weight" id="weight" />
+                    <Form.Label>Description</Form.Label>
+                    <input type="textarea" className="formInput" placeholder="Description" id="exerciseDescription" />
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicNotes">
                     <Form.Label>Notes</Form.Label>
                     <input
                         type="textarea"
+                        className="formInput"
                         placeholder="Exercise Notes"
                         id="exerciseNotes"
                     />
