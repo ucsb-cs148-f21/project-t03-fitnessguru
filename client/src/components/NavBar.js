@@ -9,7 +9,7 @@ export default function NavBar(props) {
     const user = props.user;
 
     return (
-        <Navbar className="color-nav" expand="lg">
+        <Navbar className="color-nav" expand="lg" sticky="top">
             <Container>
                 <Navbar.Brand href="/"><img src= {dumbbell} width="30" height="30" class="d-inline-block align-top" style={{marginRight: '5px'}} alt=""></img>Fitness Guru</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
