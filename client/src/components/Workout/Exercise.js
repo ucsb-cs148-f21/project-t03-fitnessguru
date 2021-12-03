@@ -100,7 +100,7 @@ const Exercise = ({ inSplit, removeExercise, editExercises, e }) => {
 
     return (
         <div id="exercise">
-        <button className="exerciseBody" onClick={handleOpen}>
+        <button type = "button" class = "btn text-dark btn-secondary exerciseBody" onClick={handleOpen}>
             <Card.Body>
               <Card.Title className="exerciseName">{e.name}</Card.Title>
               <button class="btn btn-danger btn-block" className="deleteExercise" onClick={handleDelete}>x</button>

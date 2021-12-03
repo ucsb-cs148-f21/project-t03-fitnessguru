@@ -60,10 +60,30 @@ const Workout = ({ inSplit, workouts, setWorkouts, w, user}) => {
     }
 
     return (
-        <Card className="workoutBody" style={{ width: '18rem' }}>
-          <div id="workoutHead">
+        <div class = "card bg-light mb-3" className="workoutBody" style={{ width: '18rem' }}>
+          <div class = "card-header" id="workoutHead">
             <h2 className="workoutName"><p data-editable>{w.name}</p></h2>
-            
+            </div>
+            <div class = "card-body">
+          <div id="exerciseList">
+            {exercises.map((item)=>{
+                return <Exercise inSplit={inSplit} removeExercise={removeExercise} editExercises={editExercises} e={item} />
+            })}
+          </div>
+          <div>
+          <Button id="addExerciseButton" class="warning" onClick={() => setShowCreateExercise(true)}>+</Button>
+            <Modal show={showCreateExercise} onHide={() => setShowCreateExercise(false)}>
+                <Modal.Header closeButton>
+                    <Modal.Title>Add Exercise</Modal.Title>
+                </Modal.Header>
+                <Modal.Body><CreateExercise workoutID={w._id} handleAddExercise={handleAddExercise} user={user} /></Modal.Body>
+                    <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowCreateExercise(false)}>
+                        Close
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+            </div>
             <div
                 class="modal fade"
                 id={"updateWorkout" + w._id}
@@ -133,7 +153,7 @@ const Workout = ({ inSplit, workouts, setWorkouts, w, user}) => {
                 <button
                     id="updateButton"
                     type="button"
-                    class="btn btn-primary btn-block"
+                    class="btn btn-primary buttonss"
                     data-toggle="modal"
                     data-target={
                         "#updateWorkout" + w._id
@@ -141,32 +161,13 @@ const Workout = ({ inSplit, workouts, setWorkouts, w, user}) => {
                 >
                     U
                 </button>
-                <form action={"/workouts/delete/" + w._id} method="POST" class="mb-4">
+                <form action={"/workouts/delete/" + w._id} method="POST" class="mb-4 buttonss">
                     <input id="delete" type="submit" value="D" class="btn btn-danger"/>
                 </form>
             </div>
-            <Button id="addExerciseButton" class="warning" onClick={() => setShowCreateExercise(true)}>+</Button>
-            <Modal show={showCreateExercise} onHide={() => setShowCreateExercise(false)}>
-                <Modal.Header closeButton>
-                    <Modal.Title>Add Exercise</Modal.Title>
-                </Modal.Header>
-                <Modal.Body><CreateExercise workoutID={w._id} handleAddExercise={handleAddExercise} user={user} /></Modal.Body>
-                    <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowCreateExercise(false)}>
-                        Close
-                    </Button>
-                </Modal.Footer>
-            </Modal>
-            
-            
-          </div>
-          <div id="exerciseList">
-            {exercises.map((item)=>{
-                return <Exercise inSplit={inSplit} removeExercise={removeExercise} editExercises={editExercises} e={item} />
-            })}
-          </div>
-            
-        </Card>
+           
+            </div>
+        </div>
     )
 }
 

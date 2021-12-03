@@ -13,6 +13,20 @@
   color: black;
 }
 
+.buttonss{
+  position:relative;
+  margin-top: auto
+}
+
+.card-body{
+  display: flex;
+  flex-direction: column;
+}
+.card-footer{
+  display: flex;
+  flex-direction: column;
+}
+
 
 #workoutHead {
   display: grid;
@@ -26,7 +40,6 @@
 
 #delete {
   position: relative;
-  top: -37px;
 }
 
 #exerciseList {
@@ -34,7 +47,9 @@
 }
 
 #addExerciseButton {
+  margin-top: 50px;
   position: relative;
   bottom: 50px;
-  left: 60px;
+  left: 125px;
 }
+
