@@ -12,7 +12,6 @@ export default function Profile() {
     return (
         <Layout user={user}>
             <h1 className="welcome">
-                Hello {user.fullName}! This is your profile page.
             </h1>
             <div className="c">
                 <h className="prof">

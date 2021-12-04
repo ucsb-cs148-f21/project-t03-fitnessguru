@@ -270,7 +270,7 @@ export default function Exercise() {
                             </div>
                             <br />
                             <div className = "inf">
-                                <div class = "card mt-3">
+                                <div class = "card text-center biggercard">
                             <ul class = "list-group list-group-flush">
                                 <li class = "list-group-item d-flex justify-content-between align-items-center flex-wrap">
                                     {" "}

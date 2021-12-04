@@ -66,7 +66,7 @@ export default function Weights() {
             <br />
             {trackedExercises.map((trackedExercise) => (
                 <div>
-                    <p>{trackedExercise.name}</p>
+                    <p><b>{trackedExercise.name}</b></p>
                     <button
                         type="button"
                         class="btn btn-primary btn-block"

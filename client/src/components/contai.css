@@ -1,6 +1,6 @@
 .c {
     display: flex;
-    position: absolute;
+    position: relative;
     top: 10px;
     left: 0px;
     flex-direction: column;
@@ -23,9 +23,9 @@
 
 .bt {
     background-color: #e7e7e7;
-    position: absolute;
-    left: 100px;
-    bottom: -205px;
+    position: relative;
+    left: 650px;
+    bottom: -155px;
     border: none;
     color: black;
     padding: 7px 10px;
@@ -39,8 +39,8 @@
 
 .bt2 {
     position: relative;
-    right: -1300px;
-    top: -80px;
+    right: -1275px;
+    top: -450px;
     padding: 10px 13px;
     width: 150px;
     height: 75px;
@@ -57,13 +57,14 @@
 .inf {
     font-size: large;
     position: relative;
-    bottom: -125px;
+    bottom: 250px;
+    left: 250px;
 }
 .welcome {
     font-size: 20px;
     position: absolute;
     top: 1;
-    left: 500px;
+    left: 10px;
 }
 
 body{
@@ -122,6 +123,9 @@ body{
 
 .tableentry{
     padding: 10px;
+}
+.biggercard{
+    width: 300%
 }
 .table_morecondensed>thead>tr>th, 
 .table_morecondensed>tbody>tr>th, 
