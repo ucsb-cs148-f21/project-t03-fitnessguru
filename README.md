@@ -45,9 +45,9 @@ Fitness Guru will help people who go to the gym keep track of their progress (bo
 
 To install and deploy the app, follow the instructions here: https://github.com/ucsb-cs148-f21/project-t03-fitnessguru/blob/main/docs/DEPLOY.md
 
-# Current Deployment
+# Main Deployment
 
-To check out our most recent deployment of the app, visit the link here: https://fitness-guru-deployment.herokuapp.com/
+To check out our most recent deployment of the app, visit the link here: https://fitness-guru-main.herokuapp.com/
 
 
 # Dependencies
