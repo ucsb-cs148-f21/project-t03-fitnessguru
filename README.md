@@ -45,13 +45,6 @@ Fitness Guru will help people who go to the gym keep track of their progress (bo
 
 To install and deploy the app, follow the instructions here: https://github.com/ucsb-cs148-f21/project-t03-fitnessguru/blob/main/docs/DEPLOY.md
 
-# Main Deployment
-
-To check out our most recent deployment of the app, visit the link here: https://fitness-guru-main.herokuapp.com/
-
-Note: The styling on Heroku is different from the styling on localhost.
-
-
 # Dependencies
 
 -   react, react-dom, react-router-dom, react-scripts for running the app
@@ -81,3 +74,9 @@ Note: The styling on Heroku is different from the styling on localhost.
 2. Commit your changes: git commit -am 'Add some feature'
 3. Push to the branch: git push origin my-new-feature
 4. Submit a pull request :D
+
+# Deployment
+
+To check out our most recent deployment of the app, visit the link here: https://fitness-guru-main.herokuapp.com/
+
+Note: The styling on Heroku is different from the styling on localhost.
