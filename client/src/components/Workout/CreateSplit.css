@@ -70,7 +70,7 @@
 }
 
 .addingWorkout .workoutList {
-    margin-top: 20px;
+    margin-top: 50px;
 }
 
 #addSplit {
@@ -81,6 +81,3 @@
     margin-top: 30px;
 }
 
-#loadingIcon {
-    padding-left: 50px;
-}

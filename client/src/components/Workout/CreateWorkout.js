@@ -8,21 +8,13 @@ import './CreateWorkout.css';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
-
-
-function objectID() {
-    const ObjectId = (m = Math, d = Date, h = 16, s = s => m.floor(s).toString(h)) =>
-    s(d.now() / 1000) + ' '.repeat(h).replace(/./g, () => s(m.random() * h));
-    return(ObjectId);
-}
-
 const CreateWorkout = ({closeModal,splitID, handleAddWorkout, user}) => {
     let workout = {};
 
     const [exercises, setExercises] = useState([]);
     const [showAddExercise, setShowAddExercise] = useState(false);
     const [showAddExercise1, setShowAddExercise1] = useState(true);
-    const [workoutID, setWorkoutID] = useState(objectID());
+    //const [workoutID, setWorkoutID] = useState(objectID());
 
     const[arms, setArms] = useState();
     const[legs, setLegs] = useState();
@@ -96,14 +88,15 @@ const CreateWorkout = ({closeModal,splitID, handleAddWorkout, user}) => {
     }
 
     const handleCreateWorkoutObject = () => {
+        //setWorkoutID(objectID());
+      
         if(!document.getElementById('workoutName').value){
             document.getElementById('workoutName').style.borderColor = "red";
             document.getElementById('workoutName').style.borderWidth = "4px";
             return;
-        }
+        } 
         workout.name = document.getElementById('workoutName').value;
         workout.exercises = exercises;
-        workout._id = workoutID;
         workout.split = splitID;
         workout.googleId = user.id;
         if(splitID == null){
@@ -141,7 +134,7 @@ const CreateWorkout = ({closeModal,splitID, handleAddWorkout, user}) => {
             <input type="text" placeholder="Enter workout" id="workoutName"/>
         </Form.Group>
         
-        {showAddExercise && <CreateExercise categories={categories} workoutID={workoutID} handleAddExercise={handleAddExercise} user={user}/>}<br /><br />
+        {showAddExercise && <CreateExercise workoutID={1} categories={categories} handleAddExercise={handleAddExercise} user={user}/>}<br /><br />
 
         <div className="addExercise">
             <div className="addButton">

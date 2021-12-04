@@ -74,26 +74,11 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    let front = [];
-    let back = [];
-  
-    const isFront = new Map([[2, true], [1, true], [11, false], [13, true], [7, false], [8, false], [12, false], [14, true], [4, true], [10, true],
-                    [6, true], [3, true], [15, false], [9, false], [5, false]]);
-
-    for(let i = 0; i < e.muscles.length; i++){
-        const primary = e.muscles[i];
-        if(isFront.get(primary) == true){
-            front.push(primary);
-        }
-        else if(isFront.get(primary) == false){
-            back.push(primary);
-        }
-        
-    }
 
     const handleAddExx = () => {
         exercise.name = e.name;
         exercise.description = e.description;
+        exercise.notes = document.getElementById("notesArea").value;
         exercise.workout = workoutID;
         exercise.googleId = user.id;
         exercise._id = exxID;
@@ -122,13 +107,15 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
             <Modal.Title>{e.name}</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                {ReactHtmlParser(e.description)}
-                <div class="muscleImages">
-                    <img class="musclesFront" style={{backgroundImage: front.map((muscle) => `url(https://wger.de/static/images/muscles/main/muscle-${muscle}.svg)`) + ", url(https://wger.de/static/images/muscles/muscular_system_front.svg)"}
-                                                    } src={`https://wger.de/static/images/muscles/main/muscle-${e.muscles[0]}.svg`} />
-                    <img class="musclesBack" style={{backgroundImage: back.map((muscle) => `url(https://wger.de/static/images/muscles/main/muscle-${muscle}.svg)`) + ", url(https://wger.de/static/images/muscles/muscular_system_back.svg)"}
-                                                    } src={`https://wger.de/static/images/muscles/main/muscle-${e.muscles[0]}.svg`} />
+                <div id="exerciseDesc">
+                    <h5>Description</h5>
+                    {ReactHtmlParser(e.description)}
                 </div>
+                <div id="exerciseNotes">
+                    <h5>Notes</h5>
+                    <textarea id="notesArea" />
+                </div>
+                
             </Modal.Body>
             <Modal.Footer>
             <Button variant="primary" onClick={handleAddExx}>

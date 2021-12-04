@@ -20,7 +20,9 @@ function MyVerticallyCenteredModal(props) {
             centered
         >
             
-        <Workout inSplit={1} workouts={workouts} setWorkouts={setWorkouts} id="displayedWorkout" w={props.w} user={props.user} />
+            <div id="workoutModalPublic">
+            <Workout  split={props.split} inSplit={1} workouts={workouts} setWorkouts={setWorkouts} id="displayedWorkout" w={props.w} user={props.user} />
+            </div>
         
             
         </Modal>
@@ -72,7 +74,7 @@ const Split = ({ split, user }) => {
                                 id="copySplit"
                                 type="submit"
                                 value="Copy"
-                                class="btn btn-primary btn-block"
+                                class="btn btn-secondary btn-block"
                             />
                         </form>
                         </div>
@@ -84,12 +86,12 @@ const Split = ({ split, user }) => {
                 <ListGroup id="workoutCards" variant="flush">
                     {split.workouts.map((w) => {
                         return (
-                            <Button
-                                variant="primary"
+                            <button
+                                className="workoutButton"
                                 onClick={() => handleShowWorkout({ w })}
                             >
                                 {w.name}
-                            </Button>
+                            </button>
                         );
                     })}
                 </ListGroup>
