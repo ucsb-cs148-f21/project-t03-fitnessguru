@@ -30,10 +30,15 @@
     width: 450px;
 }
 
+#cardAndDelete {
+    position: relative;
+}
+
 #deleteExercise {
     background: none;
     border: none;
-    position: relative;
+    position: absolute;
+    left: 4px;
 }
 
 #delExx{
@@ -42,11 +47,12 @@
 }
 
 #underline{
-    background: black;
+    background: none;
     width: 10px;
     height: 2px;
-    position: relative;
-    left: 19px;
+    position: absolute;
+    left: 24px;
+    top: 33px;
 }
 #deleteExercise:hover + #underline {
     background: #F06362;

@@ -63,6 +63,8 @@ const Split = ({ split, user }) => {
         window.location.reload();
     }
 
+   
+
     return (
         <div className="splitItem">
             <Card id="splitCard" style={{ width: "20rem" }}>

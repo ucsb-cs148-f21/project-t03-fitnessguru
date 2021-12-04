@@ -53,13 +53,18 @@ const CreateSplit = ({ handleAddSplit, closePrompt, user }) => {
     };
 
     const handleAddWorkout = (workout) => {
-        const newWorkouts = workouts.concat(workout);
+        let newWorkouts = workouts.concat(workout);
         setWorkouts(newWorkouts);
         setShowAddWorkout1(true);
         return setShowAddWorkout(false);
     };
 
     const handleCreateSplitObject = () => {
+        if(!document.getElementById("name").value){
+            document.getElementById("name").style.borderColor="red";
+            document.getElementById("name").style.borderWidth = "4px";
+            return;
+        }
         split.name = document.getElementById("name").value;
         split.notes = document.getElementById("notes").value;
         split.workouts = workouts;
@@ -81,7 +86,7 @@ const CreateSplit = ({ handleAddSplit, closePrompt, user }) => {
                 <div id="notesInput">
                     <input
                         type="text"
-                        id="notes"
+                        id="notesInp"
                         name="notes"
                         class="form-control"
                     />
@@ -95,7 +100,7 @@ const CreateSplit = ({ handleAddSplit, closePrompt, user }) => {
                     </Button>
                     <br />
                     <div className="workoutList">
-                        <ListWorkouts workouts={workouts} />
+                        <ListWorkouts creating={1} workouts={workouts} />
                     </div>
                 </div>
             </div>

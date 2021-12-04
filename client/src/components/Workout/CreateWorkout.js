@@ -7,14 +7,11 @@ import Form from "react-bootstrap/Form";
 import './CreateWorkout.css';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
+var ObjectID = require('mongodb').ObjectID;
 
 
 
-function objectID() {
-    const ObjectId = (m = Math, d = Date, h = 16, s = s => m.floor(s).toString(h)) =>
-    s(d.now() / 1000) + ' '.repeat(h).replace(/./g, () => s(m.random() * h));
-    return(ObjectId);
-}
+
 
 const CreateWorkout = ({closeModal,splitID, handleAddWorkout, user}) => {
     let workout = {};
@@ -22,7 +19,7 @@ const CreateWorkout = ({closeModal,splitID, handleAddWorkout, user}) => {
     const [exercises, setExercises] = useState([]);
     const [showAddExercise, setShowAddExercise] = useState(false);
     const [showAddExercise1, setShowAddExercise1] = useState(true);
-    const [workoutID, setWorkoutID] = useState(objectID());
+    const [workoutID, setWorkoutID] = useState(ObjectID());
 
     const[arms, setArms] = useState();
     const[legs, setLegs] = useState();
@@ -96,11 +93,13 @@ const CreateWorkout = ({closeModal,splitID, handleAddWorkout, user}) => {
     }
 
     const handleCreateWorkoutObject = () => {
+        setWorkoutID(ObjectID());
+      
         if(!document.getElementById('workoutName').value){
             document.getElementById('workoutName').style.borderColor = "red";
             document.getElementById('workoutName').style.borderWidth = "4px";
             return;
-        }
+        } 
         workout.name = document.getElementById('workoutName').value;
         workout.exercises = exercises;
         workout._id = workoutID;

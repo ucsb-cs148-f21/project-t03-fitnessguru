@@ -15,7 +15,15 @@ const ExerciseModalNoEdit = ({ show, handleClose, e}) => {
         <Modal.Header closeButton>
           <Modal.Title id="exerciseTitle">{e.name}</Modal.Title>
         </Modal.Header>
-    <Modal.Body id="exerciseDesc">{ReactHtmlParser(e.description)}</Modal.Body>
+        <Modal.Body id="exerciseBody">
+      {e.description && <div id="descArea">
+        <h5>Description</h5>
+        <div id="exerciseDesc">{ReactHtmlParser(e.description)}</div>
+      </div>}<br/><br/>
+      {e.notes && <div id="notesArea">
+        <h5>Notes</h5>
+        <div id="exerciseNotes">{e.notes}</div>
+    </div>}</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>Close</Button>
         </Modal.Footer>
@@ -103,7 +111,7 @@ const ExerciseModal = ({ setAddingExercises, addingExercises, editExercises, sho
 }
 
 // Component takes in an exercise object e and displays it.
-const Exercise = ({ setAddingExercises, addingExercises, inSplit, removeExercise, editExercises, e }) => {
+const Exercise = ({ creating, setAddingExercises, addingExercises, inSplit, removeExercise, editExercises, e }) => {
 
     const actualUser = getUser()
 
@@ -131,7 +139,7 @@ const Exercise = ({ setAddingExercises, addingExercises, inSplit, removeExercise
               </Card.Body>
             </button>
             {
-              e.googleId === actualUser.id ?
+              e.googleId === actualUser.id && !creating ?
               <div id="delExx">
                 <button class="btn btn-danger btn-block" id="deleteExercise" onClick={handleDelete}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm0-9.414l2.828-2.829 1.415 1.415L13.414 12l2.829 2.828-1.415 1.415L12 13.414l-2.828 2.829-1.415-1.415L10.586 12 7.757 9.172l1.415-1.415L12 10.586z" fill="#F06362"/></svg></button>
                 <div id="underline"></div>
@@ -143,8 +151,8 @@ const Exercise = ({ setAddingExercises, addingExercises, inSplit, removeExercise
             }
           </div>
         
-        {!inSplit && <ExerciseModal setAddingExercises={setAddingExercises} addingExercises={addingExercises} id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>}
-        {inSplit && <ExerciseModalNoEdit id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>}
+        {!inSplit && !creating && <ExerciseModal setAddingExercises={setAddingExercises} addingExercises={addingExercises} id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>}
+        {(inSplit || creating) && <ExerciseModalNoEdit id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>}
         </div>
     );
 };
