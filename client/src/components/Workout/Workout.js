@@ -1,7 +1,6 @@
 import React from "react";
 import {useState} from "react";
 import Exercise from "./Exercise";
-import "./Workout.css";
 import Card from "react-bootstrap/Container";
 import ListExercises from "./ListExercises";
 import CreateExercise from "./CreateExercise";
@@ -9,45 +8,37 @@ import axios from "axios";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal"
 import getUser from "../../utils/get-user"
+import "./Workout.css";
 
 
-const Workout = ({ inSplit, workouts, setWorkouts, w, user}) => {
+const Workout = ({ split, inSplit, workouts, setWorkouts, w, user}) => {
 
     const actualUser = getUser()
     const [exercises, setExercises] = useState(w.exercises);
     const [showCreateExercise, setShowCreateExercise] = useState(false);
 
     const editExercises = (newExercises) => {
-        console.log("before");
-        console.log(w.exercises);
         setExercises(newExercises);
         console.log(exercises);
         let workoutIndex = workouts.findIndex((workout) => workout._id == w._id);
         let newWorkouts = workouts;
         newWorkouts[workoutIndex].exercises = newExercises;
         setWorkouts(newWorkouts);
-        console.log("after");
-        console.log(w.exercises);
 
         axios.post("/workouts/put/" + w._id, {exercises: w.exercises})
             .then(res => console.log(res))
             .catch(err => console.log(err))
 
-        if(w.split){
-            axios.post("/splits/put/" + w.split, {workouts: newWorkouts})
+        if(split){
+            axios.post("/splits/put/" + split._id, {workouts: newWorkouts})
                 .then(res => console.log(res))
                 .catch(err => console.log(err))
         }
     }
 
     const removeExercise = (exx) => {
-        console.log("hi");
         let es = w.exercises.slice();
-        console.log("ES");
-        console.log(es);
         let exxIndex = es.findIndex((exercise) => exercise._id == exx._id);
-        console.log("IND");
-        console.log(exxIndex);
         if(exxIndex > -1){
             es.splice(exxIndex, 1);
         }
@@ -65,11 +56,31 @@ const Workout = ({ inSplit, workouts, setWorkouts, w, user}) => {
         axios.post("/workouts/delete/" + w._id)
             .catch((err) => console.log(err))
 
+        if(split){
+            let newWorkouts = split.workouts;
+            let workoutInd = newWorkouts.findIndex((workout) => workout._id == w._id);
+            if(workoutInd > -1){
+                newWorkouts.splice(workoutInd, 1);
+            }
+            axios.post('/splits/put/'+ split._id, {workouts: newWorkouts});
+        }
+
         window.location.reload();
     }
 
     return (
         <>
+        <Modal size="lg" show={showCreateExercise} onHide={() => setShowCreateExercise(false)}>
+            <Modal.Header closeButton>
+                <Modal.Title>Add Exercise</Modal.Title>
+            </Modal.Header>
+            <Modal.Body><CreateExercise workoutID={w._id} handleAddExercise={handleAddExercise} user={user} /></Modal.Body>
+            <Modal.Footer>
+                <Button variant="secondary" onClick={() => setShowCreateExercise(false)}>
+                    Close
+                </Button>
+            </Modal.Footer>
+        </Modal>
         <Card className="workoutBody" style={{ width: '18rem' }}>
           <div id="workoutHead">
             <h2 className="workoutName"><p data-editable>{w.name}</p></h2>
@@ -91,17 +102,6 @@ const Workout = ({ inSplit, workouts, setWorkouts, w, user}) => {
                         <button id="delete" onClick={handleDelete}><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"/><path d="M17 6h5v2h-2v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V8H2V6h5V3a1 1 0 0 1 1-1h8a1 1 0 0 1 1 1v3zm1 2H6v12h12V8zm-9 3h2v6H9v-6zm4 0h2v6h-2v-6zM9 4v2h6V4H9z"/></svg></button>
                         
                     </div>
-                    <Modal dialogClassName="exerciseModal" show={showCreateExercise} onHide={() => setShowCreateExercise(false)}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Add Exercise</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body><CreateExercise workoutID={w._id} handleAddExercise={handleAddExercise} user={user} /></Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="secondary" onClick={() => setShowCreateExercise(false)}>
-                                Close
-                            </Button>
-                        </Modal.Footer>
-                    </Modal>
                 </div>
                 :
                 <div>
@@ -143,6 +143,7 @@ const Workout = ({ inSplit, workouts, setWorkouts, w, user}) => {
                                 <div class="form-group">
                                     <label for="notes">Name</label>
                                     <input
+                                        id="newName"
                                         type="text"
                                         name="name"
                                         defaultValue={w.name}
@@ -162,11 +163,18 @@ const Workout = ({ inSplit, workouts, setWorkouts, w, user}) => {
                                 >
                                     Close
                                 </button>
-                                <input
-                                    type="submit"
-                                    value="Update Workout"
+                                <button
                                     class="btn btn-primary btn-block"
-                                />
+                                    onClick={() => {
+                                        axios.post('workouts/put/' + w._id, {name: document.getElementById("newName").value});
+                                        if(split){
+                                            let newWorkouts = split.workouts;
+                                            let workoutInd = newWorkouts.findIndex((workout) => workout._id == w._id);
+                                            newWorkouts[workoutInd].name = document.getElementById("newName").value;
+                                            axios.post('/splits/put/'+ split._id, {workouts: newWorkouts});
+                                        }
+                                    }}
+                                >Update</button>
                             </div>
                         </form>
                     </div>

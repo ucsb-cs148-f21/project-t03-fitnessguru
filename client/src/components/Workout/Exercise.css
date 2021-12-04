@@ -2,8 +2,8 @@
     border-radius: 25px;
     background: linear-gradient(to right,#DCEFF5, #99CAF7);
     color: #2C4457;
-    margin: 5px 0px 5px 0px;
-    width: 250px;
+    margin: 5px 0px 20px 0px;
+    width: 220px;
 }
 
 .exerciseBody:hover{
@@ -23,6 +23,11 @@
 
 #updateDesc {
     height: 250px;
+    width: 450px;
+}
+
+#updateNotes {
+    width: 450px;
 }
 
 #deleteExercise {
@@ -32,14 +37,23 @@
 }
 
 #delExx{
-    border-radius: 100%;
+    position: relative;
+    top: 20px;
 }
 
-#delExx:hover{
+#underline{
+    background: black;
+    width: 10px;
+    height: 2px;
+    position: relative;
+    left: 19px;
+}
+#deleteExercise:hover + #underline {
     background: #F06362;
+
 }
 
-#exxBody {
+#cardAndDelete {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 }

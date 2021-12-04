@@ -34,7 +34,8 @@
 }
 
 .exerciseModal {
-  overflow-x: scroll;
+  width: 900px;
+  max-width: none;
 }
 
 #buttons {
@@ -49,7 +50,6 @@
   border-radius: 15%;
   position: relative;
   left: -46px;
-  width: 50px;
 }
 
 #delete:hover{
