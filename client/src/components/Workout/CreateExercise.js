@@ -17,14 +17,13 @@ function objectID() {
     return(ObjectId);
 }
 
-const ExxCategory = ({categories, title, category, user, workoutID, handleAddExercise}) => {
+const ExxCategory = ({workoutID, categories, title, category, user, handleAddExercise}) => {
 
     const [exercises, setExercises] = useState();
     const [loading, setLoading] = useState(true);
 
     const handleCreateExerciseObject = () => {
         setCustom(false);
-        exercise.workout = workoutID;
         exercise._id = exxID;
         exercise.googleID = user.id;
         exercise.name = document.getElementById("exerciseName").value;
@@ -66,7 +65,7 @@ const ExxCategory = ({categories, title, category, user, workoutID, handleAddExe
     )
 }
 
-const Exx = ({e, user, workoutID, handleAddExercise}) => {
+const Exx = ({workoutID, e, user, handleAddExercise}) => {
 
     let exercise = {};
     const [show, setShow] = useState(false);
@@ -79,7 +78,6 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
         exercise.name = e.name;
         exercise.description = e.description;
         exercise.notes = document.getElementById("notesArea").value;
-        exercise.workout = workoutID;
         exercise.googleId = user.id;
         exercise._id = exxID;
         console.log(exercise._id);
@@ -138,7 +136,6 @@ const CreateExercise = ({ categories, workoutID, handleAddExercise, user }) => {
 
     const handleCreateExerciseObject = () => {
         setCustom(false);
-        exercise.workout = workoutID;
         exercise._id = exxID;
         exercise.googleId = user.id;
         exercise.name = document.getElementById("exerciseName").value;
