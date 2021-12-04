@@ -78,10 +78,15 @@ const ExerciseModal = ({ setAddingExercises, addingExercises, editExercises, sho
       handleClose();
     }
 
+    let today = new Date();
+    const dd = String(today.getDate()).padStart(2, '0');
+    const mm = String(today.getMonth() + 1).padStart(2, '0');
+    const yyyy = today.getFullYear();
+    today = mm + '/' + dd + '/' + yyyy;
     
     return(
-      
-    <Modal show={show} onHide={handleClose}>
+      <div>
+        <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
           <Modal.Title id="exerciseTitle">{e.name}</Modal.Title>
         </Modal.Header>
@@ -89,9 +94,121 @@ const ExerciseModal = ({ setAddingExercises, addingExercises, editExercises, sho
         <Modal.Footer>
           {!update && <Button variant="primary" onClick={handleEditExercise}>Edit</Button>}
           {update && <Button variant="primary" onClick={handleSaveEdits}>Save</Button>}
+          {!update && <Button
+                                        variant="primary"
+                                        
+                                        data-toggle="modal"
+                                       
+                                        data-target={
+                                            "#logExercise" + e._id
+                                        }
+                                        onClick={handleClose}
+                                    >
+                                        Log
+                                    </Button>}
           <Button variant="secondary" onClick={handleClose}>Close</Button>
         </Modal.Footer>
       </Modal>
+
+      <div
+                                    class="modal fade"
+                                    id={"logExercise" + e._id}
+                                    tabindex="-1"
+                                    role="dialog"
+                                    aria-labelledby="exampleModalLabel"
+                                    aria-hidden="true"
+                                >
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5
+                                                    class="modal-title"
+                                                    id="exampleModalLabel"
+                                                >
+                                                    Log Exercise
+                                                </h5>
+                                                <button
+                                                    type="button"
+                                                    class="close"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close"
+                                                >
+                                                    <span aria-hidden="true">
+                                                        &times;
+                                                    </span>
+                                                </button>
+                                            </div>
+                                            <form
+                                                action={
+                                                    "/weight/log/" +
+                                                    e.name
+                                                }
+                                                method="POST"
+                                                class="mb-4"
+                                            >
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <input
+                                                            type="hidden"
+                                                            name="googleId"
+                                                            value={e.googleId}
+                                                            class="form-control"
+                                                        />
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <input
+                                                            type="hidden"
+                                                            name="date"
+                                                            value={today}
+                                                            class="form-control"
+                                                        />
+                                                    </div>
+                                                    <br />
+                                                    <div class="form-group">
+                                                        <label for="Repetitions">
+                                                            Repetitions
+                                                        </label>
+                                                        <input
+                                                            type="number"
+                                                            name="Repetitions"
+                                                            class="form-control"
+                                                        />
+                                                    </div>
+                                                    <br />
+                                                    <div class="form-group">
+                                                        <label for="Weight">
+                                                            Weight
+                                                        </label>
+                                                        <input
+                                                            type="number"
+                                                            name="Weight"
+                                                            class="form-control"
+                                                        />
+                                                    </div>
+                                                    <br />
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button
+                                                        type="button"
+                                                        class="btn btn-secondary"
+                                                        data-dismiss="modal"
+                                                    >
+                                                        Close
+                                                    </button>
+                                                    <input
+                                                        type="submit"
+                                                        value="Log Exercise"
+                                                        class="btn btn-primary btn-block"
+                                                    />
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+      </div>
+    
+
+      
       
     )
 }
