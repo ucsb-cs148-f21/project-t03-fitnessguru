@@ -49,6 +49,8 @@ To install and deploy the app, follow the instructions here: https://github.com/
 
 To check out our most recent deployment of the app, visit the link here: https://fitness-guru-main.herokuapp.com/
 
+Note: The styling on Heroku is different from the styling on localhost.
+
 
 # Dependencies
 
