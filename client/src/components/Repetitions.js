@@ -11,10 +11,13 @@ export default function Repetitions({exercise_id, date}) {
             .then((repetitions) => setRepetitions(repetitions));
     }, [exercise_id]);
 
+    repetitions.sort((a, b) => {
+        return a.repetitions - b.repetitions
+    })
+
     return (
         <div>
-            <Table bordered>
-                <thead>
+                <table class = "table table-hover table-bordered table-morecondensed" style={{height: "auto"}}>                <thead>
                     <tr>
                         <th>Repetitions</th>
                         <th>Weights</th>
@@ -110,7 +113,7 @@ export default function Repetitions({exercise_id, date}) {
                         </tr>
                     ))}
                 </tbody>
-            </Table>
+            </table>
         </div>
     );
 }

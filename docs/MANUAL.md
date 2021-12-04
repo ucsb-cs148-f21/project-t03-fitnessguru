@@ -1,4 +1,4 @@
-Link to User Manual on Google Docs: https://docs.google.com/document/d/1Y2-ZdbK0Kzj-hgfE3aKsUt5nIA_L57IzXsVZCujK6I4/edit?usp=sharing
+Link to User Manual on Google Docs:https://docs.google.com/document/d/1Y2-ZdbK0Kzj-hgfE3aKsUt5nIA_L57IzXsVZCujK6I4/edit?usp=sharing
 
 Purpose and Intended Audience of Fitness Guru:
 

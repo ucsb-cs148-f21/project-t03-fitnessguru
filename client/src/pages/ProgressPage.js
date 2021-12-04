@@ -4,6 +4,7 @@ import Chart from '../components/Chart';
 import Layout from "../components/Layout";
 import Container from "react-bootstrap/Container";
 import { DropdownButton, Dropdown } from 'react-bootstrap';
+import compare from "../utils/compare"
 
 
 export default function ProgressPage(){  
@@ -21,6 +22,8 @@ export default function ProgressPage(){
     .then(res => res.json())
     .then(exercises => {setExercises(exercises)})
 }, [user.id])
+
+exercises.sort(compare)
 
 useEffect(() => {
   let x_axis = []
@@ -51,6 +54,10 @@ function getRepetitions(exercise){
   .then(res => res.json())
   .then(repetitions => {setRepetitions(repetitions)})
 }
+
+repetitions.sort((a, b) => {
+  return a.repetitions - b.repetitions
+})
 
 function getChartData(repetitions){
   fetch(`/weight/${repetitions._id}`)

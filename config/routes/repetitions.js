@@ -11,7 +11,11 @@ router.get("/:weightsId", async (req, res) => {
 
 // Post
 router.post("/", async (req, res) => {
-    await Repetitions.create(req.body);
+    let repetitions = await Repetitions.find({ repetitions: req.body.repetitions, weights: req.body.weights })
+    console.log(repetitions)
+    if(Object.keys(repetitions).length === 0){
+        await Repetitions.create(req.body);
+    }    
     res.redirect("back");
 });
 

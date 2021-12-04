@@ -173,7 +173,9 @@ export default function ProfilePicChanger() {
                                         width: 200,
                                         height: 200,
                                         borderRadius: 100,
-                                        position: "absolute",
+                                        position: 'relative',
+                                        top: -100,
+                                        left: 600
                                     }}
                                 />
                             </p>
