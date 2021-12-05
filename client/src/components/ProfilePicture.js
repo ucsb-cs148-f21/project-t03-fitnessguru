@@ -91,6 +91,20 @@ export default function ProfilePicChanger() {
                             </div>
                         </div>
                     </div>
+                    <p>
+                                <img
+                                    src={profile.profilePic}
+                                    alt=""
+                                    style={{
+                                        width: 200,
+                                        height: 200,
+                                        borderRadius: 100,
+                                        position: 'relative',
+                                        top: -100,
+                                        left: 600
+                                    }}
+                                />
+                            </p>
                 </div>
             ) : (
                 <div>
