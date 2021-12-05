@@ -43,7 +43,7 @@ const CreateSplit = ({ handleAddSplit, closePrompt, user }) => {
         //$('.modal-backdrop').remove()
         setWorkouts([]);
         document.getElementById("name").value = "";
-        document.getElementById("notes").value = "";
+        document.getElementById("notesInp").value = "";
     };
 
     const handleSetShowAddWorkout = (e) => {
@@ -66,7 +66,7 @@ const CreateSplit = ({ handleAddSplit, closePrompt, user }) => {
             return;
         }
         split.name = document.getElementById("name").value;
-        split.notes = document.getElementById("notes").value;
+        split.notes = document.getElementById("notesInp").value;
         split.workouts = workouts;
         split._id = splitID;
         split.googleId = user.id;
