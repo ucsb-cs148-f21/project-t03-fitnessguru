@@ -33,8 +33,6 @@ export default function MyWorkouts() {
     .catch(error => console.log(error))
   }, [user.id])
 
-  console.log(workouts);
-
   return (
     <Layout user={user}>
       <Container>

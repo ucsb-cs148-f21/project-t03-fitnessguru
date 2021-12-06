@@ -29,7 +29,7 @@ const ExerciseCatDropDown = ({exercises, title}) => {
     </Dropdown.Toggle>
   
     <Dropdown.Menu>
-      {exercises.map(exercise => <Dropdown.Item onClick={() => console.log("hi")}>{exercise.name}</Dropdown.Item>)}
+      {exercises.map(exercise => <Dropdown.Item>{exercise.name}</Dropdown.Item>)}
     </Dropdown.Menu>
   </Dropdown>
   </>

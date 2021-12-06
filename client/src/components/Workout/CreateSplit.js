@@ -53,8 +53,14 @@ const CreateSplit = ({ handleAddSplit, closePrompt, user }) => {
     };
 
     const handleAddWorkout = (workout) => {
+        console.log("OLD");
+        console.log(workouts);
+        console.log("NEW");
         let newWorkouts = workouts.concat(workout);
+        console.log(newWorkouts);
         setWorkouts(newWorkouts);
+        console.log("WORKOUTS");
+        console.log(workouts);
         setShowAddWorkout1(true);
         return setShowAddWorkout(false);
     };

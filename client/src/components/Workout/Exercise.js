@@ -32,7 +32,7 @@ const ExerciseModalNoEdit = ({ show, handleClose, e}) => {
     )
 }
 
-const ExerciseModal = ({ setAddingExercises, addingExercises, editExercises, show, handleClose, e}) => {
+const ExerciseModal = ({ setAddingExercises, addingExercises, editExercises, show, handleClose, e, workout}) => {
     const [update, setUpdate] = useState(false);
 
     const handleEditExercise = () => {
@@ -49,17 +49,12 @@ const ExerciseModal = ({ setAddingExercises, addingExercises, editExercises, sho
     }
 
     async function updateWorkout() {
-    
-        let res = await axios.get("/workouts/" + e.googleId + '/' + e.workout)
-            .catch((err) => console.log(err))
-        let workout = res.data[0];
         let exerciseIndex = workout.exercises.findIndex((exx) => exx._id == e._id);
         workout.exercises[exerciseIndex].name = document.getElementById("updateTitle").value;
         workout.exercises[exerciseIndex].description = document.getElementById("updateDesc").value;
         workout.exercises[exerciseIndex].notes = document.getElementById("updateNotes").value;
         editExercises(workout.exercises);
-        axios.post("/workouts/put/" + e.workout, {exercises: workout.exercises})
-            .then(res => console.log(res))
+        axios.post("/workouts/put/" + workout._id, {exercises: workout.exercises})
             .catch(err => console.log(err))
     }
 
@@ -77,8 +72,7 @@ const ExerciseModal = ({ setAddingExercises, addingExercises, editExercises, sho
           updateWorkout();
         }
       axios.post("/exercises/put/" + e._id, {name: document.getElementById("updateTitle").value, notes: document.getElementById("updateDesc").value}) 
-        .then(res => console.log(res))
-        .catch(err => console.log("/exercises/put/" + e._id + err))
+        .catch((err) => console.log(err))
     
         setUpdate(false);
       handleClose();
@@ -228,7 +222,7 @@ const ExerciseModal = ({ setAddingExercises, addingExercises, editExercises, sho
 }
 
 // Component takes in an exercise object e and displays it.
-const Exercise = ({ creating, setAddingExercises, addingExercises, inSplit, removeExercise, editExercises, e }) => {
+const Exercise = ({ creating, setAddingExercises, addingExercises, inSplit, removeExercise, editExercises, e, workout}) => {
 
     const actualUser = getUser()
 
@@ -268,7 +262,7 @@ const Exercise = ({ creating, setAddingExercises, addingExercises, inSplit, remo
             }
           </div>
         
-        {!inSplit && !creating && <ExerciseModal setAddingExercises={setAddingExercises} addingExercises={addingExercises} id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>}
+        {!inSplit && !creating && <ExerciseModal setAddingExercises={setAddingExercises} addingExercises={addingExercises} id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e} workout={workout}/>}
         {(inSplit || creating) && <ExerciseModalNoEdit id="exerciseModal" editExercises={editExercises} show={show} handleClose={handleClose} e={e}/>}
         </div>
     );

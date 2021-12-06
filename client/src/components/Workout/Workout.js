@@ -11,43 +11,33 @@ import Modal from "react-bootstrap/Modal"
 import getUser from "../../utils/get-user"
 
 
-const Workout = ({ creating, inSplit, workouts, setWorkouts, w, user}) => {
+const Workout = ({ split, creating, inSplit, workouts, setWorkouts, w, user}) => {
 
     const actualUser = getUser()
     const [exercises, setExercises] = useState(w.exercises);
     const [showCreateExercise, setShowCreateExercise] = useState(false);
 
     const editExercises = (newExercises) => {
-        console.log("before");
-        console.log(w.exercises);
         setExercises(newExercises);
-        console.log(exercises);
         let workoutIndex = workouts.findIndex((workout) => workout._id == w._id);
         let newWorkouts = workouts;
         newWorkouts[workoutIndex].exercises = newExercises;
         setWorkouts(newWorkouts);
-        console.log("after");
-        console.log(w.exercises);
 
         axios.post("/workouts/put/" + w._id, {exercises: w.exercises})
             .then(res => console.log(res))
             .catch(err => console.log(err))
 
-        if(w.split){
-            axios.post("/splits/put/" + w.split, {workouts: newWorkouts})
+        if(split){
+            axios.post("/splits/put/" + split._id, {workouts: newWorkouts})
                 .then(res => console.log(res))
-                .catch(err => console.log(err))
+                .catch(err => console.log("RIP"))
         }
     }
 
     const removeExercise = (exx) => {
-        console.log("hi");
         let es = w.exercises.slice();
-        console.log("ES");
-        console.log(es);
         let exxIndex = es.findIndex((exercise) => exercise._id == exx._id);
-        console.log("IND");
-        console.log(exxIndex);
         if(exxIndex > -1){
             es.splice(exxIndex, 1);
         }
@@ -95,7 +85,7 @@ const Workout = ({ creating, inSplit, workouts, setWorkouts, w, user}) => {
                         <Modal.Header closeButton>
                             <Modal.Title>Add Exercise</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body><CreateExercise workoutID={w._id} handleAddExercise={handleAddExercise} user={user} /></Modal.Body>
+                        <Modal.Body><CreateExercise inSplit={inSplit} workout={w} workoutID={w._id} handleAddExercise={handleAddExercise} user={user}/></Modal.Body>
                         <Modal.Footer>
                             <Button variant="secondary" onClick={() => setShowCreateExercise(false)}>
                                 Close
@@ -175,7 +165,7 @@ const Workout = ({ creating, inSplit, workouts, setWorkouts, w, user}) => {
             
           <div id="exerciseList">
             {exercises.map((item)=>{
-                return <Exercise creating={creating} inSplit={inSplit} removeExercise={removeExercise} editExercises={editExercises} e={item} />
+                return <Exercise creating={creating} inSplit={inSplit} removeExercise={removeExercise} editExercises={editExercises} e={item} workout={w}/>
             })}
           </div>
             

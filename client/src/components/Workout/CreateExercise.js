@@ -30,7 +30,6 @@ const ExxCategory = ({categories, title, category, user, workoutID, handleAddExe
         exercise.name = document.getElementById("exerciseName").value;
         exercise.description = document.getElementById("exerciseNotes").value;
         axios.post("/exercises", exercise)
-            .then((res) => console.log(res))
             .catch((err) => console.log(err))
         if(handleAddExercise)
             handleAddExercise(exercise);
@@ -48,10 +47,6 @@ const ExxCategory = ({categories, title, category, user, workoutID, handleAddExe
                     .catch((error) => console.log(error))
         }
     }, [])
-
-    
-    console.log("EXX");
-    console.log(exercises);
 
     return(
     <div className="dropdown">
@@ -79,12 +74,10 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
         exercise.name = e.name;
         exercise.description = e.description;
         exercise.notes = document.getElementById("notesArea").value;
-        exercise.workout = workoutID;
+        //exercise.workout = workoutID;
         exercise.googleId = user.id;
         exercise._id = exxID;
-        console.log(exercise._id);
         axios.post("/exercises", exercise)
-            .then((res) => console.log(res.data))
             .catch((err) => console.log(err))
 
         if(!workoutID){
@@ -131,7 +124,7 @@ const Exx = ({e, user, workoutID, handleAddExercise}) => {
 
 }
 // component takes in handler function that handles where to add the exercise to
-const CreateExercise = ({ categories, workoutID, handleAddExercise, user }) => {
+const CreateExercise = ({ inSplit, workout, categories, workoutID, handleAddExercise, user }) => {
     let exercise = {};
     const [custom, setCustom] = useState(false);
     const [exxID, setExxID] = useState(objectID())
@@ -144,9 +137,10 @@ const CreateExercise = ({ categories, workoutID, handleAddExercise, user }) => {
         exercise.name = document.getElementById("exerciseName").value;
         exercise.description = document.getElementById("exerciseDescription").value;
         exercise.notes = document.getElementById("exerciseNotes").value;
-        axios.post("/exercises", exercise)
-            .then((res) => console.log(res))
+        if(!inSplit){
+            axios.post("/exercises", exercise)
             .catch((err) => console.log(err))
+        }
         if(!categories){
             window.location.reload();
         }

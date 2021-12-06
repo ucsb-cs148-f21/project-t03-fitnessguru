@@ -36,7 +36,6 @@ const CreateWorkout = ({closeModal,splitID, handleAddWorkout, user}) => {
     useEffect(() => {
         if(!arms){
             getCategoryData(setArms, 8);
-            console.log("hi");
         }
         if(!legs)
             getCategoryData(setLegs, 9);
@@ -99,13 +98,17 @@ const CreateWorkout = ({closeModal,splitID, handleAddWorkout, user}) => {
         workout.exercises = exercises;
         workout.split = splitID;
         workout.googleId = user.id;
+        console.log("HMMM");
         if(splitID == null){
             axios.post('/workouts',workout)
                 .then(window.location.reload())
-                .catch(console.log("Couldn't post workout."))
+                .catch((err) => console.log(err))
         }
         else{
-            axios.post('/workouts',workout);
+            axios.post('/workouts',workout)
+                .catch((err) => console.log(err))
+            console.log("WORKOUT");
+            console.log(workout);
             handleAddWorkout(workout);
         }
         setExercises([]);
