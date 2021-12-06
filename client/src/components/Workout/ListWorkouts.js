@@ -6,7 +6,7 @@ import compare from "../../utils/compare"
 
 const ListWorkouts = ({ creating, removeWorkout, inSplit, setWorkouts, workouts, user }) => {
 
-  workouts.sort(compare)
+  if(!creating) {workouts.sort(compare)}
 
   console.log(workouts);
   console.log('waw');
