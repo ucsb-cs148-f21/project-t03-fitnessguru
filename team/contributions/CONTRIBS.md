@@ -48,4 +48,10 @@
 * Contributed with documentation and requirements for several labs
 
 
-John Judge:
+# John's Contributions
+* Implemented styling and frontend for Profile page
+* Implemented aspects of backend for Profile page (Profile picture support)
+* Worked on styling for Exercises page
+* Worked on styling for weights page
+* Fixed bugs related to styling and overall feel of web application
+* Led and recorded 3rd retrospective meeting
