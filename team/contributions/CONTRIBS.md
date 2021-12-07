@@ -38,7 +38,14 @@
 * Connected the database used in the myweightspage to the chart component so that charts can change based on data given.
 
 
-Hima Kumar:
+# Hima's Contributions
+
+* Implemented frontend Profile page
+* Led team discussion of Sprint02
+* Integration of higher-level testing framework
+* Helped implementing styling for Profile page
+* Helped implementing user authentication using Google OAuth
+* Contributed with documentation and requirements for several labs
 
 
 John Judge:
