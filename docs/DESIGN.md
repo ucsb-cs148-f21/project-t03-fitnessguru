@@ -21,7 +21,7 @@
 - Allow for users to record their weights and reps for specific exercises and check their progress by being able to view charts that display their logged data (https://github.com/ucsb-cs148-f21/project-t03-fitnessguru/blob/main/team/sprint03/sprint03.md)
 - Allow users to make their splits public and view other users' splits that have been made public (https://github.com/ucsb-cs148-f21/project-t03-fitnessguru/blob/main/team/sprint03/sprint03.md)
 - We started by creating basic pages like the profile page and MyExercises page for the MVP. From there, we built out our more advanced pages like the MyWorkouts, MySplits, MyProgress, and Public Splits pages.
-- 
+
 ## Specifics
 - Pages: Home, Profile, MyExercises, MyWorkouts, MySplits, MyWeights, Progress
 
